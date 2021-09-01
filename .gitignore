@@ -1,0 +1,10 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Caches
+.sass-cache
+
+# Package Managers
+bower_components
+node_modules

@@ -1,0 +1,24 @@
+a {
+  color: $link-color;
+
+  &:hover {
+    color: $link-hover-color;
+  }
+
+  &:active {
+    color: $link-active-color;
+  }
+
+  &:focus {
+    color: $link-focus-color;
+  }
+}
+
+a:not([class]) {
+  text-decoration: $link-decoration;
+  transition: $link-transition;
+
+  &:hover {
+    text-decoration: $link-hover-decoration;
+  }
+}

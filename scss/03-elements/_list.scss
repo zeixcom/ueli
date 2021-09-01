@@ -1,0 +1,16 @@
+ul,
+ol {
+  @include list-unstyled;
+
+  &:not([class]) {
+    padding-left: to-rem(40px);
+  }
+}
+
+ul:not([class]) {
+  list-style-type: disc;
+}
+
+ol:not([class]) {
+  list-style-type: numeric;
+}

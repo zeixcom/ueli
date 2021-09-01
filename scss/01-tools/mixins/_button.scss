@@ -1,0 +1,95 @@
+/// Remove browser default styles from `<button>`
+@mixin button-unstyled {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  color: inherit;
+}
+
+// Generate styles for a `<button>` that looks like a link
+@mixin button-link {
+  @include button-unstyled;
+
+  color: $link-color;
+  text-decoration: $link-decoration;
+  font-weight: $font-weight-base;
+  user-select: text;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+// Generate styles for a disabled `<button>`
+@mixin button-disabled {
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+/// Generate button base styles
+///
+/// @param {Number} $padding-vertical [$button-padding-vertical]
+/// @param {Number} $padding-horizontal [$button-padding-horizontal]
+/// @param {Number} $border-width [$button-border-width]
+/// @param {Number} $border-radius [$button-border-radius]
+/// @param {List} $transition [$button-transition]
+@mixin button-base(
+  $padding-vertical: $button-padding-vertical,
+  $padding-horizontal: $button-padding-horizontal,
+  $border-width: $button-border-width,
+  $border-radius: $button-border-radius,
+  $transition: $button-transition
+) {
+  @include button-disabled;
+
+  display: inline-block;
+  vertical-align: middle;
+  padding: $padding-vertical $padding-horizontal;
+  border: $border-width solid transparent;
+  border-radius: $border-radius;
+  transition: $transition;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  user-select: none;
+  touch-action: manipulation;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+}
+
+/// Generate styles for a single button variation
+///
+/// @param {String} $variation ['base'] - Map key of `$button-variations`
+@mixin button($variation: 'base') {
+  @include button-base;
+  @include use-variation($button-variations, $variation);
+}
+
+/// Generate button variation styles
+///
+/// @param {Map} $variations [$button-variations] - Map of button variations
+@mixin button-variations($variations: $button-variations) {
+  @if (type-of($variations) == 'map') {
+    $first-key: nth(map-keys($variations), 1);
+    $variations: map-remove($variations, $first-key);
+
+    #{$button-selector} {
+      @include use-variation($button-variations, $first-key);
+
+      @each $key, $value in $variations {
+        &--#{$key} {
+          @include use-variation($button-variations, $key);
+        }
+      }
+    }
+  }
+}

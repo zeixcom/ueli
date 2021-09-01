@@ -1,0 +1,21 @@
+address,
+blockquote,
+table,
+figure,
+form,
+fieldset,
+legend,
+pre,
+dl,
+ul,
+ol,
+hr,
+p {
+  @include spacing('margin-bottom');
+
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

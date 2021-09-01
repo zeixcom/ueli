@@ -1,0 +1,9 @@
+#{$button-selector}-link {
+  @include button-link;
+}
+
+#{$button-selector} {
+  @include button-base;
+}
+
+@include button-variations;

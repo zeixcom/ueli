@@ -1,0 +1,39 @@
+@supports (appearance: none) {
+  select:not([multiple]) {
+    appearance: none;
+    padding-right: 2em;
+    background-repeat: no-repeat;
+    background-position: right $input-padding-horizontal center;
+    background-image: url(get-icon('select', $select-icon-color));
+  }
+}
+
+input[type='color'] {
+  max-width: 2.75rem;
+  padding: $input-padding-vertical;
+}
+
+// Fix date input height in Safari
+input[type='date'] {
+  display: flex;
+}
+
+// Fix appearance for date inputs in Safari
+input[type='date'],
+input[type='month'] {
+  -webkit-appearance: none;
+}
+
+input[type='file'] {
+  display: block;
+  max-width: 100%;
+}
+
+// Remove inner padding from color pickers
+::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+::placeholder {
+  color: $placeholder-color;
+}

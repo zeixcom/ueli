@@ -1,0 +1,40 @@
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+}
+
+optgroup {
+  font-weight: bolder;
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+select {
+  &:focus::-ms-value {
+    background: transparent;
+    color: currentColor;
+  }
+
+  // Undo opacity in Chrome
+  &:disabled {
+    opacity: 1;
+  }
+}
+
+::placeholder {
+  opacity: 1;
+}

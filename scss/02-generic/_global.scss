@@ -1,0 +1,58 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+canvas,
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+audio {
+  max-width: 100%;
+}
+
+blockquote,
+dd,
+figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+iframe {
+  border: 0;
+}
+
+address {
+  font-style: inherit;
+}
+
+pre {
+  overflow: auto;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid;
+  color: inherit;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
