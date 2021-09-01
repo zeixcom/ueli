@@ -14,13 +14,16 @@ $font-antialiased: false !default;
 $global-bg: $color-background !default;
 $text-color: $color-foreground !default;
 
-// Breakpoints
-$mq-breakpoints: (
-  xs: 0px,
-  sm: 375px,
-  md: 680px,
-  lg: 960px,
-  xl: 1200px,
+// Icons
+$icons: (
+  radio:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$color-icon}" d="M4 1C2.3 1 1 2.3 1 4s1.3 3 3 3 3-1.3 3-3S5.7 1 4 1z"/></svg>',
+  checkbox:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$color-icon}" d="M6.4 1L5.7 1.7 2.9 4.5 2.1 3.7 1.4 3 0 4.4l0.7 0.7 1.5 1.5 0.7 0.7 0.7-0.7 3.5-3.5 0.7-0.7L6.4 1 6.4 1z"/></svg>',
+  select:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="#{$color-icon}" d="m1.41 0 4.59 4.58 4.59-4.58 1.41 1.41l-6 6-6-6z"/></svg>',
+  bullet:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="3" viewBox="0 0 11 3"><path fill="none" stroke="#{$color-icon}" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M1.5,1.5h8"/></svg>',
 ) !default;
 
 // Fluid Scaling
@@ -30,9 +33,30 @@ $fluid-breakpoints: (
   max: xl,
 ) !default;
 
+// Breakpoints
+$mq-breakpoints: (
+  xs: 0px,
+  sm: 375px,
+  md: 680px,
+  lg: 960px,
+  xl: 1200px,
+) !default;
+
+// Grid
+$grid-columns: 12 !default;
+$grid-gutter: (
+  min: 30px,
+) !default;
+$grid-container: map-get($mq-breakpoints, xl) !default;
+$grid-container-gutter: $grid-gutter !default;
+$grid-pull-classes: false !default;
+$grid-push-classes: false !default;
+$grid-offset-classes: false !default;
+$grid-column-classes: false !default;
+
 // Headings
 $headings: ('h6, .h6', 'h5, .h5', 'h4, .h4', 'h3, .h3', 'h2, .h2', 'h1, .h1') !default;
-$headings-spacing: 0.4em !default;
+$headings-spacing: to-em(6px) !default;
 $headings-color: inherit !default;
 
 $type-scale: 1.25 !default;
@@ -49,42 +73,27 @@ $link-decoration: none !default;
 $link-hover-decoration: underline !default;
 $link-transition: color duration() easing(linear) !default;
 
-// Grid
-$grid-columns: 12 !default;
-$grid-gutter: (
-  min: 30px,
-) !default;
-$grid-container: map-get($mq-breakpoints, xl) !default;
-$grid-container-gutter: $grid-gutter !default;
-$grid-pull-classes: false !default;
-$grid-push-classes: false !default;
-$grid-offset-classes: false !default;
-$grid-column-classes: false !default;
-
-// Icons
-$icon-radio: '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$color-icon}" d="M4 1C2.3 1 1 2.3 1 4s1.3 3 3 3 3-1.3 3-3S5.7 1 4 1z"/></svg>' !default;
-$icon-checkbox: '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$color-icon}" d="M6.4 1L5.7 1.7 2.9 4.5 2.1 3.7 1.4 3 0 4.4l0.7 0.7 1.5 1.5 0.7 0.7 0.7-0.7 3.5-3.5 0.7-0.7L6.4 1 6.4 1z"/></svg>' !default;
-$icon-select: '<svg xmlns="http://www.w3.org/2000/svg" height="8" width="12" viewBox="0 0 12 8"><path fill="#{$color-icon}" d="m1.41 0 4.59 4.58 4.59-4.58 1.41 1.41l-6 6-6-6z"/></svg>' !default;
-
-$icons: (
-  radio: $icon-radio,
-  checkbox: $icon-checkbox,
-  select: $icon-select,
-) !default;
+// List
+$list-indent: to-em(40px) !default;
+$list-vertical-spacing: to-em(6px) !default;
+$list-marker-color: $color-foreground !default;
+$list-unordered-offset-top: to-em(4px) !default;
+$list-unordered-offset-left: to-em(-7px) !default;
+$list-ordered-offset-left: to-em(-5px) !default;
 
 // Input
 $input-selector: '.form-control' !default;
-$input-height: 2.375em !default;
-$input-padding-vertical: 0.375em !default;
-$input-padding-horizontal: 0.75em !default;
+$input-height: to-em(38px) !default;
+$input-padding-vertical: to-em(6px) !default;
+$input-padding-horizontal: to-em(12px) !default;
 $input-border-width: 1px !default;
-$input-border-radius: 0.125em !default;
+$input-border-radius: to-em(2px) !default;
 $input-bg: $color-background !default;
 $input-color: $color-foreground !default;
 $input-border-color: $color-line !default;
 $input-box-shadow: none !default;
 $input-focus-border-color: $color-accent !default;
-$input-focus-box-shadow: 0 0 0 0.188em rgba($color-accent, 0.25) !default;
+$input-focus-box-shadow: 0 0 0 to-em(3px) rgba($color-accent, 0.25) !default;
 $input-disabled-bg: $color-background-muted !default;
 $input-disabled-color: $color-foreground-muted !default;
 $input-disabled-border-color: $color-line !default;
@@ -95,7 +104,7 @@ $select-icon-color: $color-foreground !default;
 
 // Checkbox & Radio
 $selection-icon-color: $color-foreground-inverted !default;
-$selection-top-offset: 0.25em !default;
+$selection-offset-top: to-em(4px) !default;
 $selection-border-width: $input-border-width !default;
 $selection-border-color: $input-border-color !default;
 $selection-bg: $input-bg !default;
@@ -120,10 +129,10 @@ $label-spacing: to-rem(8px) !default;
 // Button Base
 $button-selector: '.button' !default;
 $button-cursor-pointer: true !default;
-$button-padding-vertical: 0.375em !default;
-$button-padding-horizontal: 1em !default;
+$button-padding-vertical: to-em(6px) !default;
+$button-padding-horizontal: to-em(16px) !default;
 $button-border-width: 1px !default;
-$button-border-radius: 0.125em !default;
+$button-border-radius: to-em(2px) !default;
 $button-transition: background-color duration() easing(), color duration() easing(),
   border-color duration() easing(), box-shadow duration() easing() !default;
 
@@ -140,7 +149,7 @@ $button-variations: (
       '&:focus': (
         background-color: shade-color($color-accent, 20%),
         color: $color-foreground-inverted,
-        box-shadow: 0 0 0 0.188em rgba($color-accent, 0.35),
+        box-shadow: 0 0 0 to-em(3px) rgba($color-accent, 0.35),
       ),
       '&:disabled, &.disabled': (
         opacity: 0.65,

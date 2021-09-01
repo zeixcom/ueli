@@ -91,13 +91,53 @@
             <ol>
               <li>List Item 1</li>
               <li>List Item 2</li>
-              <li>List Item 3</li>
+              <li>
+                List Item 3
+                <ol>
+                  <li>Nested List Item 1</li>
+                  <li>Nested List Item 2</li>
+                  <li>Nested List Item 3</li>
+                </ol>
+              </li>
             </ol>
             <h3>Unordered List</h3>
             <ul>
               <li>List Item 1</li>
               <li>List Item 2</li>
-              <li>List Item 3</li>
+              <li>
+                List Item 3
+                <ul>
+                  <li>Nested List Item 1</li>
+                  <li>Nested List Item 2</li>
+                  <li>Nested List Item 3</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Ordered List with Class</h3>
+            <ol class="list">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+              <li>
+                List Item 3
+                <ol class="list">
+                  <li>Nested List Item 1</li>
+                  <li>Nested List Item 2</li>
+                  <li>Nested List Item 3</li>
+                </ol>
+              </li>
+            </ol>
+            <h3>Unordered List with Class</h3>
+            <ul class="list">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+              <li>
+                List Item 3
+                <ul class="list">
+                  <li>Nested List Item 1</li>
+                  <li>Nested List Item 2</li>
+                  <li>Nested List Item 3</li>
+                </ul>
+              </li>
             </ul>
           </div>
           <footer>
@@ -481,7 +521,7 @@ p q r s t u v w x y z { | } ~ &amp;
           <p><a href="#" class="link">[Top]</a></p>
           <fieldset id="forms__checkbox">
             <legend>Checkboxes</legend>
-            <ul class="list list--bare">
+            <ul class="list-unstyled">
               <li class="checkbox">
                 <input type="checkbox" id="checkbox1" name="checkbox" />
                 <label for="checkbox1"> Choice A</label>
@@ -499,7 +539,7 @@ p q r s t u v w x y z { | } ~ &amp;
           <p><a href="#" class="link">[Top]</a></p>
           <fieldset id="forms__radio">
             <legend>Radio buttons</legend>
-            <ul class="list list--bare">
+            <ul class="list-unstyled">
               <li class="radio">
                 <input type="radio" id="radio1" name="radio" />
                 <label for="radio1"> Option 1</label>
