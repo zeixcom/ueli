@@ -777,7 +777,7 @@ ul.list li::before {
   width: 1em;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='3' viewBox='0 0 11 3'%3E%3Cpath fill='none' stroke='%23333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M1.5,1.5h8'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='3' viewBox='0 0 11 3'%3E%3Cpath fill='none' stroke='%23333333' stroke-width='2' d='M1.5,1.5h8'/%3E%3C/svg%3E");
 }
 
 .form-control {
