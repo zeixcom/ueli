@@ -780,6 +780,11 @@ ul.list li::before {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='3' viewBox='0 0 11 3'%3E%3Cpath fill='none' stroke='%23333333' stroke-width='2' d='M1.5,1.5h8'/%3E%3C/svg%3E");
 }
 
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
 .form-control {
   display: block;
   width: 100%;

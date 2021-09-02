@@ -39,3 +39,7 @@ ul.list {
     background-image: url(get-icon(bullet, $list-marker-color));
   }
 }
+
+.list-unstyled {
+  @include list-unstyled;
+}
