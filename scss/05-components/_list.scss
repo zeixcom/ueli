@@ -1,4 +1,6 @@
-.list {
+.list,
+#{$formatted-text-selector} ul,
+#{$formatted-text-selector} ol {
   li {
     position: relative;
     margin-left: $list-indent;
@@ -17,7 +19,22 @@
   }
 }
 
-ol.list {
+.list--unordered,
+#{$formatted-text-selector} ul {
+  li::before {
+    top: $list-unordered-offset-top;
+    left: $list-unordered-offset-left;
+    height: 1em;
+    width: 1em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-image: url(get-icon(bullet, $list-marker-color));
+  }
+}
+
+.list--ordered,
+#{$formatted-text-selector} ol {
   counter-reset: ordered-list;
 
   li::before {
@@ -26,20 +43,4 @@ ol.list {
     left: $list-ordered-offset-left;
     color: $list-marker-color;
   }
-}
-
-ul.list {
-  li::before {
-    top: $list-unordered-offset-top;
-    left: $list-unordered-offset-left;
-    height: 1em;
-    width: 1em;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: url(get-icon(bullet, $list-marker-color));
-  }
-}
-
-.list-unstyled {
-  @include list-unstyled;
 }
