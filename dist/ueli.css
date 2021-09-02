@@ -542,21 +542,6 @@ ol {
   padding-left: 0;
   list-style: none;
 }
-ul:not([class]),
-ol:not([class]) {
-  padding-left: 2.5em;
-}
-
-ul:not([class]) {
-  list-style-type: disc;
-}
-ul:not([class]) ul {
-  list-style-type: circle;
-}
-
-ol:not([class]) {
-  list-style-type: numeric;
-}
 
 label {
   display: inline-block;
@@ -745,44 +730,53 @@ h3 {
   height: 100%;
 }
 
-.list li {
+.list li,
+.formatted-text ul li,
+.formatted-text ol li {
   position: relative;
   margin-left: 2.5em;
 }
-.list li::before {
+.list li::before,
+.formatted-text ul li::before,
+.formatted-text ol li::before {
   content: "";
   position: absolute;
   transform: translateX(-100%);
 }
 .list ol,
 .list ul,
-.list li + li {
+.list li + li,
+.formatted-text ul ol,
+.formatted-text ul ul,
+.formatted-text ul li + li,
+.formatted-text ol ol,
+.formatted-text ol ul,
+.formatted-text ol li + li {
   margin-top: 0.375em;
 }
 
-ol.list {
-  counter-reset: ordered-list;
-}
-ol.list li::before {
-  content: counters(ordered-list, ".") ". ";
-  counter-increment: ordered-list;
-  left: -0.3125em;
-  color: #333333;
-}
-
-ul.list li::before {
+.list--unordered li::before,
+.formatted-text ul li::before {
   top: 0.25em;
   left: -0.4375em;
   height: 1em;
   width: 1em;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='3' viewBox='0 0 11 3'%3E%3Cpath fill='none' stroke='%23333333' stroke-width='2' d='M1.5,1.5h8'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='2' viewBox='0 0 11 2'%3E%3Cpath fill='none' stroke='%23333333' stroke-width='2' d='M1.5,1.5h8'/%3E%3C/svg%3E");
 }
 
-.list-unstyled {
-  padding-left: 0;
-  list-style: none;
+.list--ordered,
+.formatted-text ol {
+  counter-reset: ordered-list;
+}
+.list--ordered li::before,
+.formatted-text ol li::before {
+  content: counters(ordered-list, ".") ". ";
+  counter-increment: ordered-list;
+  left: -0.3125em;
+  color: #333333;
 }
 
 .form-control {
