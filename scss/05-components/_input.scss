@@ -1,6 +1,7 @@
 #{$input-selector} {
   display: block;
   width: 100%;
+  height: $input-height;
   padding: $input-padding-vertical $input-padding-horizontal;
   border: $input-border-width solid $input-border-color;
   border-radius: $input-border-radius;
@@ -22,9 +23,5 @@
     background-color: $input-disabled-bg;
     color: $input-disabled-color;
     cursor: not-allowed;
-  }
-
-  &:not(textarea):not([size]):not([multiple]) {
-    height: $input-height;
   }
 }

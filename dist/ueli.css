@@ -793,6 +793,7 @@ h3 {
 .form-control {
   display: block;
   width: 100%;
+  height: 2.375em;
   padding: 0.375em 0.75em;
   border: 1px solid #cccccc;
   border-radius: 0.125em;
@@ -813,9 +814,6 @@ h3 {
   background-color: #e6e6e6;
   color: gray;
   cursor: not-allowed;
-}
-.form-control:not(textarea):not([size]):not([multiple]) {
-  height: 2.375em;
 }
 
 .radio [type=radio]:not(:only-child),
