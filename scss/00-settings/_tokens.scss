@@ -31,14 +31,10 @@ $token-spacings-default: 200 !default;
 // Easings
 $token-easings: (
   ease: ease,
-  linear: linear,
-  // color, opacity
-  enter: ease-out,
-  // visible at end
-  move: ease-in-out,
-  // always visible
-  exit: ease-in,
-  // visible at start
+  linear: linear /* color, opacity */,
+  enter: ease-out /* visible at end */,
+  move: ease-in-out /* always visible */,
+  exit: ease-in /* visible at start */,
 ) !default;
 $token-easings-default: ease !default;
 
