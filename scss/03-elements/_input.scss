@@ -8,6 +8,23 @@
   }
 }
 
+select {
+  &[multiple],
+  &[size] {
+    height: auto;
+  }
+}
+
+textarea {
+  &[rows] {
+    height: auto;
+  }
+
+  &:not([rows]) {
+    height: $input-height * 2;
+  }
+}
+
 input[type='color'] {
   max-width: 2.75rem;
   padding: $input-padding-vertical;

@@ -557,6 +557,17 @@ label {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333333' d='m1.41 0 4.59 4.58 4.59-4.58 1.41 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
   }
 }
+select[multiple], select[size] {
+  height: auto;
+}
+
+textarea[rows] {
+  height: auto;
+}
+textarea:not([rows]) {
+  height: 4.75em;
+}
+
 input[type=color] {
   max-width: 2.75rem;
   padding: 0.375em;
