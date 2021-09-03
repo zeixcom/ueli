@@ -710,19 +710,19 @@ h3 {
   position: relative;
 }
 
-.aspect-ratio {
+.embed-responsive {
   position: relative;
   overflow: hidden;
 }
-.aspect-ratio::before {
+.embed-responsive::before {
   content: "";
   display: block;
   padding-bottom: 56.25%;
 }
-.aspect-ratio iframe,
-.aspect-ratio embed,
-.aspect-ratio object,
-.aspect-ratio video {
+.embed-responsive iframe,
+.embed-responsive embed,
+.embed-responsive object,
+.embed-responsive video {
   position: absolute;
   top: 0;
   left: 0;

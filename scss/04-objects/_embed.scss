@@ -1,4 +1,4 @@
-.aspect-ratio {
+.embed-responsive {
   @if (type-of($ratios) == 'map') {
     $first-key: nth(map-keys($ratios), 1);
     $ratios: map-remove($ratios, $first-key);
