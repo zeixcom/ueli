@@ -1081,7 +1081,7 @@ h3 {
 .formatted-text br:nth-of-type(n + 3) ~ br {
   display: none;
 }
-.formatted-text *:not(br):empty {
+.formatted-text p:empty {
   display: none;
 }
 

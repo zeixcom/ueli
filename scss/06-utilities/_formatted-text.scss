@@ -11,9 +11,8 @@
     display: none;
   }
 
-  // Hide tags with no childnode (Note: whitespace counts as a childnode)
-  // Exclude <br> tags as they count as empty
-  *:not(br):empty {
+  // Hide empty p tags
+  p:empty {
     display: none;
   }
 }
