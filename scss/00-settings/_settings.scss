@@ -11,6 +11,7 @@ $color-icon: get-color(gray-800) !default;
 
 // Global
 $font-antialiased: false !default;
+$fluid-scaling: true !default;
 $global-bg: $color-background !default;
 $text-color: $color-foreground !default;
 
@@ -22,22 +23,6 @@ $headings-color: inherit !default;
 $type-scale: 1.25 !default;
 $type-scale-base: (
   min: $font-size-base,
-) !default;
-
-// Fluid Scaling
-$fluid-scaling: true !default;
-$fluid-breakpoints: (
-  min: sm,
-  max: xl,
-) !default;
-
-// Breakpoints
-$mq-breakpoints: (
-  xs: 0px,
-  sm: 375px,
-  md: 680px,
-  lg: 960px,
-  xl: 1200px,
 ) !default;
 
 // Grid

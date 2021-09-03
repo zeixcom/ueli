@@ -58,6 +58,21 @@ $token-spacings: (
 ) !default;
 $token-spacings-default: 200 !default;
 
+// Breakpoints
+$mq-breakpoints: (
+  xs: 0px,
+  sm: 375px,
+  md: 680px,
+  lg: 960px,
+  xl: 1200px,
+) !default;
+
+// Fluid Breakpoints
+$fluid-breakpoints: (
+  min: sm,
+  max: xl,
+) !default;
+
 // Easings
 $token-easings: (
   ease: ease,
