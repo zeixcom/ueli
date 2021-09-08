@@ -16,7 +16,7 @@
     "prod": "webpack --config webpack/webpack.prod.config.js --mode=production",
     "lint": "stylelint --fix scss/**/*",
     "prettier": "prettier --write scss/**/*",
-    "sassdoc": "sassdoc scss/**/*"
+    "sassdoc": "sassdoc scss/**/* -d docs"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.4",
