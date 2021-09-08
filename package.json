@@ -1,32 +1,42 @@
 {
   "name": "@zeix/ueli",
   "version": "1.0.0-alpha.0",
-  "scripts": {
-    "sass:dev": "sass --watch scss/ueli.scss dist/ueli.css",
-    "sass:build": "sass scss/ueli.scss dist/ueli.css",
-    "postcss": "postcss --replace dist/ueli.css",
-    "dev": "npm run sass:dev && npm run postcss",
-    "build": "npm run sass:build && npm run postcss",
-    "lint": "stylelint --fix scss/**/*.scss",
-    "prettier": "prettier --write **/*"
-  },
   "keywords": [
     "css",
     "sass",
     "scss",
     "framework"
   ],
-  "author": "Sergio Lavanga <sergio.lavanga@zeix.com>",
   "license": "MIT",
+  "author": "Sergio Lavanga <sergio.lavanga@zeix.com>",
+  "scripts": {
+    "build": "webpack --config webpack/webpack.dev.config.js --mode=development",
+    "watch": "webpack --config webpack/webpack.dev.config.js --mode=development --watch",
+    "dev": "webpack serve --config webpack/webpack.dev.config.js --mode=development",
+    "production": "webpack --config webpack/webpack.prod.config.js --mode=production",
+    "lint": "stylelint --fix scss/**/*",
+    "prettier": "prettier --write scss/**/*"
+  },
   "devDependencies": {
-    "autoprefixer": "^10.3.2",
+    "autoprefixer": "^10.3.4",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.2.0",
+    "css-minimizer-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.2.2",
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
+    "postcss-loader": "^6.1.1",
     "prettier": "^2.3.2",
-    "sass": "^1.38.0",
+    "sass": "^1.39.0",
+    "sass-loader": "^12.1.0",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
-    "stylelint-scss": "^3.20.1"
+    "stylelint-scss": "^3.20.1",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.1",
+    "webpack-merge": "^5.8.0"
   }
 }
