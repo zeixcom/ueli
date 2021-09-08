@@ -36,7 +36,7 @@ $token-type: (
     line-height: $line-height-base,
     letter-spacing: $letter-spacing-base,
   ),
-  headings: (
+  heading: (
     font-family: $headings-font-family,
     font-weight: $headings-font-weight,
     line-height: $headings-line-height,
@@ -46,17 +46,9 @@ $token-type: (
 
 // Spacings
 $token-spacings: (
-  50: 4px,
-  100: 12px,
-  150: 16px,
-  200: 24px,
-  300: 32px,
-  400: 48px,
-  800: 64px,
-  1200: 96px,
-  1600: 128px,
+  default: 24px,
 ) !default;
-$token-spacings-default: 200 !default;
+$token-spacings-default: default !default;
 
 // Breakpoints
 $mq-breakpoints: (
@@ -86,9 +78,6 @@ $token-easings-default: ease !default;
 // Durations
 $token-durations: (
   150: 150ms,
-  200: 200ms,
-  650: 650ms,
-  800: 800ms,
 ) !default;
 $token-durations-default: 150 !default;
 
@@ -102,18 +91,4 @@ $layers: (
   below: -1,
   neutral: 0,
   above: 1,
-  hover: 2,
-  active: 3,
-  highlight: 10,
-  controls: 20,
-  dropdown: 1000,
-  sticky: 1020,
-  fixed: 1030,
-  modal-backdrop: 1040,
-  off-canvas: 1050,
-  modal: 1060,
-  popover: 1070,
-  tooltip: 1080,
-  overlay: 1100,
-  to-the-moon: 99999,
 ) !default;
