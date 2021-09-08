@@ -1,9 +1,13 @@
+////
+/// @group global
+////
+
 /// Get an icon from the `$icons` map in the specified color
 ///
 /// @param {String} $icon - Map key of `$icons`
 /// @param {String} $color [$color-icon] - Hex color value
 /// @example scss
-/// .icon {
+/// .component {
 ///   background-image: url(get-icon('radio', #fff));
 /// }
 /// @return {String} Encoded SVG icon string

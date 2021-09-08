@@ -1,3 +1,7 @@
+////
+/// @group utilities
+////
+
 /// Old school way of hiding text. Better use sr-only with an additional `<span>`
 @mixin text-hide {
   text-indent: 110%;
