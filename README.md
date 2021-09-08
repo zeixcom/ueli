@@ -65,7 +65,7 @@ Settings are split into [tokens](https://github.com/zeixcom/ueli/tree/develop/sc
 
 ## Tools
 
-Functions and mixins are annotated using sassdoc syntax. Please refer to the [sassdoc page](https://github.com/zeixcom/ueli/tree/develop/sassdoc/index.html) for their documentation.
+Functions and mixins are annotated using sassdoc syntax. Please refer to the [sassdoc page](https://zeixcom.github.io/ueli/) for their documentation.
 
 ## Objects
 
