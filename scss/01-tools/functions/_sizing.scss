@@ -37,24 +37,19 @@
 /// @param {Map|Number} $sizing - Sizing map or number
 /// @return {Map|Number} - Sizing map with halved values or halved number
 @function get-half-sizing($sizing) {
-  $half-sizing: $sizing;
-
-  @if is-sizing-map($sizing) {
-    $half-sizing: (
-      'min': math.div(map-get($sizing, 'min'), 2),
-    );
-
-    @if map-has-key($sizing, 'max') {
-      $half-sizing: map-merge(
-        $half-sizing,
+  @if (type-of($sizing) == 'map') {
+    @each $key, $value in $sizing {
+      $sizing: map-remove($sizing, $key);
+      $sizing: map-merge(
+        $sizing,
         (
-          'max': math.div(map-get($sizing, 'max'), 2),
+          $key: math.div($value, 2),
         )
       );
     }
   } @else {
-    $half-sizing: math.div($sizing, 2);
+    $sizing: math.div($sizing, 2);
   }
 
-  @return $half-sizing;
+  @return $sizing;
 }
