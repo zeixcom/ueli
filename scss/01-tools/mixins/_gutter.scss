@@ -30,7 +30,7 @@
 @mixin make-gutters($gutter: $grid-gutter, $prop: 'gap') {
   @if is-sizing-map($gutter) {
     @include gutter($gutter, $prop);
-  } @else if (type-of($gutter) == 'map') {
+  } @else if is-breakpoint-map($gutter) {
     @each $breakpoint, $width in $gutter {
       @include skip-first-breakpoint($breakpoint) {
         @include gutter($width, $prop);
