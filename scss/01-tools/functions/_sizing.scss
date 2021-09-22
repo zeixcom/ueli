@@ -17,23 +17,19 @@
 /// @param {Map|Number} $sizing - Sizing map or number
 /// @return {Number} - Largest sizing in the map
 @function get-largest-sizing($sizing) {
-  $largest-sizing: $sizing;
-
   @if (type-of($sizing) == 'map') {
-    $sizing-value: nth(map-values($sizing), length($sizing));
+    $sizing: nth(map-values($sizing), length($sizing));
 
-    @if is-sizing-map($sizing-value) {
-      $largest-sizing: map-get($sizing-value, 'max');
+    @if is-sizing-map($sizing) {
+      $sizing: map-get($sizing, 'max');
 
-      @if not $largest-sizing {
-        $largest-sizing: map-get($sizing-value, 'min');
+      @if not $sizing {
+        $sizing: map-get($sizing, 'min');
       }
-    } @else {
-      $largest-sizing: $sizing-value;
     }
   }
 
-  @return $largest-sizing;
+  @return $sizing;
 }
 
 /// Half values of a sizing map
