@@ -87,6 +87,55 @@ Related variables: `$grid-container`, `$grid-container-gutter`
 
 Enable more grid classes using the `$grid-*-classes` variables or use the flex grid and grid mixins to build your own.
 
+#### Basic
+
+```html
+<div class="row">
+  <div class="col col-xs-6">Column A</div>
+  <div class="col col-xs-6">Column B</div>
+</div>
+```
+
+#### Responsive
+
+```html
+<div class="row">
+  <div class="col col-md-6 col-xl-9">Column A</div>
+  <div class="col col-md-6 col-xl-3">Column B</div>
+</div>
+```
+
+#### Offset
+
+```html
+<div class="row">
+  <div class="col col-xs-5">Column A</div>
+  <div class="col col-xs-5 col-xs-offset-2">Column B</div>
+</div>
+```
+
+#### Push / Pull
+
+```html
+<div class="row">
+  <div class="col col-xs-6 col-xs-push-6">First column in markup</div>
+  <div class="col col-xs-6 col-xs-pull-6">Second column in markup</div>
+</div>
+```
+
+#### Nested
+
+```html
+<div class="row">
+  <div class="col col-md-8">
+    <div class="row">
+      <div class="col col-md-6">Nested column A</div>
+      <div class="col col-md-6">Nested column B</div>
+    </div>
+  </div>
+</div>
+```
+
 Related variables: `$grid-columns`, `$grid-gutter`, `$grid-pull-classes`, `$grid-push-classes`, `$grid-offset-classes`, `$grid-column-classes`
 
 ### Embed
@@ -111,6 +160,9 @@ Related variables: `$formatted-text-selector`
 
 ```html
 <button type="button" class="button"></button>
+```
+
+```html
 <a class="button" href="#" role="button"></a>
 ```
 
