@@ -9,7 +9,7 @@
 /// @param {Map} $map - Map to test
 /// @return {Boolean} - True if the parameter is a map with a `min` key
 @function is-sizing-map($map) {
-  @return (type-of($map) == 'map' and map-has-key($map, 'min'));
+  @return (type-of($map) == 'map' and map-has-key($map, 'min') and length($map) < 3);
 }
 
 /// Get largest sizing of sizing map
