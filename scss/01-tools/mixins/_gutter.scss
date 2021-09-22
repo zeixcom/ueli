@@ -6,7 +6,16 @@
 ///
 /// @param {Number|Map} $gutter [$grid-gutter] - The amount of gutter as a number or sizing map formatted as `(min: 30px, max: 60px)`
 /// @param {String} $prop ['gap'] - Property to use for the gutter ('gap', 'margin' or 'padding')
-@mixin gutter($gutter: $grid-gutter, $prop: 'gap') {
+/// @param {Map} $breakpoints [$fluid-breakpoints] - Map of two named breakpoints from `$mq-breakpoints` formatted as `(min: md, max: lg)` or custom px values formatted as `(min: 600px, max: 900px)`
+/// @param {String} $current-breakpoint [null]
+/// @param {List} $all-breakpoints [null]
+@mixin gutter(
+  $gutter: $grid-gutter,
+  $prop: 'gap',
+  $breakpoints: $fluid-breakpoints,
+  $current-breakpoint: null,
+  $all-breakpoints: null
+) {
   $negative: false;
 
   @if ($prop == 'margin') {
@@ -16,10 +25,31 @@
   @if ($prop != 'gap') {
     $gutter: get-half-sizing($gutter);
 
-    @include fluid-calc(#{$prop}-left, $gutter, $negative: $negative);
-    @include fluid-calc(#{$prop}-right, $gutter, $negative: $negative);
+    @include fluid-calc(
+      #{$prop}-left,
+      $gutter,
+      $breakpoints,
+      $negative: $negative,
+      $current-breakpoint: $current-breakpoint,
+      $all-breakpoints: $all-breakpoints
+    );
+    @include fluid-calc(
+      #{$prop}-right,
+      $gutter,
+      $breakpoints,
+      $negative: $negative,
+      $current-breakpoint: $current-breakpoint,
+      $all-breakpoints: $all-breakpoints
+    );
   } @else {
-    @include fluid-calc($prop, $gutter, $negative: $negative);
+    @include fluid-calc(
+      $prop,
+      $gutter,
+      $breakpoints,
+      $negative: $negative,
+      $current-breakpoint: $current-breakpoint,
+      $all-breakpoints: $all-breakpoints
+    );
   }
 }
 
@@ -31,9 +61,23 @@
   @if is-sizing-map($gutter) {
     @include gutter($gutter, $prop);
   } @else if is-breakpoint-map($gutter) {
-    @each $breakpoint, $width in $gutter {
-      @include skip-first-breakpoint($breakpoint) {
-        @include gutter($width, $prop);
+    @each $breakpoint-key, $breakpoint-value in $gutter {
+      @include skip-first-breakpoint($breakpoint-key) {
+        $all-breakpoints: map-keys($gutter);
+        $next-breakpoint: get-next-breakpoint($breakpoint-key, $gutter) or
+          map-get($fluid-breakpoints, 'max');
+        $breakpoint-range: (
+          min: $breakpoint-key,
+          max: $next-breakpoint,
+        );
+
+        @include gutter(
+          $breakpoint-value,
+          $prop,
+          $breakpoint-range,
+          $breakpoint-key,
+          $all-breakpoints
+        );
       }
     }
   } @else {

@@ -46,7 +46,10 @@ $grid-columns: 12 !default;
 /// @example scss
 ///   $grid-gutter: (
 ///     xs: 30px,
-///     md: 60px,
+///     md: (
+///       min: 30px,
+///       max: 60px,
+///     )
 ///   );
 ///
 /// @type {Number|Map}
@@ -69,7 +72,10 @@ $grid-container: map-get($mq-breakpoints, xl) !default;
 /// @example scss
 ///   $grid-container-gutter: (
 ///     xs: 30px,
-///     md: 60px,
+///     md: (
+///       min: 30px,
+///       max: 60px,
+///     )
 ///   );
 ///
 /// @type {Number|Map}

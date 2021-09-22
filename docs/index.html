@@ -335,7 +335,10 @@
     ),
   ),
 );</code></pre></div></section><section class="main__item container item" id="global-variable-token-spacings"><h3 class="item__heading"><a class="item__name" href="#variable-token-spacings">token-spacings</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$token-spacings: (
-  default: 24px,
+  default: (
+    xs: 24px,
+    md: 50px,
+  ),
 ) !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Spacings</p></div><h3 class="item__sub-heading">Type</h3><p><code>{map}</code></p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>$token-spacings: (
   default: 24px,
 );</code></pre></div><div class="item__example example"><pre class="example__code language-scss"><code>$token-spacings: (
@@ -358,13 +361,19 @@
   max: 60px,
 );</code></pre></div><div class="item__example example"><pre class="example__code language-scss"><code>$grid-gutter: (
   xs: 30px,
-  md: 60px,
+  md: (
+    min: 30px,
+    max: 60px,
+  )
 );</code></pre></div></section><section class="main__item container item" id="global-variable-grid-container-gutter"><h3 class="item__heading"><a class="item__name" href="#variable-grid-container-gutter">grid-container-gutter</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$grid-container-gutter: $grid-gutter !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Grid Container Gutter</p></div><h3 class="item__sub-heading">Type</h3><p><code>{number&lt;/code&gt; or &lt;code&gt;Map}</code></p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>$grid-container-gutter: 30px;</code></pre></div><div class="item__example example"><pre class="example__code language-scss"><code>$grid-container-gutter: (
   min: 30px,
   max: 60px,
 );</code></pre></div><div class="item__example example"><pre class="example__code language-scss"><code>$grid-container-gutter: (
   xs: 30px,
-  md: 60px,
+  md: (
+    min: 30px,
+    max: 60px,
+  )
 );</code></pre></div></section></section></section><section class="main__section"><h1 class="main__heading" id="grid"><div class="container">Grid</div></h1><section class="main__sub-section" id="grid-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="grid-mixin-container"><h3 class="item__heading"><a class="item__name" href="#mixin-container">container</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin container($gutter: $grid-container-gutter, $width: $grid-container) { 
   $largest-gutter: to-rem(get-largest-sizing($gutter));
 
@@ -502,7 +511,7 @@
   }
  }" data-collapsed="@mixin grid-column-offset($span) { ... }"><code>@mixin grid-column-offset($span) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Output a grid column start offset</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$span</code></th><td data-label="desc"><p>Grid column start offset</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.grid-column-offset {
   @include grid-column-offset(2);
-}</code></pre></div></section><section class="main__item container item" id="grid-mixin-gutter"><h3 class="item__heading"><a class="item__name" href="#mixin-gutter">gutter</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin gutter($gutter: $grid-gutter, $prop: &#39;gap&#39;) { 
+}</code></pre></div></section><section class="main__item container item" id="grid-mixin-gutter"><h3 class="item__heading"><a class="item__name" href="#mixin-gutter">gutter</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin gutter($gutter: $grid-gutter, $prop: &#39;gap&#39;, $breakpoints: $fluid-breakpoints, $current-breakpoint: null, $all-breakpoints: null) { 
   $negative: false;
 
   @if ($prop == &#39;margin&#39;) {
@@ -512,18 +521,53 @@
   @if ($prop != &#39;gap&#39;) {
     $gutter: get-half-sizing($gutter);
 
-    @include fluid-calc(#{$prop}-left, $gutter, $negative: $negative);
-    @include fluid-calc(#{$prop}-right, $gutter, $negative: $negative);
+    @include fluid-calc(
+      #{$prop}-left,
+      $gutter,
+      $breakpoints,
+      $negative: $negative,
+      $current-breakpoint: $current-breakpoint,
+      $all-breakpoints: $all-breakpoints
+    );
+    @include fluid-calc(
+      #{$prop}-right,
+      $gutter,
+      $breakpoints,
+      $negative: $negative,
+      $current-breakpoint: $current-breakpoint,
+      $all-breakpoints: $all-breakpoints
+    );
   } @else {
-    @include fluid-calc($prop, $gutter, $negative: $negative);
+    @include fluid-calc(
+      $prop,
+      $gutter,
+      $breakpoints,
+      $negative: $negative,
+      $current-breakpoint: $current-breakpoint,
+      $all-breakpoints: $all-breakpoints
+    );
   }
- }" data-collapsed="@mixin gutter($gutter: $grid-gutter, $prop: &#39;gap&#39;) { ... }"><code>@mixin gutter($gutter: $grid-gutter, $prop: &#39;gap&#39;) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Output margin or padding gutter depending on the type</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$gutter</code></th><td data-label="desc"><p>The amount of gutter as a number or sizing map formatted as <code>(min: 30px, max: 60px)</code></p></td><td data-label="type"><code>Number</code> or <code>Map</code></td><td data-label="default"><code>$grid-gutter</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$prop</code></th><td data-label="desc"><p>Property to use for the gutter (&#39;gap&#39;, &#39;margin&#39; or &#39;padding&#39;)</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>&#39;gap&#39;</code></td></tr></tbody></table></section><section class="main__item container item" id="grid-mixin-make-gutters"><h3 class="item__heading"><a class="item__name" href="#mixin-make-gutters">make-gutters</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin make-gutters($gutter: $grid-gutter, $prop: &#39;gap&#39;) { 
+ }" data-collapsed="@mixin gutter($gutter: $grid-gutter, $prop: &#39;gap&#39;, $breakpoints: $fluid-breakpoints, $current-breakpoint: null, $all-breakpoints: null) { ... }"><code>@mixin gutter($gutter: $grid-gutter, $prop: &#39;gap&#39;, $breakpoints: $fluid-breakpoints, $current-breakpoint: null, $all-breakpoints: null) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Output margin or padding gutter depending on the type</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$gutter</code></th><td data-label="desc"><p>The amount of gutter as a number or sizing map formatted as <code>(min: 30px, max: 60px)</code></p></td><td data-label="type"><code>Number</code> or <code>Map</code></td><td data-label="default"><code>$grid-gutter</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$prop</code></th><td data-label="desc"><p>Property to use for the gutter (&#39;gap&#39;, &#39;margin&#39; or &#39;padding&#39;)</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>&#39;gap&#39;</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$breakpoints</code></th><td data-label="desc"><p>Map of two named breakpoints from <code>$mq-breakpoints</code> formatted as <code>(min: md, max: lg)</code> or custom px values formatted as <code>(min: 600px, max: 900px)</code></p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>$fluid-breakpoints</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$current-breakpoint</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code></td><td data-label="default"><code>null</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$all-breakpoints</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>List</code></td><td data-label="default"><code>null</code></td></tr></tbody></table></section><section class="main__item container item" id="grid-mixin-make-gutters"><h3 class="item__heading"><a class="item__name" href="#mixin-make-gutters">make-gutters</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin make-gutters($gutter: $grid-gutter, $prop: &#39;gap&#39;) { 
   @if is-sizing-map($gutter) {
     @include gutter($gutter, $prop);
   } @else if is-breakpoint-map($gutter) {
-    @each $breakpoint, $width in $gutter {
-      @include skip-first-breakpoint($breakpoint) {
-        @include gutter($width, $prop);
+    @each $breakpoint-key, $breakpoint-value in $gutter {
+      @include skip-first-breakpoint($breakpoint-key) {
+        $all-breakpoints: map-keys($gutter);
+        $next-breakpoint: get-next-breakpoint($breakpoint-key, $gutter) or
+          map-get($fluid-breakpoints, &#39;max&#39;);
+        $breakpoint-range: (
+          min: $breakpoint-key,
+          max: $next-breakpoint,
+        );
+
+        @include gutter(
+          $breakpoint-value,
+          $prop,
+          $breakpoint-range,
+          $breakpoint-key,
+          $all-breakpoints
+        );
       }
     }
   } @else {
@@ -1014,10 +1058,9 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
   } @else if is-breakpoint-map($config) {
     @each $breakpoint-key, $breakpoint-value in $config {
       @include skip-first-breakpoint($breakpoint-key) {
-        $breakpoint-keys: map-keys($config);
+        $all-breakpoints: map-keys($config);
         $next-breakpoint: get-next-breakpoint($breakpoint-key, $config) or
           map-get($fluid-breakpoints, &#39;max&#39;);
-
         $breakpoint-range: (
           min: $breakpoint-key,
           max: $next-breakpoint,
@@ -1032,7 +1075,7 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
             $negative,
             $important,
             $current-breakpoint: $breakpoint-key,
-            $all-breakpoints: $breakpoint-keys
+            $all-breakpoints: $all-breakpoints
           );
         } @else {
           @if (type-of($breakpoint-value) == &#39;map&#39;) {
@@ -1046,7 +1089,7 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
                   $negative,
                   $important,
                   $current-breakpoint: $breakpoint-key,
-                  $all-breakpoints: $breakpoint-keys
+                  $all-breakpoints: $all-breakpoints
                 );
               } @else {
                 // Nested props in breakpoint (e.g. type)
@@ -1058,8 +1101,11 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
             @include fluid-calc(
               $prop,
               $breakpoint-value,
-              $negative: $negative,
-              $important: $important
+              $breakpoint-range,
+              $negative,
+              $important,
+              $current-breakpoint: $breakpoint-key,
+              $all-breakpoints: $all-breakpoints
             );
           }
         }

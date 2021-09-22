@@ -15,10 +15,9 @@
   } @else if is-breakpoint-map($config) {
     @each $breakpoint-key, $breakpoint-value in $config {
       @include skip-first-breakpoint($breakpoint-key) {
-        $breakpoint-keys: map-keys($config);
+        $all-breakpoints: map-keys($config);
         $next-breakpoint: get-next-breakpoint($breakpoint-key, $config) or
           map-get($fluid-breakpoints, 'max');
-
         $breakpoint-range: (
           min: $breakpoint-key,
           max: $next-breakpoint,
@@ -33,7 +32,7 @@
             $negative,
             $important,
             $current-breakpoint: $breakpoint-key,
-            $all-breakpoints: $breakpoint-keys
+            $all-breakpoints: $all-breakpoints
           );
         } @else {
           @if (type-of($breakpoint-value) == 'map') {
@@ -47,7 +46,7 @@
                   $negative,
                   $important,
                   $current-breakpoint: $breakpoint-key,
-                  $all-breakpoints: $breakpoint-keys
+                  $all-breakpoints: $all-breakpoints
                 );
               } @else {
                 // Nested props in breakpoint (e.g. type)
@@ -59,8 +58,11 @@
             @include fluid-calc(
               $prop,
               $breakpoint-value,
-              $negative: $negative,
-              $important: $important
+              $breakpoint-range,
+              $negative,
+              $important,
+              $current-breakpoint: $breakpoint-key,
+              $all-breakpoints: $all-breakpoints
             );
           }
         }
