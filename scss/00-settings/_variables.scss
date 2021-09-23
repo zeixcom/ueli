@@ -150,6 +150,7 @@ $label-spacing: to-rem(8px) !default;
 
 // Button Base
 $button-selector: '.button' !default;
+$button-type: null !default;
 $button-cursor-pointer: true !default;
 $button-padding-vertical: to-em(6px) !default;
 $button-padding-horizontal: to-em(16px) !default;
