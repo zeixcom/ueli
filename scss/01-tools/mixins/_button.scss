@@ -42,6 +42,7 @@
 /// @param {Number} $border-width [$button-border-width]
 /// @param {Number} $border-radius [$button-border-radius]
 /// @param {List} $transition [$button-transition]
+/// @param {String} $type [$button-type]
 @mixin button-base(
   $padding-vertical: $button-padding-vertical,
   $padding-horizontal: $button-padding-horizontal,
