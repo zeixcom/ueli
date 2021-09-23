@@ -34,18 +34,40 @@
 
 /// Half values of a sizing map
 ///
-/// @param {Map|Number} $sizing - Sizing map or number
-/// @return {Map|Number} - Sizing map with halved values or halved number
+/// @param {Map|Number} $sizing - Sizing map, breakpoint map or number
+/// @return {Map|Number} - Map with halved values or halved number
 @function get-half-sizing($sizing) {
   @if (type-of($sizing) == 'map') {
     @each $key, $value in $sizing {
-      $sizing: map-remove($sizing, $key);
-      $sizing: map-merge(
-        $sizing,
-        (
-          $key: math.div($value, 2),
-        )
-      );
+      @if (type-of($value) == 'map') {
+        $nested-map: ();
+
+        @each $deep-key, $deep-value in $value {
+          // Divide nested map values and add to new map
+          $nested-map: map-merge(
+            $nested-map,
+            (
+              $deep-key: math.div($deep-value, 2),
+            )
+          );
+        }
+
+        // Merge new map into map key of the original map
+        $sizing: map-merge(
+          $sizing,
+          (
+            $key: $nested-map,
+          )
+        );
+      } @else {
+        // Replace map values with divided values
+        $sizing: map-merge(
+          $sizing,
+          (
+            $key: math.div($value, 2),
+          )
+        );
+      }
     }
   } @else {
     $sizing: math.div($sizing, 2);

@@ -20,9 +20,5 @@
     }
   }
 
-  @if is-breakpoint-map($sizes) {
-    @include loop-variation($sizes, $prop, $negative: $negative, $important: $important);
-  } @else {
-    @include fluid-calc($prop, $sizes, $negative: $negative, $important: $important);
-  }
+  @include loop-variation($sizes, $prop, $negative: $negative, $important: $important);
 }
