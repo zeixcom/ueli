@@ -1082,7 +1082,18 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
         @each $selector-key, $selector-value in $value {
           #{$selector-key} {
             @each $deep-key, $deep-value in $selector-value {
-              #{$deep-key}: $deep-value;
+              @if ($deep-key == &#39;selectors&#39;) {
+                @include loop-variation(
+                  (
+                    &#39;selectors&#39;: $deep-value,
+                  ),
+                  $prop,
+                  $negative,
+                  $important
+                );
+              } @else {
+                #{$deep-key}: $deep-value;
+              }
             }
           }
         }

@@ -72,7 +72,18 @@
         @each $selector-key, $selector-value in $value {
           #{$selector-key} {
             @each $deep-key, $deep-value in $selector-value {
-              #{$deep-key}: $deep-value;
+              @if ($deep-key == 'selectors') {
+                @include loop-variation(
+                  (
+                    'selectors': $deep-value,
+                  ),
+                  $prop,
+                  $negative,
+                  $important
+                );
+              } @else {
+                #{$deep-key}: $deep-value;
+              }
             }
           }
         }
