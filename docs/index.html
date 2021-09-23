@@ -16,7 +16,7 @@
   }
 
   @return $is-breakpoint-map;
- }" data-collapsed="@function is-breakpoint-map($map, $breakpoints: $mq-breakpoints) { ... }"><code>@function is-breakpoint-map($map, $breakpoints: $mq-breakpoints) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Check if a map contains valid breakpoints</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$map</code></th><td data-label="desc"><p>Breakpoint map</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$breakpoints</code></th><td data-label="desc"><p>Map of breakpoints</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>$mq-breakpoints</code></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Boolean</code> &mdash;<p>True if the passed map is is a breakpoint map</p></div></section><section class="main__item container item" id="breakpoint-function-get-next-breakpoint"><h3 class="item__heading"><a class="item__name" href="#function-get-next-breakpoint">get-next-breakpoint</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function get-next-breakpoint($name, $breakpoints: $mq-breakpoints) { 
+ }" data-collapsed="@function is-breakpoint-map($map, $breakpoints: $mq-breakpoints) { ... }"><code>@function is-breakpoint-map($map, $breakpoints: $mq-breakpoints) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Check if a map contains valid breakpoints</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$map</code></th><td data-label="desc"><p>Breakpoint map to check</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$breakpoints</code></th><td data-label="desc"><p>Map of valid breakpoints</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>$mq-breakpoints</code></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Boolean</code> &mdash;<p>True if the passed map is is a breakpoint map</p></div></section><section class="main__item container item" id="breakpoint-function-get-next-breakpoint"><h3 class="item__heading"><a class="item__name" href="#function-get-next-breakpoint">get-next-breakpoint</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function get-next-breakpoint($name, $breakpoints: $mq-breakpoints) { 
   $breakpoint-keys: map-keys($breakpoints);
   $breakpoint-index: index($breakpoint-keys, $name);
   $next: false;
@@ -335,10 +335,7 @@
     ),
   ),
 );</code></pre></div></section><section class="main__item container item" id="global-variable-token-spacings"><h3 class="item__heading"><a class="item__name" href="#variable-token-spacings">token-spacings</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$token-spacings: (
-  default: (
-    xs: 24px,
-    md: 50px,
-  ),
+  default: 24px,
 ) !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Spacings</p></div><h3 class="item__sub-heading">Type</h3><p><code>{map}</code></p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>$token-spacings: (
   default: 24px,
 );</code></pre></div><div class="item__example example"><pre class="example__code language-scss"><code>$token-spacings: (
@@ -1001,7 +998,6 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
 
         // Replace map values with modular scaled values
         @each $key, $value in $scale {
-          $sizes: map-remove($sizes, $key);
           $sizes: map-merge(
             $sizes,
             (
