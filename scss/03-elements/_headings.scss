@@ -1,6 +1,6 @@
 @if ($headings and length($headings) > 0) {
   #{$headings} {
-    @include type('heading');
+    @include typography('heading');
 
     margin-top: $headings-spacing * 2;
     margin-bottom: $headings-spacing;
