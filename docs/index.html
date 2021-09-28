@@ -922,13 +922,30 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
  }" data-collapsed="@function get-easing($name: $token-easings-default) { ... }"><code>@function get-easing($name: $token-easings-default) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Get an easing value from the <code>$token-easings</code> map</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$name</code></th><td data-label="desc"><p>Map key of <code>$token-easings</code></p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>$token-easings-default</code></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>String</code> &mdash;<p>easing value</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.component {
   transition: color get-duration() get-easing();
 }</code></pre></div></section><section class="main__item container item" id="token-function-get-index"><h3 class="item__heading"><a class="item__name" href="#function-get-index">get-index</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function get-index($name) { 
-  $index: map-get($layers, $name);
+  @if map-has-key($layers, $name) {
+    $accumulator: nth(map-values($layers), 1);
 
-  @if not $index {
+    @each $key, $val in $layers {
+      @if $val == null {
+        $accumulator: $accumulator + 1;
+        $val: $accumulator;
+      } @else {
+        @if $val &lt; $accumulator {
+          // If the z-index is not greater than the elements preceding it,
+          // the whole element-order paradigm is invalidated
+          @error &quot;z-index for #{$key} must be greater than the preceding value!&quot;;
+        }
+
+        $accumulator: $val;
+      }
+
+      @if $key == $name {
+        @return $accumulator;
+      }
+    }
+  } @else {
     @error &quot;The key `#{$name}` wasn&#39;t found in $layers.&quot;;
   }
-
-  @return $index;
  }" data-collapsed="@function get-index($name) { ... }"><code>@function get-index($name) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Get a z-index value from the <code>$layers</code> map</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$name</code></th><td data-label="desc"><p>Map key of <code>$layers</code></p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Number</code> &mdash;<p>z-index value</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.component {
   z-index: get-index(below);
 }</code></pre></div></section><section class="main__item container item" id="token-function-get-spacing"><h3 class="item__heading"><a class="item__name" href="#function-get-spacing">get-spacing</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function get-spacing($name: $token-spacings-default, $sizing: &#39;min&#39;) { 
