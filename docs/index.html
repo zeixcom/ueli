@@ -798,11 +798,11 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
     $max-breakpoint-value: map-get($mq-breakpoints, $max-breakpoint);
   }
 
-  @if $negative == true {
+  @if $negative {
     $multiplicand: -1;
   }
 
-  @if $important == true {
+  @if $important {
     $important: unquote(&#39;!important&#39;);
   } @else {
     $important: null;
@@ -1103,16 +1103,14 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
             }
           }
         } @else if $prop {
+          $multiplicand: 1;
+
+          @if $negative {
+            $multiplicand: -1;
+          }
+
           // Single prop for current breakpoint
-          @include fluid-calc(
-            $prop,
-            $breakpoint-value,
-            $breakpoint-range,
-            $negative,
-            $important,
-            $current-breakpoint: $breakpoint-key,
-            $all-breakpoints: $all-breakpoints
-          );
+          #{$prop}: to-rem($breakpoint-value * $multiplicand);
         }
       }
     }

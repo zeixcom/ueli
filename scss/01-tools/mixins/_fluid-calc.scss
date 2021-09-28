@@ -46,11 +46,11 @@
     $max-breakpoint-value: map-get($mq-breakpoints, $max-breakpoint);
   }
 
-  @if $negative == true {
+  @if $negative {
     $multiplicand: -1;
   }
 
-  @if $important == true {
+  @if $important {
     $important: unquote('!important');
   } @else {
     $important: null;
