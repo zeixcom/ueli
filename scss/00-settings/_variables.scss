@@ -21,7 +21,7 @@ $text-color: $color-foreground !default;
 
 // Headings
 $headings: ('h6, .h6', 'h5, .h5', 'h4, .h4', 'h3, .h3', 'h2, .h2', 'h1, .h1') !default;
-$headings-spacing: to-em(6px) !default;
+$headings-spacing: 0.4em !default;
 $headings-color: inherit !default;
 
 $type-scale: 1.25 !default;
