@@ -37,7 +37,7 @@
 /// Output a css grid column
 ///
 /// @example scss
-/// .grid-column {
+/// .grid-col {
 ///   @include grid-column(6);
 /// }
 /// @param {Number} $span - Grid column span
@@ -61,7 +61,7 @@
 /// Output a css grid column start offset
 ///
 /// @example scss
-/// .grid-column-offset {
+/// .grid-col-offset {
 ///   @include grid-column-offset(2);
 /// }
 /// @param {Number} $span - Grid column start offset
@@ -70,5 +70,27 @@
     grid-column-start: $span;
   } @else {
     @error "Use a span value within the range of 1 and #{$grid-columns}.";
+  }
+}
+
+// Generate grid columns for a specific breakpoint
+///
+/// @param {String} $breakpoint - Breakpoint name
+/// @param {Boolean} $columnStart [$grid-start-class] - Outputs column start class if true
+@mixin loop-grid-columns (
+  $breakpoint,
+  $columnStart
+) {
+  @for $i from 1 through $grid-columns {
+    .grid-col-#{$breakpoint}-#{$i} {
+      @include grid-column($i, $grid-columns);
+    }
+
+    @if $columnStart {
+      .grid-col-#{$breakpoint}-start-#{$i} {
+        @include grid-column-offset($i, $grid-columns);
+      }
+    }
+
   }
 }
