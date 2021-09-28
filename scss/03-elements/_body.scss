@@ -1,5 +1,5 @@
 body {
-  @include type;
+  @include typography;
 
   @if $font-antialiased {
     @include font-smoothing;

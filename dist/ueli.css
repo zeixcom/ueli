@@ -493,8 +493,8 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: normal;
-  margin-top: 0.75em;
-  margin-bottom: 0.375em;
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
   color: inherit;
 }
 h6:first-child, .h6:first-child, h5:first-child, .h5:first-child, h4:first-child, .h4:first-child, h3:first-child, .h3:first-child, h2:first-child, .h2:first-child, h1:first-child, .h1:first-child {
