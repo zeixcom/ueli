@@ -19,16 +19,16 @@ $mq-base-font-size: 16px !default;
 
 /// Responsive mode
 ///
-/// Set to `false` to enable support for browsers that do not support @media queries,
+/// Set to `false` to enable support for browsers that do not support media queries,
 /// (IE <= 8, Firefox <= 3, Opera <= 9)
 ///
 /// You could create a stylesheet served exclusively to older browsers,
-/// where @media queries are rasterized
+/// where media queries are rasterized
 ///
 /// @example scss
 ///  // old-ie.scss
 ///  $mq-responsive: false;
-///  @import 'main'; // @media queries in this file will be rasterized up to $mq-static-breakpoint
+///  media queries in this file will be rasterized up to $mq-static-breakpoint
 ///                   // larger breakpoints will be ignored
 ///
 /// @type Boolean
@@ -63,7 +63,7 @@ $mq-breakpoints: (
 ///  // and fix the styles (such as the layout) at tablet width
 ///  $mq-responsive: false;
 ///  $mq-static-breakpoint: tablet;
-///  @import 'main'; // @media queries in this file will be rasterized up to tablet
+///  media queries in this file will be rasterized up to tablet
 ///                   // larger breakpoints will be ignored
 ///
 /// @type String
@@ -147,7 +147,7 @@ $mq-media-type: all !default;
 /// @ignore @param {Map} $breakpoints [$mq-breakpoints]
 /// @ignore @param {String} $static-breakpoint [$mq-static-breakpoint]
 ///
-/// @content styling rules, wrapped into a @media query when $responsive is true
+/// @content styling rules, wrapped into a media query when $responsive is true
 ///
 /// @requires {Variable} $mq-media-type
 /// @requires {Variable} $mq-breakpoints
@@ -214,7 +214,7 @@ $mq-media-type: all !default;
     }
   }
 
-  // Responsive support is disabled, rasterize the output outside @media blocks
+  // Responsive support is disabled, rasterize the output outside media blocks
   // The browser will rely on the cascade itself.
   @if $responsive == false {
     $static-breakpoint-width: mq-get-breakpoint-width($static-breakpoint, $breakpoints);
@@ -234,7 +234,7 @@ $mq-media-type: all !default;
     }
   }
 
-  // Responsive support is enabled, output rules inside @media queries
+  // Responsive support is enabled, output rules inside media queries
   @else {
     @if $min-width != 0 {
       $media-query: '#{$media-query} and (min-width: #{$min-width})';

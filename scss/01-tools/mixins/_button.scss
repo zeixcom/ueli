@@ -49,7 +49,7 @@
   $border-width: $button-border-width,
   $border-radius: $button-border-radius,
   $transition: $button-transition,
-  $type: $button-type,
+  $type: $button-type
 ) {
   @include button-disabled;
 
@@ -79,6 +79,8 @@
 /// Generate styles for a single button variation
 ///
 /// @param {String} $variation ['base'] - Map key of `$button-variations`
+/// @example html
+/// <button type="button" class="button">Button</button>
 @mixin button($variation: 'base') {
   @include button-base;
   @include use-variation($button-variations, $variation);

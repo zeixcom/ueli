@@ -1,4 +1,6 @@
 // Colors
+/// @group token
+/// @colors token-colors
 $token-colors: (
   blue: #0275d8,
   white: #fff,
@@ -45,12 +47,18 @@ $token-type: (
 ) !default;
 
 // Spacings
+/// @group token
+/// @sizes token-spacings {rulers}
 $token-spacings: (
   default: 24px,
+  medium: 48px,
+  large: 72px,
 ) !default;
 $token-spacings-default: default !default;
 
 // Breakpoints
+/// @group token
+/// @sizes token-breakpoints {rulers-large}
 $mq-breakpoints: (
   xs: 0px,
   sm: 600px,
@@ -82,6 +90,8 @@ $token-durations: (
 $token-durations-default: 150 !default;
 
 // Aspect Ratios
+/// @group token
+/// @ratios token-ratios
 $ratios: (
   widescreen: 16 by 9,
 ) !default;

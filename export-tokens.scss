@@ -1,0 +1,40 @@
+@use 'sass:math';
+@use './node_modules/sassdoc-theme-herman/scss/_utilities.scss' as herman;
+
+@import './scss/01-tools/functions';
+@import './scss/00-settings/tokens';
+@import './scss/00-settings/variables';
+
+@include herman.add('colors', 'token-colors', $token-colors);
+@include herman.add('sizes', 'token-spacings', $token-spacings);
+@include herman.add('sizes', 'token-breakpoints', $mq-breakpoints);
+
+// transform ratios
+$token-ratios: ();
+
+@each $name, $ratio in $ratios {
+  $width: nth($ratio, 1);
+  $height: nth($ratio, 3);
+
+  $token-ratios: map-merge(
+    $token-ratios,
+    (
+      $name: math.div($height, $width),
+    )
+  );
+}
+
+@include herman.add('ratios', 'token-ratios', $token-ratios);
+
+// transform type
+@each $config in $token-type {
+  @each $key, $value in $config {
+    @if ($key == 'font-size') {
+      $token-type: map-merge($token-type, ($key, $value));
+    }
+  }
+}
+
+@include herman.add('sizes', 'token-type', $token-type);
+
+@include herman.export;

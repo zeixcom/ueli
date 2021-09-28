@@ -1,0 +1,3389 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-herman="root">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Token | @zeix/ueli Documentation</title>
+
+  <link href="assets/img/favicon.ico" rel="shortcut icon">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/webpack/app_styles.min.css" />
+
+  
+
+  
+</head>
+<body data-herman="body">
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+  <symbol id="icon-logo" viewBox="0 0 16 16">
+    <path d="M.2 8 0 7.8v-.2C.8 6.9 1.9 5.9 2.7 5l.4.3c-.5.8-1.1 1.6-1.8 2.3 1 1.2 1 1.3 1.7 2.4l-.4.3c-.4-.4-.5-.6-1-1C1 8.6 1.1 8.7.2 8zM13 10c.6-1.1.7-1.1 1.7-2.4-.6-.6-1.3-1.5-1.7-2.3l.3-.3c.8.8 1.8 1.8 2.7 2.6v.2l-.8.7c-.3.3-1.2 1.1-1.8 1.7L13 10z"/><path d="M2.6 13.1H3c.9 0 1.1-.2 1.1-1.4V4.2c0-1.1-.2-1.4-1.1-1.4h-.4v-.6h4.5v.7h-.3c-.9 0-1.1.2-1.1 1.4v3.2h4.6V4.2c0-1.1-.2-1.4-1.1-1.4h-.3v-.6h4.5v.7H13c-.9 0-1.1.2-1.1 1.4v7.5c0 1.1.2 1.4 1.1 1.4h.4v.7H8.9v-.7h.3c.9 0 1.1-.2 1.1-1.4V8.2H5.7v3.5c0 1.1.2 1.4 1.1 1.4h.3v.7H2.6v-.7z"/>
+  </symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 28">
+    <path d="M24 21v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1V5c0-.547.453-1 1-1h22c.547 0 1 .453 1 1z"/>
+  </symbol>
+</svg>
+
+  <div data-region="app">
+    <header data-region="banner">
+      
+  <button data-nav-toggle data-toggle="button" aria-controls="nav" aria-pressed="false" type="button" data-toggle-synced="false">
+    
+  <svg data-icon="menu" data-icon-size="nav-icon" ><title>menu</title><use xlink:href="#icon-menu" />
+  </svg>
+
+  </button>
+
+
+      <div class="project-title">
+        <a href="index.html" rel="home" class="project-name">@zeix/ueli</a>
+        
+          <span class="project-version">1.0.0-alpha.2</span>
+        
+      </div>
+    </header>
+
+    <div data-region="container">
+      
+  <nav data-region="nav" data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
+    <form action="search.html">
+      <input type="text" name="q" placeholder="Search…" required minlength="3">
+    </form>
+
+    <div class="nav-subsection">
+      <h3 class="nav-home">
+        
+        <a href="index.html" data-nav="is-not-active">@zeix/ueli</a>
+      </h3>
+
+      
+      
+    </div>
+
+    
+    <div class="nav-subsection">
+      <ul>
+  
+    <li class="nav-item">
+      <a href="global.html" data-nav="is-not-active">Global</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="typography.html" data-nav="is-not-active">Typography</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="token.html" data-nav="is-active">Token</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="sizing.html" data-nav="is-not-active">Poly Fluid /<span class="widont">&nbsp;</span>Sizing</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="variation.html" data-nav="is-not-active">Variations</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="sass-mq.html" data-nav="is-not-active">Sass MQ</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="breakpoint.html" data-nav="is-not-active">Breakpoint</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="grid.html" data-nav="is-not-active">Grid</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="list.html" data-nav="is-not-active">List</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="utilities.html" data-nav="is-not-active">Utilities</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="button.html" data-nav="is-not-active">Button</a>
+    </li>
+  </ul>
+    </div>
+
+    
+    
+
+    
+      <aside class="footer-credit">
+        <a href="https://www.oddbird.net/herman/" class="footer-icon">
+          
+  <svg data-icon="logo" data-icon-size="footer-logo" ><use xlink:href="#icon-logo" />
+  </svg>
+
+        </a>
+        <span>
+          Documented with
+          <a href="https://www.oddbird.net/herman/" class="footer-link">
+            Herman
+          </a>
+        </span>
+        <span>
+          by
+          <a href="https://www.oddbird.net/" class="footer-link">
+            OddBird
+          </a>
+        </span>
+      </aside>
+    
+  </nav>
+
+
+      <main data-region="main">
+        
+  <nav class="breadcrumb">
+    
+    <a href="index.html" >@zeix/ueli</a> »
+    <strong>Token</strong>
+  </nav>
+
+
+        <div data-page="token">
+          
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--get-color">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--get-color" class="item-name">get-color()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Get a color from the <code>$token-colors</code> map</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$name:</span>
+      
+      
+      <span class="value-type">(String)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map key of <code>$token-colors</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(Color)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>color value</p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.component {
+  color: get-color(black);
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.component {
+  color: #000;
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--get-duration">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--get-duration" class="item-name">get-duration()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Get an duration value from the <code>$token-durations</code> map</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$name:</span>
+      
+      <span class="item-value">$token-durations-default</span>
+      <span class="value-type">(String)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map key of <code>$token-durations</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(Number)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>duration value</p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.component {
+  transition: color get-duration() get-easing();
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.component {
+  transition: color 150ms ease;
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--get-easing">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--get-easing" class="item-name">get-easing()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Get an easing value from the <code>$token-easings</code> map</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$name:</span>
+      
+      <span class="item-value">$token-easings-default</span>
+      <span class="value-type">(String)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map key of <code>$token-easings</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(String)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>easing value</p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.component {
+  transition: color get-duration() get-easing();
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.component {
+  transition: color 150ms ease;
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--get-index">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--get-index" class="item-name">get-index()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Get a z-index value from the <code>$layers</code> map</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$name:</span>
+      
+      
+      <span class="value-type">(String)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map key of <code>$layers</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(Number)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>z-index value</p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.component {
+  z-index: get-index(below);
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.component {
+  z-index: -1;
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--get-spacing">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--get-spacing" class="item-name">get-spacing()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Get a single spacing value from the map <code>$token-spacings</code></p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$name:</span>
+      
+      <span class="item-value">$token-spacings-default</span>
+      <span class="value-type">(String)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map key of <code>$token-spacings</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$sizing:</span>
+      
+      <span class="item-value">&#39;min&#39;</span>
+      <span class="value-type">(Bool)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Sizing type ‘min’ or<span class="widont">&nbsp;</span>‘max’</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--spacing">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--spacing" class="item-name">spacing()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Wrapper mixin for fluid-calc that gets spacings from the map <code>$token-spacings</code></p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$prop:</span>
+      
+      
+      <span class="value-type">(String)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Any CSS property that supports calc as a<span class="widont">&nbsp;</span>value</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$sizes:</span>
+      
+      <span class="item-value">$token-spacings-default</span>
+      <span class="value-type">(Map|Number|List|String)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map key of <code>$token-spacings</code>, map of two sizes formatted as <code>(min: x, max: y)</code>, list of two sizes formatted as <code>(x, y)</code> or just a number (min<span class="widont">&nbsp;</span>size)</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$breakpoints:</span>
+      
+      
+      <span class="value-type">(Map)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map of two named breakpoints from <code>$mq-breakpoints</code> formatted as <code>(md, lg)</code> or custom px values formatted as <code>(min: 600px, max: 900px)</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$negative:</span>
+      
+      <span class="item-value">false</span>
+      <span class="value-type">(Bool)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Negates the values if<span class="widont">&nbsp;</span>true</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$important:</span>
+      
+      <span class="item-value">false</span>
+      <span class="value-type">(Bool)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Adds important flag if<span class="widont">&nbsp;</span>true</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--token-colors">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--token-colors" class="item-name">$token-colors</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$token-colors: (
+  blue: #0275d8,
+  white: #fff,
+  black: #000,
+  gray-100: tint-color(#000, 90%),
+  gray-200: tint-color(#000, 80%),
+  gray-300: tint-color(#000, 70%),
+  gray-400: tint-color(#000, 60%),
+  gray-500: tint-color(#000, 50%),
+  gray-600: tint-color(#000, 40%),
+  gray-700: tint-color(#000, 30%),
+  gray-800: tint-color(#000, 20%),
+  gray-900: tint-color(#000, 10%),
+) !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+        
+  
+  <div data-item-section="color-palette">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Color Previews</span>
+        
+      </h3>
+    
+
+    
+    <div class="color-palette">
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #0275d8;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">blue</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#0275d8</code>
+                
+              
+                
+                  <code class="color-value">rgb(2, 117, 216)</code>
+                
+              
+                
+                  <code class="color-value">hsl(208, 98%, 43%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #fff;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">white</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#ffffff</code>
+                
+              
+                
+                  <code class="color-value">rgb(255, 255, 255)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 100%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #000;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">black</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#000000</code>
+                
+              
+                
+                  <code class="color-value">rgb(0, 0, 0)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 0%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #e6e6e6;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">gray-100</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#e6e6e6</code>
+                
+              
+                
+                  <code class="color-value">rgb(230, 230, 230)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 90%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #cccccc;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">gray-200</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#cccccc</code>
+                
+              
+                
+                  <code class="color-value">rgb(204, 204, 204)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 80%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #b3b3b3;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">gray-300</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#b3b3b3</code>
+                
+              
+                
+                  <code class="color-value">rgb(179, 179, 179)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 70%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #999999;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">gray-400</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#999999</code>
+                
+              
+                
+                  <code class="color-value">rgb(153, 153, 153)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 60%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: gray;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">gray-500</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#808080</code>
+                
+              
+                
+                  <code class="color-value">rgb(128, 128, 128)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 50%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #666666;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">gray-600</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#666666</code>
+                
+              
+                
+                  <code class="color-value">rgb(102, 102, 102)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 40%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #4d4d4d;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">gray-700</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#4d4d4d</code>
+                
+              
+                
+                  <code class="color-value">rgb(77, 77, 77)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 30%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #333333;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">gray-800</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#333333</code>
+                
+              
+                
+                  <code class="color-value">rgb(51, 51, 51)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 20%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+        <div class="color-preview">
+          <div class="color-swatch">
+            <div class="transparency-grid"></div>
+            <div class="color-overlay" style="background-color: #1a1a1a;"></div>
+          </div>
+          <div class="color-info">
+            <strong class="color-name">
+              
+                <span class="color-name-option">gray-900</span>
+              
+            </strong>
+            
+            
+              
+                
+                  <code class="color-value">#1a1a1a</code>
+                
+              
+                
+                  <code class="color-value">rgb(26, 26, 26)</code>
+                
+              
+                
+                  <code class="color-value">hsl(0, 0%, 10%)</code>
+                
+              
+            
+          </div>
+        </div>
+      
+    </div>
+  
+  </div>
+
+
+      
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--token-spacings">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--token-spacings" class="item-name">$token-spacings</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$token-spacings: (
+  default: 24px,
+  medium: 48px,
+  large: 72px,
+) !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+        
+  
+  <div data-item-section="size-preview">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Size Previews</span>
+        
+      </h3>
+    
+
+    
+    <iframe class="render-sizes" srcdoc="
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;base target=&quot;_parent&quot;&gt;
+
+  &lt;title&gt;sizes&lt;/title&gt;
+
+  
+    &lt;!-- Custom CSS --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/custom/ueli.css&quot; /&gt;
+  
+
+  &lt;!-- Herman iframe styles --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/webpack/iframe_styles.min.css&quot; /&gt;
+
+  
+&lt;/head&gt;
+&lt;body data-herman-preview=&quot;size&quot;&gt;
+  &lt;table data-herman-table=&quot;size rulers&quot;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th data-herman-th=&quot;name&quot;&gt;Name&lt;/th&gt;
+        &lt;th data-herman-th=&quot;value&quot;&gt;Value&lt;/th&gt;
+        &lt;th data-herman-th=&quot;spacer&quot; aria-hidden&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+    
+      
+        
+          
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      default
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        24px
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      &lt;td data-herman-cell data-herman-label&gt;&lt;/td&gt;
+    
+  &lt;/tr&gt;
+
+  
+    &lt;tr data-herman-size=&quot;viz-row&quot; aria-hidden=&quot;true&quot;&gt;
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; colspan=&quot;3&quot;&gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 24px;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    &lt;/tr&gt;
+  
+
+      
+        
+          
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      medium
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        48px
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      &lt;td data-herman-cell data-herman-label&gt;&lt;/td&gt;
+    
+  &lt;/tr&gt;
+
+  
+    &lt;tr data-herman-size=&quot;viz-row&quot; aria-hidden=&quot;true&quot;&gt;
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; colspan=&quot;3&quot;&gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 48px;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    &lt;/tr&gt;
+  
+
+      
+        
+          
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      large
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        72px
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      &lt;td data-herman-cell data-herman-label&gt;&lt;/td&gt;
+    
+  &lt;/tr&gt;
+
+  
+    &lt;tr data-herman-size=&quot;viz-row&quot; aria-hidden=&quot;true&quot;&gt;
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; colspan=&quot;3&quot;&gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 72px;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    &lt;/tr&gt;
+  
+
+      
+    
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+" width="100%" height="0"></iframe>
+  
+  </div>
+
+
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--mq-breakpoints">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--mq-breakpoints" class="item-name">$mq-breakpoints</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$mq-breakpoints: (
+  xs: 0px,
+  sm: 600px,
+  md: 900px,
+  lg: 1200px,
+  xl: 1500px,
+) !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+        
+  
+  <div data-item-section="size-preview">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Size Previews</span>
+        
+      </h3>
+    
+
+    
+    <iframe class="render-sizes" srcdoc="
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;base target=&quot;_parent&quot;&gt;
+
+  &lt;title&gt;sizes&lt;/title&gt;
+
+  
+    &lt;!-- Custom CSS --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/custom/ueli.css&quot; /&gt;
+  
+
+  &lt;!-- Herman iframe styles --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/webpack/iframe_styles.min.css&quot; /&gt;
+
+  
+&lt;/head&gt;
+&lt;body data-herman-preview=&quot;size&quot;&gt;
+  &lt;table data-herman-table=&quot;size rulers-large&quot;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th data-herman-th=&quot;name&quot;&gt;Name&lt;/th&gt;
+        &lt;th data-herman-th=&quot;value&quot;&gt;Value&lt;/th&gt;
+        &lt;th data-herman-th=&quot;spacer&quot; aria-hidden&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+    
+      
+        
+          
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      xs
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        0px
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      &lt;td data-herman-cell data-herman-label&gt;&lt;/td&gt;
+    
+  &lt;/tr&gt;
+
+  
+    &lt;tr data-herman-size=&quot;viz-row&quot; aria-hidden=&quot;true&quot;&gt;
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; colspan=&quot;3&quot;&gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 0px;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    &lt;/tr&gt;
+  
+
+      
+        
+          
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      sm
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        600px
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      &lt;td data-herman-cell data-herman-label&gt;&lt;/td&gt;
+    
+  &lt;/tr&gt;
+
+  
+    &lt;tr data-herman-size=&quot;viz-row&quot; aria-hidden=&quot;true&quot;&gt;
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; colspan=&quot;3&quot;&gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 600px;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    &lt;/tr&gt;
+  
+
+      
+        
+          
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      md
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        900px
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      &lt;td data-herman-cell data-herman-label&gt;&lt;/td&gt;
+    
+  &lt;/tr&gt;
+
+  
+    &lt;tr data-herman-size=&quot;viz-row&quot; aria-hidden=&quot;true&quot;&gt;
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; colspan=&quot;3&quot;&gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 900px;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    &lt;/tr&gt;
+  
+
+      
+        
+          
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      lg
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        1200px
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      &lt;td data-herman-cell data-herman-label&gt;&lt;/td&gt;
+    
+  &lt;/tr&gt;
+
+  
+    &lt;tr data-herman-size=&quot;viz-row&quot; aria-hidden=&quot;true&quot;&gt;
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; colspan=&quot;3&quot;&gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 1200px;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    &lt;/tr&gt;
+  
+
+      
+        
+          
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      xl
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        1500px
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      &lt;td data-herman-cell data-herman-label&gt;&lt;/td&gt;
+    
+  &lt;/tr&gt;
+
+  
+    &lt;tr data-herman-size=&quot;viz-row&quot; aria-hidden=&quot;true&quot;&gt;
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; colspan=&quot;3&quot;&gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 1500px;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    &lt;/tr&gt;
+  
+
+      
+    
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+" width="100%" height="0"></iframe>
+  
+  </div>
+
+
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--ratios">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--ratios" class="item-name">$ratios</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$ratios: (
+  widescreen: 16 by 9,
+) !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+        
+  
+    
+      
+  <div data-item-section="ratio-preview">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Ratio</span>
+        
+          <span class="item-subtitle-supplement">widescreen<span class="widont">&nbsp;</span>(0.5625)</span>
+        
+      </h3>
+    
+
+    
+        <iframe class="render-ratios" srcdoc="
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;base target=&quot;_parent&quot;&gt;
+
+  &lt;title&gt;ratios&lt;/title&gt;
+
+  
+    &lt;!-- Custom CSS --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/custom/ueli.css&quot; /&gt;
+  
+
+  &lt;!-- Herman iframe styles --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/webpack/iframe_styles.min.css&quot; /&gt;
+
+  
+&lt;/head&gt;
+&lt;body data-herman-preview=&#39;ratio&#39;&gt;
+  
+  &lt;table data-herman-table=&quot;size ratio&quot;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th data-herman-th=&quot;name&quot;&gt;Step&lt;/th&gt;
+        &lt;th data-herman-th=&quot;value&quot;&gt;Value&lt;/th&gt;
+        &lt;th data-herman-th=&quot;spacer&quot; aria-hidden&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+    
+      
+      
+      
+      
+        
+        
+        
+
+        
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      -3
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        5.62
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; &gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 28.093278463648836em;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    
+  &lt;/tr&gt;
+
+  
+
+      
+        
+        
+        
+
+        
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      -2
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        3.16
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; &gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 15.802469135802468em;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    
+  &lt;/tr&gt;
+
+  
+
+      
+        
+        
+        
+
+        
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      -1
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        1.78
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; &gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 8.88888888888889em;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    
+  &lt;/tr&gt;
+
+  
+
+      
+        
+        
+        
+
+        
+  &lt;tr data-herman-size=&quot;row highlight&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      base
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        1
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; &gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 5em;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    
+  &lt;/tr&gt;
+
+  
+
+      
+        
+        
+        
+
+        
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      1
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        0.56
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; &gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 2.8125em;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    
+  &lt;/tr&gt;
+
+  
+
+      
+        
+        
+        
+
+        
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      2
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        0.32
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; &gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 1.58203125em;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    
+  &lt;/tr&gt;
+
+  
+
+      
+        
+        
+        
+
+        
+  &lt;tr data-herman-size=&quot;row&quot;&gt;
+    &lt;td data-herman-cell=&quot;name&quot; data-herman-label&gt;
+      3
+    &lt;/td&gt;
+    &lt;td data-herman-cell=&quot;value&quot; data-herman-label&gt;
+      &lt;code data-herman-code&gt;
+        0.18
+      &lt;/code&gt;
+    &lt;/td&gt;
+    
+      
+  
+    &lt;td aria-hidden data-herman-cell=&quot;viz&quot; &gt;
+      &lt;div data-herman-size=&quot;overflow&quot;&gt;
+      
+        &lt;div data-herman-viz=&quot;bar&quot; style=&quot;width: 0.889892578125em;&quot;&gt;
+          &amp;nbsp;
+        &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/td&gt;
+  
+
+    
+  &lt;/tr&gt;
+
+  
+
+      
+    
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+" width="100%" height="0"></iframe>
+      
+  </div>
+
+    
+  
+
+      
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--type">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--type" class="item-name">type()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Wrapper mixin for use-variation that uses the <code>$token-type</code> map as default lookup<span class="widont">&nbsp;</span>map</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$variation:</span>
+      
+      <span class="item-value">&#39;default&#39;</span>
+      <span class="value-type">(String)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Map key of <code>$token-type</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="assets/webpack/runtime.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/common.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/app.min.js"></script>
+  
+</body>
+</html>

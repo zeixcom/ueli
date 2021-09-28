@@ -16,7 +16,7 @@
     "prod": "webpack --config webpack/webpack.prod.config.js --mode=production",
     "lint": "stylelint --fix scss/**/*",
     "prettier": "prettier --write scss/**/*",
-    "sassdoc": "sassdoc scss/**/* -d docs"
+    "sassdoc": "sass export-tokens.scss > tokens.json && sassdoc scss/**/* -d docs"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.6",
@@ -32,6 +32,7 @@
     "sass": "^1.42.1",
     "sass-loader": "^12.1.0",
     "sassdoc": "^2.7.3",
+    "sassdoc-theme-herman": "^4.0.2",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",

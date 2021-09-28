@@ -11,7 +11,23 @@
     "breakpoint": "Breakpoint",
     "grid": "Grid",
     "list": "List",
-    "button": "Button",
-    "utilities": "Utilities"
+    "utilities": "Utilities",
+    "button": "Button"
+  },
+  "theme": "herman",
+  "herman": {
+    "customCSS": "dist/ueli.css",
+    "sass": {
+      "includePaths": [
+        "scss"
+      ],
+      "includes": [
+        "01-tools/functions",
+        "00-settings/tokens",
+        "00-settings/variables",
+        "01-tools/mixins"
+      ],
+      "jsonFile": "tokens.json"
+    }
   }
 }

@@ -8,5 +8,6 @@ module.exports = {
     'declaration-empty-line-before': null,
     'length-zero-no-unit': null,
     'no-descending-specificity': null,
+    'no-invalid-position-at-import-rule': null,
   },
 };
