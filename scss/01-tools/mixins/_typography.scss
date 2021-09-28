@@ -1,0 +1,10 @@
+////
+/// @group token
+////
+
+/// Wrapper mixin for use-variation that uses the `$token-typography` map as default lookup map
+///
+/// @param {String} $variation ['default'] - Map key of `$token-typography`
+@mixin typography($variation: 'default') {
+  @include use-variation($token-typography, $variation);
+}

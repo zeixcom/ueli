@@ -30,10 +30,10 @@ $headings-font-weight: 700 !default;
 $headings-line-height: 1.2 !default;
 $headings-letter-spacing: normal !default;
 
-/// Type
+/// Typography
 ///
 /// @example scss
-///   $token-type: (
+///   $token-typography: (
 ///     default: (
 ///       font-family: $font-family-base,
 ///       font-size: $font-size-base,
@@ -41,7 +41,7 @@ $headings-letter-spacing: normal !default;
 ///   );
 ///
 /// @example scss
-///   $token-type: (
+///   $token-typography: (
 ///     default: (
 ///       font-family: $font-family-base,
 ///       font-size: (
@@ -52,7 +52,7 @@ $headings-letter-spacing: normal !default;
 ///   );
 ///
 /// @example scss
-///   $token-type: (
+///   $token-typography: (
 ///     default: (
 ///       xs: (
 ///         font-family: $font-family-base,
@@ -68,7 +68,7 @@ $headings-letter-spacing: normal !default;
 ///   );
 ///
 /// @type {Map}
-$token-type: (
+$token-typography: (
   default: (
     font-family: $font-family-base,
     font-size: (

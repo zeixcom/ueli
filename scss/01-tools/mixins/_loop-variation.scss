@@ -88,7 +88,7 @@
           }
         }
       } @else if (is-sizing-map($value)) {
-        // Nested sizing map (e.g. font-size in $token-type with sizing map)
+        // Nested sizing map (e.g. font-size in $token-typography with sizing map)
         @include fluid-calc($key, $value, $negative: $negative, $important: $important);
       } @else {
         // Simple prop for type or button styles

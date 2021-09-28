@@ -42,19 +42,19 @@
 /// @param {Number} $border-width [$button-border-width]
 /// @param {Number} $border-radius [$button-border-radius]
 /// @param {List} $transition [$button-transition]
-/// @param {String} $type [$button-type]
+/// @param {String} $typography [$button-typography]
 @mixin button-base(
   $padding-vertical: $button-padding-vertical,
   $padding-horizontal: $button-padding-horizontal,
   $border-width: $button-border-width,
   $border-radius: $button-border-radius,
   $transition: $button-transition,
-  $type: $button-type,
+  $typography: $button-typography
 ) {
   @include button-disabled;
 
-  @if $type {
-    @include type($type);
+  @if $typography {
+    @include typography($typography);
   }
 
   display: inline-block;
