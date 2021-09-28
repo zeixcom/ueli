@@ -27,10 +27,10 @@
   max-width: $width;
 }
 
-/// Output padding gutter for a container
+/// Output outside gutter for a container
 ///
-/// @param {Number|Map} $gutter [$grid-gutter] - The amount of gutter as a number or sizing map formatted as `(min: 30px, max: 60px)`
-@mixin container-gutter($gutter: $grid-gutter) {
+/// @param {Number|Map} $gutter [$container-gutter] - The amount of gutter as a number or sizing map formatted as `(min: 30px, max: 60px)`
+@mixin container-gutter($gutter: $container-gutter) {
   @include loop-variation($gutter, 'padding-left');
   @include loop-variation($gutter, 'padding-right');
 }
