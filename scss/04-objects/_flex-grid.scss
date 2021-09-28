@@ -1,12 +1,15 @@
-.row {
-  @include row;
+@if ($grid-mode == flex) or ($grid-mode == all) {
+  .row {
+    @include flex-row;
+  }
+
+  .col {
+    @include flex-column-base;
+  }
+
+  // Generate column classes for all breakpoints
+  @include loop-breakpoints {
+    @include generate-flex-columns($breakpoint);
+  }
 }
 
-.col {
-  @include column-base;
-}
-
-// Generate column classes for all breakpoints
-@include loop-breakpoints {
-  @include loop-columns($breakpoint);
-}

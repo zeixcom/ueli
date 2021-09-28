@@ -9,9 +9,9 @@
 /// @param {Number|Map} $gutter [$grid-gutter] - The amount of gutter as number, breakpoint map `(xs: 30px, md: 60px)` or sizing map (min: 30px, max: 60px)
 /// @param {Number} $size [100%] - Width of the column as number
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
-@mixin column-base($gutter: $grid-gutter, $size: 100%, $columns: $grid-columns) {
+@mixin flex-column-base($gutter: $grid-gutter, $size: 100%, $columns: $grid-columns) {
   @include gutter($gutter, 'padding');
-  @include column($size, $columns);
+  @include flex-column($size, $columns);
 
   position: relative;
 }
@@ -20,7 +20,7 @@
 ///
 /// @param {Number|String} $size ['expand'] - Column size as number (e.g. 20% or 0.2) or string ('expand' or 'shrink')
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
-@mixin column($size: 'expand', $columns: $grid-columns) {
+@mixin flex-column($size: 'expand', $columns: $grid-columns) {
   @if $size {
     @if (type-of($size) == 'number') {
       @if (unit($size) == '%') {
@@ -51,9 +51,9 @@
 ///
 /// @param {Number} $size - Column size as number of columns
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
-@mixin column-push($size, $columns: $grid-columns) {
+@mixin flex-column-push($size, $columns: $grid-columns) {
   @if $size > 0 {
-    left: percentage(divide($size, $columns));
+    left: percentage(math.div($size, $columns));
   } @else {
     left: auto;
   }
@@ -63,9 +63,9 @@
 ///
 /// @param {Number} $size - Column size as number of columns
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
-@mixin column-pull($size, $columns: $grid-columns) {
+@mixin flex-column-pull($size, $columns: $grid-columns) {
   @if $size > 0 {
-    right: percentage(divide($size, $columns));
+    right: percentage(math.div($size, $columns));
   } @else {
     right: auto;
   }
@@ -75,50 +75,42 @@
 ///
 /// @param {Number} $size - Column size as number of columns
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
-@mixin column-offset($size, $columns: $grid-columns) {
+@mixin flex-column-offset($size, $columns: $grid-columns) {
   @if $size < $columns {
-    margin-left: percentage(divide($size, $columns));
+    margin-left: percentage(math.div($size, $columns));
   }
 }
 
 // Generate columns for a specific breakpoint
 ///
 /// @param {String} $breakpoint - Breakpoint name
-/// @param {Boolean} $pull [$grid-pull-class] - Outputs column pull class if true
-/// @param {Boolean} $push [$grid-push-class] - Outputs column push class if true
-/// @param {Boolean} $offset [$grid-offset-class] - Outputs column offset class if true
-@mixin loop-columns(
-  $breakpoint,
-  $pull: $grid-pull-classes,
-  $push: $grid-push-classes,
-  $offset: $grid-offset-classes,
-  $column: $grid-column-classes
+@mixin generate-flex-columns(
+  $breakpoint
 ) {
   @for $i from 0 through $grid-columns {
-    @if $column {
-      @if $i > 0 {
-        .col-#{$breakpoint}-#{$i} {
-          @include column($i, $grid-columns);
-        }
+    $col-base: 'col';
+
+    @if (not is-first-breakpoint($breakpoint)) {
+      $col-base: $col-base + '-' + $breakpoint;
+    }
+
+    @if $i > 0 {
+      .#{$col-base}-#{$i} {
+        @include flex-column($i, $grid-columns);
       }
     }
 
-    @if $pull {
-      .col-#{$breakpoint}-pull-#{$i} {
-        @include column-pull($i, $grid-columns);
-      }
+    .#{$col-base}-pull-#{$i} {
+      @include flex-column-pull($i, $grid-columns);
     }
 
-    @if $push {
-      .col-#{$breakpoint}-push-#{$i} {
-        @include column-push($i, $grid-columns);
-      }
+    .#{$col-base}-push-#{$i} {
+      @include flex-column-push($i, $grid-columns);
     }
 
-    @if $offset {
-      .col-#{$breakpoint}-offset-#{$i} {
-        @include column-offset($i, $grid-columns);
-      }
+    .#{$col-base}-offset-#{$i} {
+      @include flex-column-offset($i, $grid-columns);
     }
+
   }
 }
