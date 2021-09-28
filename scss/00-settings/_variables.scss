@@ -30,6 +30,15 @@ $type-scale-base: (
 ) !default;
 
 // Grid
+
+/// Grid Mode - select your grid system
+///
+/// @example scss
+///   $grid-mode: grid | flex | all | none;
+///
+/// @type String
+///
+$grid-mode: all !default;
 $grid-columns: 12 !default;
 
 /// Grid Gutter
@@ -56,21 +65,22 @@ $grid-columns: 12 !default;
 $grid-gutter: (
   min: 30px,
 ) !default;
-$grid-container: map-get($mq-breakpoints, xl) !default;
+
+$container: map-get($mq-breakpoints, xl) !default;
 
 /// Grid Container Gutter
 ///
 /// @example scss
-///   $grid-container-gutter: 30px;
+///   $container-gutter: 30px;
 ///
 /// @example scss
-///   $grid-container-gutter: (
+///   $container-gutter: (
 ///     min: 30px,
 ///     max: 60px,
 ///   );
 ///
 /// @example scss
-///   $grid-container-gutter: (
+///   $container-gutter: (
 ///     xs: 30px,
 ///     md: (
 ///       min: 30px,
@@ -79,11 +89,7 @@ $grid-container: map-get($mq-breakpoints, xl) !default;
 ///   );
 ///
 /// @type {Number|Map}
-$grid-container-gutter: $grid-gutter !default;
-$grid-pull-classes: false !default;
-$grid-push-classes: false !default;
-$grid-offset-classes: false !default;
-$grid-column-classes: false !default;
+$container-gutter: $grid-gutter !default;
 
 // Link
 $link-color: $color-accent !default;

@@ -62,10 +62,10 @@
 ///
 /// @example scss
 /// .grid-col-offset {
-///   @include grid-column-offset(2);
+///   @include grid-column-start(2);
 /// }
 /// @param {Number} $span - Grid column start offset
-@mixin grid-column-offset($span, $columns: $grid-columns) {
+@mixin grid-column-start($span, $columns: $grid-columns) {
   @if ($span > 0 and $span <= $columns) {
     grid-column-start: $span;
   } @else {
@@ -76,21 +76,24 @@
 // Generate grid columns for a specific breakpoint
 ///
 /// @param {String} $breakpoint - Breakpoint name
-/// @param {Boolean} $columnStart [$grid-start-class] - Outputs column start class if true
-@mixin loop-grid-columns (
+@mixin generate-grid-columns (
   $breakpoint,
-  $columnStart
 ) {
   @for $i from 1 through $grid-columns {
-    .grid-col-#{$breakpoint}-#{$i} {
+    $col-base: 'grid-col';
+
+    @if (not is-first-breakpoint($breakpoint)) {
+      $col-base: $col-base + '-' + $breakpoint;
+    }
+
+    .#{$col-base}-#{$i} {
       @include grid-column($i, $grid-columns);
     }
 
-    @if $columnStart {
-      .grid-col-#{$breakpoint}-start-#{$i} {
-        @include grid-column-offset($i, $grid-columns);
+    @if $i < $grid-columns {
+      .#{$col-base}-start-#{$i} {
+        @include grid-column-start($i, $grid-columns);
       }
     }
-
   }
 }
