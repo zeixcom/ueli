@@ -4,7 +4,7 @@
 
 /// Generate min, max and fluid in-between values for a given CSS property
 ///
-/// @param {String} $prop - Any CSS property that supports calc as a value
+/// @param {String|List} $prop [null] - Any CSS property or a list of CSS properties
 /// @param {Map|Number|List} $sizes - Map of two sizes formatted as `(min: x, max: y)`, list of two sizes formatted as `(x, y)` or just a number (min size)
 /// @param {Map} $breakpoints [$fluid-breakpoints] - Map of two named breakpoints from `$mq-breakpoints` formatted as `(min: md, max: lg)` or custom px values formatted as `(min: 600px, max: 900px)`
 /// @param {Bool} $negative [false] - Negates the values if true
@@ -26,7 +26,6 @@
   $max-breakpoint: map-get($breakpoints, 'max');
   $min-breakpoint-value: $min-breakpoint;
   $max-breakpoint-value: $max-breakpoint;
-  $multiplicand: 1;
 
   @if (type-of($sizes) == 'map') {
     $min-size: map-get($sizes, 'min');
@@ -46,16 +45,6 @@
     $max-breakpoint-value: map-get($mq-breakpoints, $max-breakpoint);
   }
 
-  @if $negative {
-    $multiplicand: -1;
-  }
-
-  @if $important {
-    $important: unquote('!important');
-  } @else {
-    $important: null;
-  }
-
   @if $min-size {
     $min-size: to-rem($min-size);
 
@@ -66,30 +55,35 @@
         ($current-breakpoint == nth($all-breakpoints, length($all-breakpoints))) and not
         $max-size
     ) {
-      #{$prop}: $min-size * $multiplicand $important;
+      @include output-props($prop, $min-size, $negative, $important);
     }
 
     @if ($max-size and $max-breakpoint-value) {
       $max-size: to-rem($max-size);
 
       @if ($fluid-scaling and $min-breakpoint-value) {
+        $multiplicand: 1;
+
+        @if $negative {
+          $multiplicand: -1;
+        }
+
         $value: calc(
-            (
-                #{$min-size} +
-                  #{strip-unit($max-size - $min-size)} *
-                  (100vw - #{to-rem($min-breakpoint-value)}) /
-                  #{strip-unit(to-rem($max-breakpoint-value) - to-rem($min-breakpoint-value))}
-              ) *
-              #{$multiplicand}
-          )
-          $important;
+          (
+              #{$min-size} +
+                #{strip-unit($max-size - $min-size)} *
+                (100vw - #{to-rem($min-breakpoint-value)}) /
+                #{strip-unit(to-rem($max-breakpoint-value) - to-rem($min-breakpoint-value))}
+            ) *
+            #{$multiplicand}
+        );
 
         @if $current-breakpoint {
           // Breakpoint set already in parent mixin (loop-variation)
-          #{$prop}: $value;
+          @include output-props($prop, $value, false, $important);
         } @else {
           @include mq($min-breakpoint-value) {
-            #{$prop}: $value;
+            @include output-props($prop, $value, false, $important);
           }
         }
       }
@@ -100,7 +94,7 @@
           ($current-breakpoint == nth($all-breakpoints, length($all-breakpoints)))
       ) {
         @include mq($max-breakpoint-value) {
-          #{$prop}: $max-size * $multiplicand $important;
+          @include output-props($prop, $max-size, $negative, $important);
         }
       }
     }
