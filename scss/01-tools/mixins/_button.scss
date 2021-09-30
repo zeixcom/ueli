@@ -76,11 +76,18 @@
   }
 }
 
-/// Generate styles for a single button variation
+/// Generate styles for a button variation with base button styles
 ///
 /// @param {String} $variation ['base'] - Map key of `$button-variations`
 @mixin button($variation: 'base') {
   @include button-base;
+  @include use-variation($button-variations, $variation);
+}
+
+/// Generate styles for a button variation without base button styles
+///
+/// @param {String} $variation ['base'] - Map key of `$button-variations`
+@mixin use-button($variation: 'base') {
   @include use-variation($button-variations, $variation);
 }
 
