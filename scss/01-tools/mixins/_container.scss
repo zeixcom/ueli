@@ -31,6 +31,5 @@
 ///
 /// @param {Number|Map} $gutter [$container-gutter] - The amount of gutter as a number or sizing map formatted as `(min: 30px, max: 60px)`
 @mixin container-gutter($gutter: $container-gutter) {
-  @include loop-variation($gutter, 'padding-left');
-  @include loop-variation($gutter, 'padding-right');
+  @include loop-variation($gutter, ('padding-left', 'padding-right'));
 }

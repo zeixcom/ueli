@@ -5,7 +5,7 @@
 /// Loop keys of a variation to output normal and fluid props
 ///
 /// @param {Map} $config - Map of Breakpoints, CSS properties and sizing maps
-/// @param {String} $prop [null] - Any CSS property
+/// @param {String|List} $prop [null] - Any CSS property or a list of CSS properties
 /// @param {Bool} $negative [false] - Negates the values if true
 /// @param {Bool} $important [false] - Adds important flag if true
 @mixin loop-variation($config, $prop: null, $negative: false, $important: false) {
@@ -48,18 +48,12 @@
               );
             } @else {
               // Nested props in breakpoint
-              #{$deep-key}: $deep-value;
+              @include output-props($deep-key, $deep-value, $negative, $important);
             }
           }
         } @else if $prop {
-          $multiplicand: 1;
-
-          @if $negative {
-            $multiplicand: -1;
-          }
-
           // Single prop for current breakpoint
-          #{$prop}: to-rem($breakpoint-value * $multiplicand);
+          @include output-props($prop, $breakpoint-value, $negative, $important);
         }
       }
     }
@@ -80,7 +74,7 @@
                   $important
                 );
               } @else {
-                #{$deep-key}: $deep-value;
+                @include output-props($deep-key, $deep-value, $negative, $important);
               }
             }
           }
@@ -90,10 +84,10 @@
         @include fluid-calc($key, $value, $negative: $negative, $important: $important);
       } @else {
         // Simple prop for type or button styles
-        #{$key}: $value;
+        @include output-props($key, $value, $negative, $important);
       }
     }
   } @else if $prop {
-    @include fluid-calc($prop, $config, $negative: $negative, $important: $important);
+    @include output-props($prop, $config, $negative, $important);
   }
 }

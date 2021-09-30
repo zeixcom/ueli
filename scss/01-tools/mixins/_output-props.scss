@@ -1,0 +1,35 @@
+////
+/// @group variation
+////
+
+/// Output one or many CSS properties. Numbers with units get converted to Rem automatically.
+///
+/// @param {String|List} $props - Any CSS property or a list of CSS properties
+/// @param {Any} $value - Any CSS value
+/// @param {Bool} $negative [false] - Negates the values if true
+/// @param {Bool} $important [false] - Adds important flag if true
+@mixin output-props($props, $value, $negative: false, $important: false) {
+  $multiplicand: 1;
+
+  @if $negative {
+    $value: $value * -1;
+  }
+
+  @if (type-of($value) == 'number' and not unitless($value)) {
+    $value: to-rem($value);
+  }
+
+  @if $important {
+    $important: unquote('!important');
+  } @else {
+    $important: null;
+  }
+
+  @if (type-of($props) == 'list') {
+    @each $prop in $props {
+      #{$prop}: $value $important;
+    }
+  } @else {
+    #{$props}: $value $important;
+  }
+}

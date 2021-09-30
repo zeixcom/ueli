@@ -16,8 +16,7 @@
   @if ($prop != 'gap') {
     $gutter: get-half-sizing($gutter);
 
-    @include loop-variation($gutter, #{$prop}-left, $negative: $negative);
-    @include loop-variation($gutter, #{$prop}-right, $negative: $negative);
+    @include loop-variation($gutter, (#{$prop}-left, #{$prop}-right), $negative: $negative);
   } @else {
     @include loop-variation($gutter, $prop, $negative: $negative);
   }
