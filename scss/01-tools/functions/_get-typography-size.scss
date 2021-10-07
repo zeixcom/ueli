@@ -1,0 +1,29 @@
+////
+/// @group token
+////
+
+/// Get a font-size value from the map `$token-typography`
+///
+/// @param {String} $name - Map key of `$token-typography`
+/// @param {Bool} $sizing ['min'] - Sizing type 'min' or 'max'
+@function get-typography-size($name, $sizing: 'min') {
+  $variant: map-get($token-typography, $name);
+
+  @if (not $variant) {
+    @error "The variant `#{$variant}` wasn't found in map $token-typography.";
+  }
+
+  @each $key, $value in $variant {
+    @if ($key == 'font-size') {
+      @if (is-sizing-map($value)) {
+        $value: map-get($value, $sizing);
+
+        @if (not $value) {
+          @error "The sizing `#{$sizing}` wasn't found for the variant `#{$name}`.";
+        }
+      }
+
+      @return to-rem($value);
+    }
+  }
+}
