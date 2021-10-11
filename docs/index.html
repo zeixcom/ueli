@@ -820,15 +820,13 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
           $multiplicand: -1;
         }
 
-        $value: calc(
-          (
-              #{$min-size} +
-                #{strip-unit($max-size - $min-size)} *
-                (100vw - #{to-rem($min-breakpoint-value)}) /
-                #{strip-unit(to-rem($max-breakpoint-value) - to-rem($min-breakpoint-value))}
-            ) *
-            #{$multiplicand}
+        $diff-sizes: strip-unit($max-size - $min-size);
+        $diff-breakpoints: strip-unit(
+          to-rem($max-breakpoint-value) - to-rem($min-breakpoint-value)
         );
+
+        // prettier-ignore
+        $value: calc((#{$min-size} + #{$diff-sizes} * (100vw - #{to-rem($min-breakpoint-value)}) / #{$diff-breakpoints}) * #{$multiplicand});
 
         @if $current-breakpoint {
           // Breakpoint set already in parent mixin (loop-variation)
@@ -1142,7 +1140,7 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
     $value: $value * -1;
   }
 
-  @if (type-of($value) == &#39;number&#39; and not unitless($value)) {
+  @if (type-of($value) == &#39;number&#39; and unit($value) == &#39;px&#39;) {
     $value: to-rem($value);
   }
 
