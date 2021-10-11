@@ -16,6 +16,20 @@ $color-icon: get-color(gray-800) !default;
 // Global
 $font-antialiased: false !default;
 $fluid-scaling: true !default;
+
+/// Type Scale
+///
+/// @example scss
+///   $type-scale: 1.25;
+///
+/// @example scss
+///   $type-scale: (
+///     xs: 1.25,
+///     md: 1.333,
+///   );
+///
+/// @type {Number|Map}
+$type-scale: 1.25 !default;
 $global-bg: $color-background !default;
 $text-color: $color-foreground !default;
 
@@ -24,8 +38,42 @@ $headings: ('h6, .h6', 'h5, .h5', 'h4, .h4', 'h3, .h3', 'h2, .h2', 'h1, .h1') !d
 $headings-spacing: 0.4em !default;
 $headings-color: inherit !default;
 
-$type-scale: 1.25 !default;
-$type-scale-base: (
+/// Headings Type Scale
+///
+/// @example scss
+///   $headings-type-scale: 1.25;
+///
+/// @example scss
+///   $headings-type-scale: (
+///     xs: 1.25,
+///     md: 1.333,
+///   );
+///
+/// @type {Number|Map}
+$headings-type-scale: $type-scale !default;
+
+/// Headings Scale Base
+///
+/// @example scss
+///   $headings-scale-base: $font-size-base;
+///
+/// @example scss
+///   $headings-scale-base: (
+///     min: $font-size-base,
+///     max: $font-size-base * 1.5,
+///   );
+///
+/// @example scss
+///   $headings-scale-base: (
+///     xs: $font-size-base,
+///     md: (
+///       min: $font-size-base,
+///       max: $font-size-base * 1.5,
+///     )
+///   );
+///
+/// @type {Number|Map}
+$headings-scale-base: (
   min: $font-size-base,
 ) !default;
 

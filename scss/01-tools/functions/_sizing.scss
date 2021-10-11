@@ -14,7 +14,7 @@
 
 /// Get largest sizing of sizing map
 ///
-/// @param {Map|Number} $sizing - Sizing map or number
+/// @param {Number|Map} $sizing - Sizing map or number
 /// @return {Number} - Largest sizing in the map
 @function get-largest-sizing($sizing) {
   @if (type-of($sizing) == 'map') {
@@ -34,8 +34,8 @@
 
 /// Half values of a sizing map
 ///
-/// @param {Map|Number} $sizing - Sizing map, breakpoint map or number
-/// @return {Map|Number} - Map with halved values or halved number
+/// @param {Number|Map} $sizing - Sizing map, breakpoint map or number
+/// @return {Number|Map} - Map with halved values or halved number
 @function get-half-sizing($sizing) {
   @if (type-of($sizing) == 'map') {
     @each $key, $value in $sizing {

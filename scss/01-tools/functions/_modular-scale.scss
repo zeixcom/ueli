@@ -4,7 +4,55 @@
 
 @use 'sass:math';
 
-/// Scale value according to the passed exponent and type scale
+/// Scale a single value or map values using the passed exponent and type scale
+///
+/// @param {Number} $exp - Exponent
+/// @param {Number|Map} $size [$font-size-base] - Size to scale
+/// @param {Number|Map} $type-scale [$type-scale] - Type scale as a single value (e.g 1.2) or breakpoint map formatted as `(xs: 1.2, md: 1.333)`
+/// @return {Number|Map} - Scaled value or map
+@function modular-scale-config($exp, $size: $font-size-base, $type-scale: $type-scale) {
+  @if is-sizing-map($size) {
+    // Replace sizing map values with modular scaled values
+    @each $key, $value in $size {
+      $size: map-merge(
+        $size,
+        (
+          $key: modular-scale($exp, $value, $type-scale),
+        )
+      );
+    }
+  } @else if is-breakpoint-map($size) {
+    @each $breakpoint-key, $breakpoint-value in $size {
+      $breakpoint-type-scale: $type-scale;
+
+      // Use type scale of the matching breakpoint if configured
+      @if is-breakpoint-map($type-scale) {
+        @if map-has-key($type-scale, $breakpoint-key) {
+          $breakpoint-type-scale: map-get($type-scale, $breakpoint-key);
+          @debug $breakpoint-type-scale;
+        } @else {
+          $breakpoint-type-scale: nth(map-values($type-scale), 1);
+          @warn "No matching breakpoint found. Using first breakpoint value (#{$breakpoint-type-scale}) of `$type-scale`.";
+        }
+      }
+
+      // Replace breakpoint value with modular scaled values
+      // Use recursive call because value could be a sizing map
+      $size: map-merge(
+        $size,
+        (
+          $breakpoint-key: modular-scale-config($exp, $breakpoint-value, $breakpoint-type-scale),
+        )
+      );
+    }
+  } @else {
+    $size: modular-scale($exp, $size, $type-scale);
+  }
+
+  @return $size;
+}
+
+/// Scale a value according to the passed exponent and type scale
 ///
 /// @param {Number} $exp - Exponent
 /// @param {Number} $size [$font-size-base] - Size to scale
