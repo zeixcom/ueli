@@ -75,10 +75,8 @@
 
 // Generate grid columns for a specific breakpoint
 ///
-/// @param {String} $breakpoint - Breakpoint name
-@mixin generate-grid-columns (
-  $breakpoint,
-) {
+/// @param {String} $breakpoint - Named breakpoint key of `$mq-breakpoints`
+@mixin generate-grid-columns($breakpoint) {
   @for $i from 1 through $grid-columns {
     $col-base: 'grid-col';
 

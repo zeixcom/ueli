@@ -1,0 +1,30 @@
+////
+/// @group variation
+////
+
+/// Handle selectors key in config map. Output properties or call loop-variation recursively.
+///
+/// @param {String|List} $prop - Any CSS property or a list of CSS properties
+/// @param {Map} $selectors - Map of selectors
+/// @param {Bool} $negative [false] - Negates the values if true
+/// @param {Bool} $important [false] - Adds important flag if true
+@mixin output-selectors($prop, $selectors, $negative: false, $important: false) {
+  @each $selector-key, $selector-value in $selectors {
+    #{$selector-key} {
+      @each $deep-key, $deep-value in $selector-value {
+        @if ($deep-key == 'selectors') {
+          @include loop-variation(
+            (
+              'selectors': $deep-value,
+            ),
+            $prop,
+            $negative,
+            $important
+          );
+        } @else {
+          @include output-props($deep-key, $deep-value, $negative, $important);
+        }
+      }
+    }
+  }
+}
