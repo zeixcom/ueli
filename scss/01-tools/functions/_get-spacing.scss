@@ -5,7 +5,8 @@
 /// Get a single spacing value from the map `$token-spacings`
 ///
 /// @param {String} $name [$token-spacings-default] - Map key of `$token-spacings`
-/// @param {Bool} $sizing ['min'] - Sizing type 'min' or 'max'
+/// @param {String} $sizing ['min'] - Sizing type 'min' or 'max'
+/// @param {String} $breakpoint [null] - Named breakpoint key of `$mq-breakpoints`
 @function get-spacing($name: $token-spacings-default, $sizing: 'min') {
   $spacing: map-get($token-spacings, $name);
 
