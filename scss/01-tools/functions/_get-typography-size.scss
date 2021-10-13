@@ -5,7 +5,7 @@
 /// Get a font-size value from the map `$token-typography`
 ///
 /// @param {String} $name - Map key of `$token-typography`
-/// @param {Bool} $sizing ['min'] - Sizing type 'min' or 'max'
+/// @param {String} $sizing ['min'] - Sizing type 'min' or 'max'
 @function get-typography-size($name, $sizing: 'min') {
   $variant: map-get($token-typography, $name);
 
