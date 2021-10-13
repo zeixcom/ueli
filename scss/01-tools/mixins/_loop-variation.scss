@@ -35,8 +35,11 @@
           );
         } @else if (type-of($breakpoint-value) == 'map') {
           @each $deep-key, $deep-value in $breakpoint-value {
-            // Nested sizing map in breakpoint (e.g. font-size map in type)
-            @if (is-sizing-map($deep-value)) {
+            @if ($deep-key == 'selectors') {
+              // Special selectors key for pseudo classes
+              @include output-selectors($prop, $deep-value, $negative, $important);
+            } @else if (is-sizing-map($deep-value)) {
+              // Nested sizing map in breakpoint (e.g. font-size map in type)
               @include fluid-calc(
                 $deep-key,
                 $deep-value,
@@ -61,24 +64,7 @@
     @each $key, $value in $config {
       @if ($key == 'selectors') {
         // Special selectors key for pseudo classes
-        @each $selector-key, $selector-value in $value {
-          #{$selector-key} {
-            @each $deep-key, $deep-value in $selector-value {
-              @if ($deep-key == 'selectors') {
-                @include loop-variation(
-                  (
-                    'selectors': $deep-value,
-                  ),
-                  $prop,
-                  $negative,
-                  $important
-                );
-              } @else {
-                @include output-props($deep-key, $deep-value, $negative, $important);
-              }
-            }
-          }
-        }
+        @include output-selectors($prop, $value, $negative, $important);
       } @else if (is-sizing-map($value)) {
         // Nested sizing map (e.g. font-size in $token-typography with sizing map)
         @include fluid-calc($key, $value, $negative: $negative, $important: $important);
