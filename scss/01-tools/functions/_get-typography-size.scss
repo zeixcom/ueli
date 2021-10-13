@@ -6,11 +6,17 @@
 ///
 /// @param {String} $name - Map key of `$token-typography`
 /// @param {String} $sizing ['min'] - Sizing type 'min' or 'max'
-@function get-typography-size($name, $sizing: 'min') {
+/// @param {String} $breakpoint [null] - Named breakpoint key of `$mq-breakpoints`
+@function get-typography-size($name, $sizing: 'min', $breakpoint: null) {
   $variant: map-get($token-typography, $name);
 
   @if (not $variant) {
     @error "The variant `#{$name}` wasn't found in map $token-typography.";
+  }
+
+  @if is-breakpoint-map($variant) {
+    $breakpoint: $breakpoint or get-first-breakpoint();
+    $variant: map-get($variant, $breakpoint);
   }
 
   @if map-has-key($variant, 'font-size') {
