@@ -390,7 +390,6 @@
     }
   }
 
-  /*
   @include describe('Given a breakpoint map with nested selectors keys to loop-variation mixin') {
     @include it('Should output the selector styles for each breakpoint') {
       @include assert {
@@ -442,5 +441,4 @@
       }
     }
   }
-  */
 }
