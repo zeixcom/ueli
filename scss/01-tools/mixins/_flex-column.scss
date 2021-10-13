@@ -84,9 +84,7 @@
 // Generate columns for a specific breakpoint
 ///
 /// @param {String} $breakpoint - Breakpoint name
-@mixin generate-flex-columns(
-  $breakpoint
-) {
+@mixin generate-flex-columns($breakpoint) {
   @for $i from 0 through $grid-columns {
     $col-base: 'col';
 
@@ -111,6 +109,5 @@
     .#{$col-base}-offset-#{$i} {
       @include flex-column-offset($i, $grid-columns);
     }
-
   }
 }
