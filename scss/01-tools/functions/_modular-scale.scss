@@ -29,7 +29,6 @@
       @if is-breakpoint-map($type-scale) {
         @if map-has-key($type-scale, $breakpoint-key) {
           $breakpoint-type-scale: map-get($type-scale, $breakpoint-key);
-          @debug $breakpoint-type-scale;
         } @else {
           $breakpoint-type-scale: nth(map-values($type-scale), 1);
           @warn "No matching breakpoint found. Using first breakpoint value (#{$breakpoint-type-scale}) of `$type-scale`.";
