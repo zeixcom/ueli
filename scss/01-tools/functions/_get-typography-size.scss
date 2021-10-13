@@ -10,20 +10,24 @@
   $variant: map-get($token-typography, $name);
 
   @if (not $variant) {
-    @error "The variant `#{$variant}` wasn't found in map $token-typography.";
+    @error "The variant `#{$name}` wasn't found in map $token-typography.";
   }
 
-  @each $key, $value in $variant {
-    @if ($key == 'font-size') {
-      @if (is-sizing-map($value)) {
-        $value: map-get($value, $sizing);
+  @if map-has-key($variant, 'font-size') {
+    @each $key, $value in $variant {
+      @if ($key == 'font-size') {
+        @if (is-sizing-map($value)) {
+          $value: map-get($value, $sizing);
 
-        @if (not $value) {
-          @error "The sizing `#{$sizing}` wasn't found for the variant `#{$name}`.";
+          @if (not $value) {
+            @error "The sizing `#{$sizing}` wasn't found for the variant `#{$name}`.";
+          }
         }
-      }
 
-      @return to-rem($value);
+        @return to-rem($value);
+      }
     }
+  } @else {
+    @error "No font-size property found for the variant `#{$name}`.";
   }
 }
