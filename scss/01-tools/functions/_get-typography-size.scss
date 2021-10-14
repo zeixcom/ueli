@@ -1,0 +1,39 @@
+////
+/// @group token
+////
+
+/// Get a font-size value from the map `$token-typography`
+///
+/// @param {String} $name - Map key of `$token-typography`
+/// @param {String} $sizing ['min'] - Sizing type 'min' or 'max'
+/// @param {String} $breakpoint [null] - Named breakpoint key of `$mq-breakpoints`
+@function get-typography-size($name, $sizing: 'min', $breakpoint: null) {
+  $variant: map-get($token-typography, $name);
+
+  @if (not $variant) {
+    @error "The variant `#{$name}` wasn't found in map $token-typography.";
+  }
+
+  @if is-breakpoint-map($variant) {
+    $breakpoint: $breakpoint or get-first-breakpoint();
+    $variant: map-get($variant, $breakpoint);
+  }
+
+  @if map-has-key($variant, 'font-size') {
+    @each $key, $value in $variant {
+      @if ($key == 'font-size') {
+        @if (is-sizing-map($value)) {
+          $value: map-get($value, $sizing);
+
+          @if (not $value) {
+            @error "The sizing `#{$sizing}` wasn't found for the variant `#{$name}`.";
+          }
+        }
+
+        @return to-rem($value);
+      }
+    }
+  } @else {
+    @error "No font-size property found for the variant `#{$name}`.";
+  }
+}
