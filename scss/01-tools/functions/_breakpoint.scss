@@ -2,20 +2,28 @@
 /// @group breakpoint
 ////
 
-/// Check if a breakpoint is the first in the list
+/// Get the first breakpoint from the map
 ///
-/// @param {String} $name - Breakpoint name
 /// @param {Map} $breakpoints [$mq-breakpoints] - Map of breakpoints
-/// @return {Boolean} - True if the passed breakpoint is the first in the list
-@function is-first-breakpoint($name, $breakpoints: $mq-breakpoints) {
-  @return $name == nth(map-keys($breakpoints), 1);
+/// @return {Boolean} - First breakpoint from the map
+@function get-first-breakpoint($breakpoints: $mq-breakpoints) {
+  @return nth(map-keys($breakpoints), 1);
 }
 
-/// Check if a breakpoint is the last in the list
+/// Check if a breakpoint is the first in the map
 ///
 /// @param {String} $name - Breakpoint name
 /// @param {Map} $breakpoints [$mq-breakpoints] - Map of breakpoints
-/// @return {Boolean} - True if the passed breakpoint is the last in the list
+/// @return {Boolean} - True if the passed breakpoint is the first in the map
+@function is-first-breakpoint($name, $breakpoints: $mq-breakpoints) {
+  @return $name == get-first-breakpoint();
+}
+
+/// Check if a breakpoint is the last in the map
+///
+/// @param {String} $name - Breakpoint name
+/// @param {Map} $breakpoints [$mq-breakpoints] - Map of breakpoints
+/// @return {Boolean} - True if the passed breakpoint is the last in the map
 @function is-last-breakpoint($name, $breakpoints: $mq-breakpoints) {
   @return $name == nth(map-keys($breakpoints), length(map-keys($breakpoints)));
 }
