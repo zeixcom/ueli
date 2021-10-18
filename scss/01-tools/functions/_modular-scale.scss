@@ -12,12 +12,26 @@
 /// @return {Number|Map} - Scaled value or map
 @function modular-scale-config($exp, $size: $font-size-base, $type-scale: $type-scale) {
   @if is-sizing-map($size) {
-    // Replace sizing map values with modular scaled values
-    @each $key, $value in $size {
+    @if is-breakpoint-map($type-scale) {
+      @error "Config mismatch: Must use a breakpoint map for `$size` in order to use breakpoints in `$type-scale`.";
+    }
+
+    @each $sizing-key, $sizing-value in $size {
+      $sizing-type-scale: $type-scale;
+
+      // If $type-scale is a sizing map too, then use the corresponding value
+      @if is-sizing-map($type-scale) {
+        // Check key, because 'max' key could be missing from sizing map
+        @if map-has-key($type-scale, $sizing-key) {
+          $sizing-type-scale: map-get($type-scale, $sizing-key);
+        }
+      }
+
+      // Replace sizing map values with modular scaled values
       $size: map-merge(
         $size,
         (
-          $key: modular-scale($exp, $value, $type-scale),
+          $sizing-key: modular-scale($exp, $sizing-value, $sizing-type-scale),
         )
       );
     }
@@ -30,13 +44,14 @@
         @if map-has-key($type-scale, $breakpoint-key) {
           $breakpoint-type-scale: map-get($type-scale, $breakpoint-key);
         } @else {
-          $breakpoint-type-scale: nth(map-values($type-scale), 1);
-          @warn "No matching breakpoint found. Using first breakpoint value (#{$breakpoint-type-scale}) of `$type-scale`.";
+          @error "Breakpoint key `#{$breakpoint-key}` was not found in `$type-scale`.";
         }
+      } @else if is-sizing-map($type-scale) {
+        @error "Config mismatch: Must use a breakpoint map for `$type-scale` in order to use breakpoints in `$size`.";
       }
 
-      // Replace breakpoint value with modular scaled values
-      // Use recursive call because value could be a sizing map
+      // Replace breakpoint values with modular scaled value
+      // Use recursive call because $breakpoint-value or $breakpoint-type-scale could be a sizing map
       $size: map-merge(
         $size,
         (
@@ -45,7 +60,37 @@
       );
     }
   } @else {
-    $size: modular-scale($exp, $size, $type-scale);
+    @if is-breakpoint-map($type-scale) {
+      $size-map: ();
+
+      @each $breakpoint-key, $breakpoint-value in $type-scale {
+        // Replace breakpoint values for type scale with modular scaled value
+        // Use recursive call because $breakpoint-value could be a sizing map
+        $size-map: map-merge(
+          $size-map,
+          (
+            $breakpoint-key: modular-scale-config($exp, $size, $breakpoint-value),
+          )
+        );
+      }
+
+      $size: $size-map;
+    } @else if is-sizing-map($type-scale) {
+      $size-map: ();
+
+      @each $sizing-key, $sizing-value in $type-scale {
+        // Replace sizing map values for type scale with modular scaled values
+        $size-map: map-merge(
+          $size-map,
+          (
+            $sizing-key: modular-scale($exp, $size, $sizing-value),
+          )
+        );
+      }
+      $size: $size-map;
+    } @else {
+      $size: modular-scale($exp, $size, $type-scale);
+    }
   }
 
   @return $size;

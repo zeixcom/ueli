@@ -1041,12 +1041,26 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
   @include use-variation($token-typography, $variation);
  }" data-collapsed="@mixin typography($variation: &#39;default&#39;) { ... }"><code>@mixin typography($variation: &#39;default&#39;) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Wrapper mixin for use-variation that uses the <code>$token-typography</code> map as default lookup map</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$variation</code></th><td data-label="desc"><p>Map key of <code>$token-typography</code></p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>&#39;default&#39;</code></td></tr></tbody></table></section></section></section><section class="main__section"><h1 class="main__heading" id="typography"><div class="container">Typography</div></h1><section class="main__sub-section" id="typography-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="typography-function-modular-scale-config"><h3 class="item__heading"><a class="item__name" href="#function-modular-scale-config">modular-scale-config</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function modular-scale-config($exp, $size: $font-size-base, $type-scale: $type-scale) { 
   @if is-sizing-map($size) {
-    // Replace sizing map values with modular scaled values
-    @each $key, $value in $size {
+    @if is-breakpoint-map($type-scale) {
+      @error &quot;Config mismatch: Must use a breakpoint map for `$size` in order to use breakpoints in `$type-scale`.&quot;;
+    }
+
+    @each $sizing-key, $sizing-value in $size {
+      $sizing-type-scale: $type-scale;
+
+      // If $type-scale is a sizing map too, then use the corresponding value
+      @if is-sizing-map($type-scale) {
+        // Check key, because &#39;max&#39; key could be missing from sizing map
+        @if map-has-key($type-scale, $sizing-key) {
+          $sizing-type-scale: map-get($type-scale, $sizing-key);
+        }
+      }
+
+      // Replace sizing map values with modular scaled values
       $size: map-merge(
         $size,
         (
-          $key: modular-scale($exp, $value, $type-scale),
+          $sizing-key: modular-scale($exp, $sizing-value, $sizing-type-scale),
         )
       );
     }
@@ -1059,13 +1073,14 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
         @if map-has-key($type-scale, $breakpoint-key) {
           $breakpoint-type-scale: map-get($type-scale, $breakpoint-key);
         } @else {
-          $breakpoint-type-scale: nth(map-values($type-scale), 1);
-          @warn &quot;No matching breakpoint found. Using first breakpoint value (#{$breakpoint-type-scale}) of `$type-scale`.&quot;;
+          @error &quot;Breakpoint key `#{$breakpoint-key}` was not found in `$type-scale`.&quot;;
         }
+      } @else if is-sizing-map($type-scale) {
+        @error &quot;Config mismatch: Must use a breakpoint map for `$type-scale` in order to use breakpoints in `$size`.&quot;;
       }
 
-      // Replace breakpoint value with modular scaled values
-      // Use recursive call because value could be a sizing map
+      // Replace breakpoint values with modular scaled value
+      // Use recursive call because $breakpoint-value or $breakpoint-type-scale could be a sizing map
       $size: map-merge(
         $size,
         (
@@ -1074,7 +1089,37 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
       );
     }
   } @else {
-    $size: modular-scale($exp, $size, $type-scale);
+    @if is-breakpoint-map($type-scale) {
+      $size-map: ();
+
+      @each $breakpoint-key, $breakpoint-value in $type-scale {
+        // Replace breakpoint values for type scale with modular scaled value
+        // Use recursive call because $breakpoint-value could be a sizing map
+        $size-map: map-merge(
+          $size-map,
+          (
+            $breakpoint-key: modular-scale-config($exp, $size, $breakpoint-value),
+          )
+        );
+      }
+
+      $size: $size-map;
+    } @else if is-sizing-map($type-scale) {
+      $size-map: ();
+
+      @each $sizing-key, $sizing-value in $type-scale {
+        // Replace sizing map values for type scale with modular scaled values
+        $size-map: map-merge(
+          $size-map,
+          (
+            $sizing-key: modular-scale($exp, $size, $sizing-value),
+          )
+        );
+      }
+      $size: $size-map;
+    } @else {
+      $size: modular-scale($exp, $size, $type-scale);
+    }
   }
 
   @return $size;
