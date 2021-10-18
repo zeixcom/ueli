@@ -970,6 +970,11 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
     @error &quot;The spacing `#{$name}` wasn&#39;t found in map $token-spacings.&quot;;
   }
 
+  @if is-breakpoint-map($spacing) {
+    $breakpoint: $breakpoint or get-first-breakpoint();
+    $spacing: map-get($spacing, $breakpoint);
+  }
+
   @if (is-sizing-map($spacing)) {
     $spacing: map-get($spacing, $sizing);
 
