@@ -1043,6 +1043,8 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
   @if is-sizing-map($size) {
     @if is-breakpoint-map($type-scale) {
       @error &quot;Config mismatch: Must use a breakpoint map for `$size` in order to use breakpoints in `$type-scale`.&quot;;
+    } @else if (is-sizing-map($type-scale) and not (length($type-scale) == length($size))) {
+      @error &quot;Config mismatch: Must use the same keys in sizing maps for `$size` and `$type-scale`.&quot;;
     }
 
     @each $sizing-key, $sizing-value in $size {
@@ -1116,6 +1118,7 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
           )
         );
       }
+
       $size: $size-map;
     } @else {
       $size: modular-scale($exp, $size, $type-scale);
