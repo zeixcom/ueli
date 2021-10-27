@@ -1080,7 +1080,7 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
         @if map-has-key($type-scale, $breakpoint-key) {
           $breakpoint-type-scale: map-get($type-scale, $breakpoint-key);
         } @else {
-          @error &quot;Breakpoint key `#{$breakpoint-key}` was not found in `$type-scale`.&quot;;
+          @error &quot;Config mismatch: Breakpoint key `#{$breakpoint-key}` was not found in `$type-scale`.&quot;;
         }
       } @else if is-sizing-map($type-scale) {
         @error &quot;Config mismatch: Must use a breakpoint map for `$type-scale` in order to use breakpoints in `$size`.&quot;;
