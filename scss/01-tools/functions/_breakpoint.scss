@@ -74,6 +74,7 @@
 ///
 /// @param {String} $name - Current breakpoint name
 /// @param {Map} $breakpoints - Map of breakpoints to compare
+/// @param {Number} $start-index [null] - Map index from which the search should start
 /// @return {String} - Next breakpoint name
 @function get-smaller-breakpoint($name, $breakpoints, $start-index: null) {
   $breakpoint-keys: map-keys($mq-breakpoints);
