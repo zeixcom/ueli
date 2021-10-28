@@ -12,6 +12,23 @@
   @return (type-of($map) == 'map' and map-has-key($map, 'min') and length($map) < 3);
 }
 
+/// Complete a sizing map by adding a `max` key with the value of the `min` key.
+/// Alternatively a value for the `max` key can be provided with the $value parameter.
+///
+/// @param {Map} $map - Map to complete
+@function complete-sizing-map($map, $value: null) {
+  $max-value: map-get($map, 'min') or $value;
+
+  $complete-map: map-merge(
+    $map,
+    (
+      max: $max-value,
+    )
+  );
+
+  @return $complete-map;
+}
+
 /// Get largest sizing of sizing map
 ///
 /// @param {Number|Map} $sizing - Sizing map or number
