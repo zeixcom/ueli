@@ -1,3 +1,5 @@
+// stylelint-disable no-descending-specificity
+
 .radio [type='radio'],
 .checkbox [type='checkbox'] {
   &:not(:only-child) {
@@ -28,16 +30,16 @@
   }
 
   ~ label::after {
-    background-repeat: no-repeat;
     background-position: center center;
+    background-repeat: no-repeat;
     opacity: 0;
-    transform: scale(0);
     transition: $selection-transition;
+    transform: scale(0);
   }
 
   &:disabled ~ label::before {
-    background-color: $selection-disabled-bg;
     border-color: $selection-disabled-border-color;
+    background-color: $selection-disabled-bg;
   }
 
   &:focus ~ label::before {
@@ -66,7 +68,7 @@
   }
 
   &:checked ~ label::after {
-    background-image: url(get-icon('radio', $selection-icon-color));
+    background-image: url("#{get-icon('radio', $selection-icon-color)}");
   }
 }
 
@@ -76,6 +78,6 @@
   }
 
   &:checked ~ label::after {
-    background-image: url(get-icon('checkbox', $selection-icon-color));
+    background-image: url("#{get-icon('checkbox', $selection-icon-color)}");
   }
 }

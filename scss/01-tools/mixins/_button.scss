@@ -4,8 +4,8 @@
 
 /// Remove browser default styles from `<button>`
 @mixin button-unstyled {
-  border: 0;
   padding: 0;
+  border: 0;
   background-color: transparent;
   color: inherit;
 }
@@ -15,8 +15,8 @@
   @include button-unstyled;
 
   color: $link-color;
-  text-decoration: $link-decoration;
   font-weight: $font-weight-base;
+  text-decoration: $link-decoration;
   user-select: text;
 
   &:hover,
@@ -62,11 +62,11 @@
   padding: $padding-vertical $padding-horizontal;
   border: $border-width solid transparent;
   border-radius: $border-radius;
-  transition: $transition;
   text-align: center;
   text-decoration: none;
   white-space: normal;
   user-select: none;
+  transition: $transition;
   touch-action: manipulation;
 
   &:hover,

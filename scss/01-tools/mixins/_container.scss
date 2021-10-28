@@ -20,11 +20,10 @@
   }
 
   @include container-gutter($gutter);
-
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
   max-width: $width;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /// Output outside gutter for a container

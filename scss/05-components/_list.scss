@@ -24,12 +24,12 @@
   li::before {
     top: $list-unordered-offset-top;
     left: $list-unordered-offset-left;
-    height: 1em;
     width: 1em;
-    background-repeat: no-repeat;
+    height: 1em;
+    background-image: url("#{get-icon('bullet', $list-marker-color)}");
     background-position: center center;
     background-size: contain;
-    background-image: url(get-icon(bullet, $list-marker-color));
+    background-repeat: no-repeat;
   }
 }
 
@@ -39,8 +39,8 @@
 
   li::before {
     content: counters(ordered-list, '.') '. ';
-    counter-increment: ordered-list;
     left: $list-ordered-offset-left;
     color: $list-marker-color;
+    counter-increment: ordered-list;
   }
 }
