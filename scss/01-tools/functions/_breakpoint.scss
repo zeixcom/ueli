@@ -69,3 +69,25 @@
 
   @return $next;
 }
+
+/// Get the smaller breakpoint from a map in comparison to main breakpoints
+///
+/// @param {String} $name - Current breakpoint name
+/// @param {Map} $breakpoints - Map of breakpoints to compare
+/// @return {String} - Next breakpoint name
+@function get-smaller-breakpoint($name, $breakpoints, $start-index: null) {
+  $breakpoint-keys: map-keys($mq-breakpoints);
+  $index: index($breakpoint-keys, $name) or $start-index;
+  $index: $index - 1;
+  $smaller: false;
+
+  @if $index > 0 {
+    $smaller: nth($breakpoint-keys, $index);
+
+    @if not map-has-key($breakpoints, $smaller) {
+      $smaller: get-smaller-breakpoint($smaller, $breakpoints, $index);
+    }
+  }
+
+  @return $smaller;
+}
