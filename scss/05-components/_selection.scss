@@ -6,7 +6,7 @@
 
   ~ label {
     position: relative;
-    padding-left: 1.4em;
+    padding-left: $selection-label-indent;
     line-height: 1.5;
   }
 
@@ -16,8 +16,8 @@
     position: absolute;
     top: $selection-offset-top;
     left: 0;
-    width: 1em;
-    height: 1em;
+    width: $selection-size;
+    height: $selection-size;
     color-adjust: exact; // Keep custom styles for print
   }
 
