@@ -6,8 +6,8 @@
 ///
 /// @param {Number} $duration [get-duration()] - Default duration token
 @mixin fade-in($duration: get-duration()) {
-  visibility: visible;
   opacity: 1;
+  visibility: visible;
   transition: visibility 0s get-easing(linear) 0s, opacity $duration;
 }
 
@@ -15,7 +15,7 @@
 ///
 /// @param {Number} $duration [get-duration()] - Default duration token
 @mixin fade-out($duration: get-duration()) {
-  visibility: hidden;
   opacity: 0;
+  visibility: hidden;
   transition: visibility 0s get-easing(linear) $duration, opacity $duration;
 }

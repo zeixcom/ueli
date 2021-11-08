@@ -15,7 +15,7 @@
     @if is-breakpoint-map($type-scale) {
       @error "Config mismatch: Must use a breakpoint map for `$size` in order to use breakpoints in `$type-scale`.";
     } @else if (is-sizing-map($type-scale) and not (length($type-scale) == length($size))) {
-      @error "Config mismatch: Must use the same keys in sizing maps for `$size` and `$type-scale`.";
+      $type-scale: complete-sizing-map($type-scale);
     }
 
     @each $sizing-key, $sizing-value in $size {
@@ -46,7 +46,13 @@
         @if map-has-key($type-scale, $breakpoint-key) {
           $breakpoint-type-scale: map-get($type-scale, $breakpoint-key);
         } @else {
-          @error "Config mismatch: Breakpoint key `#{$breakpoint-key}` was not found in `$type-scale`.";
+          $smaller-breakpoint: get-smaller-breakpoint($breakpoint-key, $type-scale);
+
+          @if $smaller-breakpoint {
+            $breakpoint-type-scale: map-get($type-scale, $smaller-breakpoint);
+          } @else {
+            @error "No matching or smaller breakpoint key for `#{$breakpoint-key}` was not found in `$type-scale`.";
+          }
         }
       } @else if is-sizing-map($type-scale) {
         @error "Config mismatch: Must use a breakpoint map for `$type-scale` in order to use breakpoints in `$size`.";
