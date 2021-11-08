@@ -5,20 +5,20 @@
 /// Hide content accessibly
 @mixin sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
   white-space: nowrap;
 }
 
 /// Undo styles from sr-only
 @mixin sr-only-reset {
   position: static;
-  width: auto;
-  height: auto;
   overflow: visible;
   clip: auto;
+  width: auto;
+  height: auto;
   white-space: inherit;
 }
 

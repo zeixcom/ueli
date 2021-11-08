@@ -12,9 +12,27 @@
   @return (type-of($map) == 'map' and map-has-key($map, 'min') and length($map) < 3);
 }
 
+/// Complete a sizing map by adding a `max` key with the value of the `min` key.
+/// Alternatively a value for the `max` key can be provided with the $value parameter.
+///
+/// @param {Map} $map - Sizing map to complete
+/// @return {Map} - Completed sizing map
+@function complete-sizing-map($map, $value: null) {
+  $max-value: map-get($map, 'min') or $value;
+
+  $complete-map: map-merge(
+    $map,
+    (
+      max: $max-value,
+    )
+  );
+
+  @return $complete-map;
+}
+
 /// Get largest sizing of sizing map
 ///
-/// @param {Map|Number} $sizing - Sizing map or number
+/// @param {Number|Map} $sizing - Sizing map or number
 /// @return {Number} - Largest sizing in the map
 @function get-largest-sizing($sizing) {
   @if (type-of($sizing) == 'map') {
@@ -34,8 +52,8 @@
 
 /// Half values of a sizing map
 ///
-/// @param {Map|Number} $sizing - Sizing map, breakpoint map or number
-/// @return {Map|Number} - Map with halved values or halved number
+/// @param {Number|Map} $sizing - Sizing map, breakpoint map or number
+/// @return {Number|Map} - Map with halved values or halved number
 @function get-half-sizing($sizing) {
   @if (type-of($sizing) == 'map') {
     @each $key, $value in $sizing {

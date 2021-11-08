@@ -16,6 +16,20 @@ $color-icon: get-color(gray-800) !default;
 // Global
 $font-antialiased: false !default;
 $fluid-scaling: true !default;
+
+/// Type Scale
+///
+/// @example scss
+///   $type-scale: 1.25;
+///
+/// @example scss
+///   $type-scale: (
+///     xs: 1.25,
+///     md: 1.333,
+///   );
+///
+/// @type {Number|Map}
+$type-scale: 1.25 !default;
 $global-bg: $color-background !default;
 $text-color: $color-foreground !default;
 
@@ -24,8 +38,42 @@ $headings: ('h6, .h6', 'h5, .h5', 'h4, .h4', 'h3, .h3', 'h2, .h2', 'h1, .h1') !d
 $headings-spacing: 0.4em !default;
 $headings-color: inherit !default;
 
-$type-scale: 1.25 !default;
-$type-scale-base: (
+/// Headings Type Scale
+///
+/// @example scss
+///   $headings-type-scale: 1.25;
+///
+/// @example scss
+///   $headings-type-scale: (
+///     xs: 1.25,
+///     md: 1.333,
+///   );
+///
+/// @type {Number|Map}
+$headings-type-scale: $type-scale !default;
+
+/// Headings Scale Base
+///
+/// @example scss
+///   $headings-scale-base: $font-size-base;
+///
+/// @example scss
+///   $headings-scale-base: (
+///     min: $font-size-base,
+///     max: $font-size-base * 1.5,
+///   );
+///
+/// @example scss
+///   $headings-scale-base: (
+///     xs: $font-size-base,
+///     md: (
+///       min: $font-size-base,
+///       max: $font-size-base * 1.5,
+///     )
+///   );
+///
+/// @type {Number|Map}
+$headings-scale-base: (
   min: $font-size-base,
 ) !default;
 
@@ -120,7 +168,7 @@ $input-color: $color-foreground !default;
 $input-border-color: $color-line !default;
 $input-box-shadow: none !default;
 $input-focus-border-color: $color-accent !default;
-$input-focus-box-shadow: 0 0 0 to-em(3px) rgba($color-accent, 0.25) !default;
+$input-focus-box-shadow: 0 0 0 to-em(3px) transparentize($color-accent, 0.75%) !default;
 $input-disabled-bg: $color-background-muted !default;
 $input-disabled-color: $color-foreground-muted !default;
 $input-disabled-border-color: $color-line !default;
@@ -131,7 +179,9 @@ $select-icon-color: $color-foreground !default;
 
 // Checkbox & Radio
 $selection-icon-color: $color-foreground-inverted !default;
+$selection-size: to-em(16px) !default;
 $selection-offset-top: to-em(4px) !default;
+$selection-label-indent: to-em(22px) !default;
 $selection-border-width: $input-border-width !default;
 $selection-border-color: $input-border-color !default;
 $selection-bg: $input-bg !default;
@@ -178,7 +228,7 @@ $button-variations: (
       '&:focus': (
         background-color: shade-color($color-accent, 20%),
         color: $color-foreground-inverted,
-        box-shadow: 0 0 0 to-em(3px) rgba($color-accent, 0.35),
+        box-shadow: 0 0 0 to-em(3px) transparentize($color-accent, 0.65),
       ),
       '&:disabled, &.disabled': (
         opacity: 0.65,

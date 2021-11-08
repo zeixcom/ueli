@@ -76,28 +76,68 @@ Functions and mixins are annotated using sassdoc syntax. Please refer to the [sa
 <div class="container"></div>
 ```
 
-Related variables: `$grid-container`, `$grid-container-gutter`
+Related variables: `$container`, `$container-gutter`
 
-### Flex Grid
+### Grid
+
+Grid classes are generated depending on the [`$grid-mode`](https://zeixcom.github.io/ueli/#global-variable-grid-mode).
+
+#### CSS Grid (grid-mode: grid)
+
+Related mixins: [`grid-row`](https://zeixcom.github.io/ueli/#grid-mixin-grid-row), [`grid-column`](https://zeixcom.github.io/ueli/#grid-mixin-grid-column), [`grid-column-start`](https://zeixcom.github.io/ueli/#grid-mixin-grid-column-start)
+
+##### Basic
 
 ```html
-<div class="row">
-  <div class="col"></div>
+<div class="grid-row">
+  <div class="grid-col">Column A</div>
 </div>
 ```
 
-Enable more grid classes using the `$grid-*-classes` variables or use the flex grid and grid mixins to build your own.
-
-#### Basic
+##### Responsive
 
 ```html
-<div class="row">
-  <div class="col col-xs-6">Column A</div>
-  <div class="col col-xs-6">Column B</div>
+<div class="grid-row">
+  <div class="grid-col grid-col-md-6 grid-col-xl-9">Column A</div>
+  <div class="grid-col grid-col-md-6 grid-col-xl-3">Column B</div>
 </div>
 ```
 
-#### Responsive
+##### Offset
+
+```html
+<div class="grid-row">
+  <div class="grid-col grid-col-5">Column A</div>
+  <div class="grid-col grid-col-5 grid-col-start-8">Column B</div>
+</div>
+```
+
+##### Nested
+
+```html
+<div class="grid-row">
+  <div class="grid-col grid-col-md-8">
+    <div class="grid-row">
+      <div class="grid-col grid-col-md-6">Nested column A</div>
+      <div class="grid-col grid-col-md-6">Nested column B</div>
+    </div>
+  </div>
+</div>
+```
+
+#### Flex Grid (grid-mode: flex)
+
+Related mixins: [`flex-row`](https://zeixcom.github.io/ueli/#grid-mixin-flex-row), [`flex-column`](https://zeixcom.github.io/ueli/#grid-mixin-flex-column), [`flex-column-base`](https://zeixcom.github.io/ueli/#grid-mixin-flex-column-base), [`flex-column-push`](https://zeixcom.github.io/ueli/#grid-mixin-flex-column-push), [`flex-column-pull`](https://zeixcom.github.io/ueli/#grid-mixin-flex-column-pull), [`flex-column-offset`](https://zeixcom.github.io/ueli/#grid-mixin-flex-column-offset)
+
+##### Basic
+
+```html
+<div class="row">
+  <div class="col">Column A</div>
+</div>
+```
+
+##### Responsive
 
 ```html
 <div class="row">
@@ -106,25 +146,25 @@ Enable more grid classes using the `$grid-*-classes` variables or use the flex g
 </div>
 ```
 
-#### Offset
+##### Offset
 
 ```html
 <div class="row">
-  <div class="col col-xs-5">Column A</div>
-  <div class="col col-xs-5 col-xs-offset-2">Column B</div>
+  <div class="col col-5">Column A</div>
+  <div class="col col-5 col-offset-2">Column B</div>
 </div>
 ```
 
-#### Push / Pull
+##### Push / Pull
 
 ```html
 <div class="row">
-  <div class="col col-xs-6 col-xs-push-6">First column in markup</div>
-  <div class="col col-xs-6 col-xs-pull-6">Second column in markup</div>
+  <div class="col col-6 col-push-6">First column in markup</div>
+  <div class="col col-6 col-pull-6">Second column in markup</div>
 </div>
 ```
 
-#### Nested
+##### Nested
 
 ```html
 <div class="row">
@@ -137,7 +177,7 @@ Enable more grid classes using the `$grid-*-classes` variables or use the flex g
 </div>
 ```
 
-Related variables: `$grid-columns`, `$grid-gutter`, `$grid-pull-classes`, `$grid-push-classes`, `$grid-offset-classes`, `$grid-column-classes`
+Related variables: `$grid-mode`, `$grid-columns`, `$grid-gutter`
 
 ### Embed
 

@@ -353,17 +353,17 @@ $mq-media-type: all !default;
 ///  @include mq-show-breakpoints((L, XL), (S: 300px, L: 800px, XL: 1200px));
 @mixin mq-show-breakpoints($show-breakpoints: $mq-show-breakpoints, $breakpoints: $mq-breakpoints) {
   body::before {
-    background-color: #fcf8e3;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    padding: 3px 6px;
     border-bottom: 1px solid #fbeed5;
     border-left: 1px solid #fbeed5;
+    background-color: #fcf8e3;
     color: #c09853;
     font: small-caption;
-    padding: 3px 6px;
     pointer-events: none;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 100;
 
     // Loop through the breakpoints that should be shown
     @each $show-breakpoint in $show-breakpoints {

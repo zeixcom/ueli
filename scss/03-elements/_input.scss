@@ -1,10 +1,10 @@
 @supports (appearance: none) {
   select:not([multiple]) {
-    appearance: none;
     padding-right: 2em;
-    background-repeat: no-repeat;
+    background-image: url("#{get-icon('select', $select-icon-color)}");
     background-position: right $input-padding-horizontal center;
-    background-image: url(get-icon('select', $select-icon-color));
+    background-repeat: no-repeat;
+    appearance: none;
   }
 }
 
@@ -38,7 +38,7 @@ input[type='date'] {
 // Fix appearance for date inputs in Safari
 input[type='date'],
 input[type='month'] {
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 input[type='file'] {

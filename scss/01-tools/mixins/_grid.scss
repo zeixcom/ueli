@@ -13,10 +13,10 @@
 /// @param {Number|Map} $gutter [$grid-gutter] - The amount of gutter as number, breakpoint map `(xs: 30px, md: 60px)` or sizing map (min: 30px, max: 60px)
 /// @param {Number} $min-size - Minimum size of the grid columns
 @mixin grid-row-auto($min-size, $gutter: $grid-gutter) {
+  @include gutter($gutter, 'gap');
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min, #{$min-size})), 1fr));
-
-  @include gutter($gutter, 'gap');
 }
 
 /// Output a css grid row with gutters
@@ -27,11 +27,11 @@
 /// }
 /// @param {Number|Map} $gutter [$grid-gutter] - The amount of gutter as number, breakpoint map `(xs: 30px, md: 60px)` or sizing map (min: 30px, max: 60px)
 @mixin grid-row($gutter: $grid-gutter) {
+  @include gutter($gutter, 'gap');
+
   display: grid;
   grid-template-rows: repeat(var(--rows, 1), 1fr);
   grid-template-columns: repeat(var(--columns, #{$grid-columns}), 1fr);
-
-  @include gutter($gutter, 'gap');
 }
 
 /// Output a css grid column
@@ -40,9 +40,9 @@
 /// .grid-col {
 ///   @include grid-column(6);
 /// }
-/// @param {Number} $span - Grid column span
+/// @param {Number} $span [$grid-columns] - Grid column span
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
-@mixin grid-column($span, $columns: $grid-columns) {
+@mixin grid-column($span: $grid-columns, $columns: $grid-columns) {
   @if (unit($span) == '%') {
     $span: strip-unit(math.div($span * $columns, 100));
 
