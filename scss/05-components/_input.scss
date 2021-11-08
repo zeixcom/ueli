@@ -5,12 +5,12 @@
   padding: $input-padding-vertical $input-padding-horizontal;
   border: $input-border-width solid $input-border-color;
   border-radius: $input-border-radius;
-  box-shadow: $input-box-shadow;
-  background-clip: padding-box; // remove shadow in iOS
   background-color: $input-bg;
+  background-clip: padding-box; // remove shadow in iOS
   color: $input-color;
-  color-adjust: exact; // Keep custom styles for print
+  box-shadow: $input-box-shadow;
   transition: $input-transition;
+  color-adjust: exact; // Keep custom styles for print
 
   &:focus {
     border-color: $input-focus-border-color;

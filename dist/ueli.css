@@ -375,8 +375,8 @@ audio {
 blockquote,
 dd,
 figure {
-  margin-left: 0;
   margin-right: 0;
+  margin-left: 0;
 }
 
 iframe {
@@ -488,22 +488,6 @@ p:last-child {
   margin-bottom: 0;
 }
 
-h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
-  font-family: inherit;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: normal;
-  margin-top: 0.8em;
-  margin-bottom: 0.4em;
-  color: inherit;
-}
-h6:first-child, .h6:first-child, h5:first-child, .h5:first-child, h4:first-child, .h4:first-child, h3:first-child, .h3:first-child, h2:first-child, .h2:first-child, h1:first-child, .h1:first-child {
-  margin-top: 0;
-}
-h6:last-child, .h6:last-child, h5:last-child, .h5:last-child, h4:last-child, .h4:last-child, h3:last-child, .h3:last-child, h2:last-child, .h2:last-child, h1:last-child, .h1:last-child {
-  margin-bottom: 0;
-}
-
 h6, .h6 {
   font-size: 1rem;
 }
@@ -528,6 +512,22 @@ h1, .h1 {
   font-size: 3.0517578125rem;
 }
 
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: normal;
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+  color: inherit;
+}
+h6:first-child, .h6:first-child, h5:first-child, .h5:first-child, h4:first-child, .h4:first-child, h3:first-child, .h3:first-child, h2:first-child, .h2:first-child, h1:first-child, .h1:first-child {
+  margin-top: 0;
+}
+h6:last-child, .h6:last-child, h5:last-child, .h5:last-child, h4:last-child, .h4:last-child, h3:last-child, .h3:last-child, h2:last-child, .h2:last-child, h1:last-child, .h1:last-child {
+  margin-bottom: 0;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -539,8 +539,8 @@ a:not([class]) {
   transition: color 150ms linear;
 }
 a:not([class]):hover {
-  text-decoration: underline;
   color: #025ead;
+  text-decoration: underline;
 }
 a:not([class]):active {
   color: #025ead;
@@ -562,13 +562,13 @@ label {
 
 @supports ((-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none)) {
   select:not([multiple]) {
+    padding-right: 2em;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27%3E%3Cpath fill=%27%23333333%27 d=%27m1.41 0 4.59 4.58 4.59-4.58 1.41 1.41l-6 6-6-6z%27/%3E%3C/svg%3E");
+    background-position: right 0.75em center;
+    background-repeat: no-repeat;
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
-    padding-right: 2em;
-    background-repeat: no-repeat;
-    background-position: right 0.75em center;
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27%3E%3Cpath fill=%27%23333333%27 d=%27m1.41 0 4.59 4.58 4.59-4.58 1.41 1.41l-6 6-6-6z%27/%3E%3C/svg%3E");
   }
 }
 select[multiple], select[size] {
@@ -594,6 +594,8 @@ input[type=date] {
 input[type=date],
 input[type=month] {
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 input[type=file] {
@@ -730,17 +732,21 @@ h3 {
 .container {
   padding-left: 1.875rem;
   padding-right: 1.875rem;
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
   max-width: 91.875rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .grid-row {
+  gap: 1.875rem;
   display: grid;
   grid-template-rows: repeat(var(--rows, 1), 1fr);
   grid-template-columns: repeat(var(--columns, 12), 1fr);
-  gap: 1.875rem;
+}
+
+.grid-col {
+  grid-column: auto/span 12;
 }
 
 .grid-col-1 {
@@ -1270,12 +1276,12 @@ h3 {
 .formatted-text ul li::before {
   top: 0.25em;
   left: -0.4375em;
-  height: 1em;
   width: 1em;
-  background-repeat: no-repeat;
+  height: 1em;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2711%27 height=%272%27 viewBox=%270 0 11 2%27%3E%3Cpath fill=%27none%27 stroke=%27%23333333%27 stroke-width=%272%27 d=%27M1.5,1.5h8%27/%3E%3C/svg%3E");
   background-position: center center;
   background-size: contain;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2711%27 height=%272%27 viewBox=%270 0 11 2%27%3E%3Cpath fill=%27none%27 stroke=%27%23333333%27 stroke-width=%272%27 d=%27M1.5,1.5h8%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
 }
 
 .list--ordered,
@@ -1285,9 +1291,9 @@ h3 {
 .list--ordered li::before,
 .formatted-text ol li::before {
   content: counters(ordered-list, ".") ". ";
-  counter-increment: ordered-list;
   left: -0.3125em;
   color: #333333;
+  counter-increment: ordered-list;
 }
 
 .form-control {
@@ -1297,13 +1303,13 @@ h3 {
   padding: 0.375em 0.75em;
   border: 1px solid #cccccc;
   border-radius: 0.125em;
-  box-shadow: none;
-  background-clip: padding-box;
   background-color: #fff;
+  background-clip: padding-box;
   color: #333333;
+  box-shadow: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
   -webkit-print-color-adjust: exact;
           color-adjust: exact;
-  transition: border-color 150ms ease, box-shadow 150ms ease;
 }
 .form-control:focus {
   border-color: #0275d8;
@@ -1324,7 +1330,7 @@ h3 {
 .radio [type=radio] ~ label,
 .checkbox [type=checkbox] ~ label {
   position: relative;
-  padding-left: 1.4em;
+  padding-left: 1.375em;
   line-height: 1.5;
 }
 .radio [type=radio] ~ label::before,
@@ -1348,16 +1354,16 @@ h3 {
 }
 .radio [type=radio] ~ label::after,
 .checkbox [type=checkbox] ~ label::after {
-  background-repeat: no-repeat;
   background-position: center center;
+  background-repeat: no-repeat;
   opacity: 0;
-  transform: scale(0);
   transition: opacity 150ms linear, transform 150ms ease;
+  transform: scale(0);
 }
 .radio [type=radio]:disabled ~ label::before,
 .checkbox [type=checkbox]:disabled ~ label::before {
-  background-color: #e6e6e6;
   border-color: #cccccc;
+  background-color: #e6e6e6;
 }
 .radio [type=radio]:focus ~ label::before,
 .checkbox [type=checkbox]:focus ~ label::before {
@@ -1394,13 +1400,13 @@ h3 {
 }
 
 .button-link {
-  border: 0;
   padding: 0;
+  border: 0;
   background-color: transparent;
   color: inherit;
   color: #0275d8;
-  text-decoration: none;
   font-weight: 400;
+  text-decoration: none;
   -webkit-user-select: text;
      -moz-user-select: text;
       -ms-user-select: text;
@@ -1417,7 +1423,6 @@ h3 {
   padding: 0.375em 1em;
   border: 1px solid transparent;
   border-radius: 0.125em;
-  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
   text-align: center;
   text-decoration: none;
   white-space: normal;
@@ -1425,6 +1430,7 @@ h3 {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
   touch-action: manipulation;
 }
 .button:disabled, .button.disabled {
@@ -1572,19 +1578,19 @@ h3 {
 }
 .sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
   white-space: nowrap;
 }
 
 .sr-only-focusable:active, .sr-only-focusable:focus {
   position: static;
-  width: auto;
-  height: auto;
   overflow: visible;
   clip: auto;
+  width: auto;
+  height: auto;
   white-space: inherit;
 }
 

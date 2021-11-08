@@ -168,7 +168,7 @@ $input-color: $color-foreground !default;
 $input-border-color: $color-line !default;
 $input-box-shadow: none !default;
 $input-focus-border-color: $color-accent !default;
-$input-focus-box-shadow: 0 0 0 to-em(3px) rgba($color-accent, 0.25) !default;
+$input-focus-box-shadow: 0 0 0 to-em(3px) transparentize($color-accent, 0.75%) !default;
 $input-disabled-bg: $color-background-muted !default;
 $input-disabled-color: $color-foreground-muted !default;
 $input-disabled-border-color: $color-line !default;
@@ -179,7 +179,9 @@ $select-icon-color: $color-foreground !default;
 
 // Checkbox & Radio
 $selection-icon-color: $color-foreground-inverted !default;
+$selection-size: to-em(16px) !default;
 $selection-offset-top: to-em(4px) !default;
+$selection-label-indent: to-em(22px) !default;
 $selection-border-width: $input-border-width !default;
 $selection-border-color: $input-border-color !default;
 $selection-bg: $input-bg !default;
@@ -226,7 +228,7 @@ $button-variations: (
       '&:focus': (
         background-color: shade-color($color-accent, 20%),
         color: $color-foreground-inverted,
-        box-shadow: 0 0 0 to-em(3px) rgba($color-accent, 0.35),
+        box-shadow: 0 0 0 to-em(3px) transparentize($color-accent, 0.65),
       ),
       '&:disabled, &.disabled': (
         opacity: 0.65,
