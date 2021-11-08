@@ -9,8 +9,8 @@ a:not([class]) {
   transition: $link-transition;
 
   &:hover {
-    text-decoration: $link-hover-decoration;
     color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
   }
 
   &:active {

@@ -1,4 +1,6 @@
 @if ($headings and length($headings) > 0) {
+  @include scale-headings;
+
   #{$headings} {
     @include typography('heading');
 
@@ -14,6 +16,4 @@
       margin-bottom: 0;
     }
   }
-
-  @include scale-headings;
 }
