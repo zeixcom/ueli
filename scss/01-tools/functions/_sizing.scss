@@ -15,7 +15,8 @@
 /// Complete a sizing map by adding a `max` key with the value of the `min` key.
 /// Alternatively a value for the `max` key can be provided with the $value parameter.
 ///
-/// @param {Map} $map - Map to complete
+/// @param {Map} $map - Sizing map to complete
+/// @return {Map} - Completed sizing map
 @function complete-sizing-map($map, $value: null) {
   $max-value: map-get($map, 'min') or $value;
 
