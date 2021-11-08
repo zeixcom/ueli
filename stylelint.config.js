@@ -4,12 +4,10 @@ module.exports = {
   ignoreFiles: ['**/_normalize.scss'],
   customSyntax: 'postcss-scss',
   rules: {
-    'string-quotes': null,
-    'alpha-value-notation': null,
+    'alpha-value-notation': 'number',
     'at-rule-no-unknown': null,
     'scss/at-rule-no-unknown': true,
     'declaration-empty-line-before': null,
-    'length-zero-no-unit': null,
     'order/order': [
       [
         {
