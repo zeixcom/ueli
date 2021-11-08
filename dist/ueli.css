@@ -1328,7 +1328,7 @@ h3 {
 .radio [type=radio] ~ label,
 .checkbox [type=checkbox] ~ label {
   position: relative;
-  padding-left: 1.4em;
+  padding-left: 1.375em;
   line-height: 1.5;
 }
 .radio [type=radio] ~ label::before,
