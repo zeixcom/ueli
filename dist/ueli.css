@@ -743,6 +743,10 @@ h3 {
   gap: 1.875rem;
 }
 
+.grid-col {
+  grid-column: auto/span 12;
+}
+
 .grid-col-1 {
   grid-column: auto/span 1;
 }

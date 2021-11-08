@@ -40,9 +40,9 @@
 /// .grid-col {
 ///   @include grid-column(6);
 /// }
-/// @param {Number} $span - Grid column span
+/// @param {Number} $span [$grid-columns] - Grid column span
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
-@mixin grid-column($span, $columns: $grid-columns) {
+@mixin grid-column($span: $grid-columns, $columns: $grid-columns) {
   @if (unit($span) == '%') {
     $span: strip-unit(math.div($span * $columns, 100));
 
