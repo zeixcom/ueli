@@ -179,7 +179,9 @@ $select-icon-color: $color-foreground !default;
 
 // Checkbox & Radio
 $selection-icon-color: $color-foreground-inverted !default;
+$selection-size: to-em(16px) !default;
 $selection-offset-top: to-em(4px) !default;
+$selection-label-indent: to-em(22px) !default;
 $selection-border-width: $input-border-width !default;
 $selection-border-color: $input-border-color !default;
 $selection-bg: $input-bg !default;

@@ -3,6 +3,10 @@
     @include grid-row;
   }
 
+  .grid-col {
+    @include grid-column;
+  }
+
   // Generate column classes for all breakpoints
   @include loop-breakpoints {
     @include generate-grid-columns($breakpoint);
