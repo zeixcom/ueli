@@ -68,15 +68,13 @@
           $multiplicand: -1;
         }
 
-        $value: calc(
-          (
-              #{$min-size} +
-                #{strip-unit($max-size - $min-size)} *
-                (100vw - #{to-rem($min-breakpoint-value)}) /
-                #{strip-unit(to-rem($max-breakpoint-value) - to-rem($min-breakpoint-value))}
-            ) *
-            #{$multiplicand}
+        $diff-sizes: strip-unit($max-size - $min-size);
+        $diff-breakpoints: strip-unit(
+          to-rem($max-breakpoint-value) - to-rem($min-breakpoint-value)
         );
+
+        // prettier-ignore
+        $value: calc((#{$min-size} + #{$diff-sizes} * (100vw - #{to-rem($min-breakpoint-value)}) / #{$diff-breakpoints}) * #{$multiplicand});
 
         @if $current-breakpoint {
           // Breakpoint set already in parent mixin (loop-variation)
