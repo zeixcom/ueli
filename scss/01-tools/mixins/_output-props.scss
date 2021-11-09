@@ -15,7 +15,7 @@
     $value: $value * -1;
   }
 
-  @if (type-of($value) == 'number' and not unitless($value)) {
+  @if (type-of($value) == 'number' and unit($value) == 'px') {
     $value: to-rem($value);
   }
 

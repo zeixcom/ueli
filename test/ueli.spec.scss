@@ -1,0 +1,456 @@
+@use 'true' as *;
+@import './scss/01-tools/functions';
+@import './scss/01-tools/mixins';
+
+$mq-breakpoints: (
+  xs: 0px,
+  sm: 600px,
+  md: 900px,
+  lg: 1200px,
+  xl: 1500px,
+);
+
+$fluid-breakpoints: (
+  min: sm,
+  max: xl,
+);
+
+$fluid-scaling: true;
+
+// ============================================================================
+// Mixin: loop-variation
+// ============================================================================
+@include describe('[mixin] loop-variation') {
+  @include describe('Given a pixel value to loop-variation mixin') {
+    @include it('Should output the value converted to rem') {
+      @include assert {
+        @include output {
+          @include loop-variation(30px, 'margin');
+        }
+
+        @include expect {
+          margin: 1.875rem;
+        }
+      }
+    }
+  }
+
+  @include describe('Given a non pixel value to loop-variation mixin') {
+    @include it('Should output the value untouched') {
+      @include assert {
+        @include output {
+          @include loop-variation(100%, 'margin');
+        }
+
+        @include expect {
+          margin: 100%;
+        }
+      }
+    }
+  }
+
+  @include describe('Given a pixel value and the negative flag to loop-variation mixin') {
+    @include it('Should output the negated value converted to rem') {
+      @include assert {
+        @include output {
+          @include loop-variation(30px, 'margin', $negative: true);
+        }
+
+        @include expect {
+          margin: -1.875rem;
+        }
+      }
+    }
+  }
+
+  @include describe('Given a pixel value and the important flag to loop-variation mixin') {
+    @include it('Should output the value converted to rem and with the important flag') {
+      @include assert {
+        @include output {
+          @include loop-variation(30px, 'margin', $important: true);
+        }
+
+        @include expect {
+          margin: 1.875rem !important;
+        }
+      }
+    }
+  }
+
+  @include describe('Given a sizing map (min key only) to loop-variation mixin') {
+    @include it('Should output the value converted to rem') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              min: 30px,
+            ),
+            'margin'
+          );
+        }
+
+        @include expect {
+          margin: 1.875rem;
+        }
+      }
+    }
+  }
+
+  @include describe('Given a sizing map (min and max key) to loop-variation mixin') {
+    @include it('Should output the fluid calc formula as well as the min and max values') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              min: 30px,
+              max: 60px,
+            ),
+            'margin'
+          );
+        }
+
+        @include expect {
+          margin: 1.875rem;
+
+          @media (min-width: 37.5em) {
+            margin: calc((1.875rem + 1.875 * (100vw - 37.5rem) / 56.25) * 1);
+          }
+
+          @media (min-width: 93.75em) {
+            margin: 3.75rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include describe('Given a breakpoint map to loop-variation mixin') {
+    @include it('Should output the values for each breakpoint') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              xs: 30px,
+              md: 60px,
+              xl: 80px,
+            ),
+            'margin'
+          );
+        }
+
+        @include expect {
+          margin: 1.875rem;
+
+          @media (min-width: 56.25em) {
+            margin: 3.75rem;
+          }
+          @media (min-width: 93.75em) {
+            margin: 5rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include describe('Given a breakpoint map with sizing map values to loop-variation mixin') {
+    @include it('Should output values and fluid calc formula for each breakpoint') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              xs: 30px,
+              md: (
+                min: 30px,
+                max: 60px,
+              ),
+              lg: (
+                min: 60px,
+                max: 80px,
+              ),
+              xl: 80px,
+            ),
+            'margin'
+          );
+        }
+
+        @include expect {
+          margin: 1.875rem;
+
+          @media (min-width: 56.25em) {
+            margin: calc((1.875rem + 1.875 * (100vw - 56.25rem) / 18.75) * 1);
+          }
+          @media (min-width: 75em) {
+            margin: calc((3.75rem + 1.25 * (100vw - 75rem) / 18.75) * 1);
+          }
+          @media (min-width: 93.75em) {
+            margin: 5rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include describe('Given a map of CSS properties to loop-variation mixin') {
+    @include it('Should output the CSS properties with pixel units converted to rem') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              font-family: 'sans-serif',
+              font-weight: bold,
+              font-size: 16px,
+              line-height: 1.5,
+              transition: 0.15s ease,
+              transition-property: unquote('transform, opacity'),
+            )
+          );
+        }
+
+        @include expect {
+          font-family: 'sans-serif';
+          font-weight: bold;
+          font-size: 1rem;
+          line-height: 1.5;
+          transition: 0.15s ease;
+          transition-property: transform, opacity;
+        }
+      }
+    }
+  }
+
+  @include describe(
+    'Given a map of CSS properties, one with a sizing map (min and max key) to loop-variation mixin'
+  ) {
+    @include it('Should output the CSS properties and the fluid calc formula') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              font-family: 'sans-serif',
+              font-weight: bold,
+              font-size: (
+                min: 16px,
+                max: 32px,
+              ),
+              line-height: 1.5,
+            )
+          );
+        }
+
+        @include expect {
+          font-family: 'sans-serif';
+          font-weight: bold;
+          font-size: 1rem;
+          line-height: 1.5;
+
+          @media (min-width: 37.5em) {
+            font-size: calc((1rem + 1 * (100vw - 37.5rem) / 56.25) * 1);
+          }
+          @media (min-width: 93.75em) {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include describe(
+    'Given a map of CSS properties, one with a selectors key to loop-variation mixin'
+  ) {
+    @include it('Should output the CSS properties and the selector styles') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              background-color: #000,
+              color: #fff,
+              selectors: (
+                '&:hover': (
+                  background-color: #fff,
+                  color: #000,
+                ),
+              ),
+            )
+          );
+        }
+
+        @include expect {
+          background-color: #000;
+          color: #fff;
+
+          &:hover {
+            background-color: #fff;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+
+  @include describe(
+    'Given a map of CSS properties, one with a nested selectors key to loop-variation mixin'
+  ) {
+    @include it('Should output the CSS properties and the nested selector styles') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              background-color: #000,
+              color: #fff,
+              selectors: (
+                '&:hover': (
+                  background-color: #fff,
+                  color: #000,
+                  selectors: (
+                    'span': (
+                      transform: translateX(3px),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          );
+        }
+
+        @include expect {
+          background-color: #000;
+          color: #fff;
+
+          &:hover {
+            background-color: #fff;
+            color: #000;
+          }
+
+          &:hover span {
+            transform: translateX(3px);
+          }
+        }
+      }
+    }
+  }
+
+  @include describe('Given a breakpoint map with CSS properties to loop-variation mixin') {
+    @include it('Should output the CSS properties for each breakpoint') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              xs: (
+                font-size: 16px,
+              ),
+              md: (
+                font-size: 20px,
+              ),
+              xl: (
+                font-size: 32px,
+              ),
+            )
+          );
+        }
+
+        @include expect {
+          font-size: 1rem;
+
+          @media (min-width: 56.25em) {
+            font-size: 1.25rem;
+          }
+
+          @media (min-width: 93.75em) {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include describe(
+    'Given a breakpoint map with CSS properties, one with a sizing map (min and max key) to loop-variation mixin'
+  ) {
+    @include it('Should output the CSS properties for each breakpoint and the fluid calc formula') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              xs: (
+                font-size: 16px,
+              ),
+              md: (
+                font-size: (
+                  min: 16px,
+                  max: 32px,
+                ),
+              ),
+              xl: (
+                font-size: 32px,
+              ),
+            )
+          );
+        }
+
+        @include expect {
+          font-size: 1rem;
+
+          @media (min-width: 56.25em) {
+            font-size: calc((1rem + 1 * (100vw - 56.25rem) / 37.5) * 1);
+          }
+
+          @media (min-width: 93.75em) {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+
+  @include describe('Given a breakpoint map with nested selectors keys to loop-variation mixin') {
+    @include it('Should output the selector styles for each breakpoint') {
+      @include assert {
+        @include output {
+          @include loop-variation(
+            (
+              xs: (
+                selectors: (
+                  '&:hover': (
+                    color: blue,
+                  ),
+                ),
+              ),
+              sm: (
+                selectors: (
+                  '&:hover': (
+                    color: red,
+                  ),
+                ),
+              ),
+              md: (
+                selectors: (
+                  '&:hover': (
+                    color: green,
+                  ),
+                ),
+              ),
+            )
+          );
+        }
+
+        @include expect {
+          &:hover {
+            color: blue;
+          }
+
+          @media (min-width: 37.5em) {
+            &:hover {
+              color: red;
+            }
+          }
+
+          @media (min-width: 56.25em) {
+            &:hover {
+              color: green;
+            }
+          }
+        }
+      }
+    }
+  }
+}
