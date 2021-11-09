@@ -558,9 +558,17 @@
     .#{$col-base}-#{$i} {
       @include grid-column($i, $grid-columns);
     }
+  }
+
+  @for $i from 1 through $grid-columns {
+    $col-base: &#39;grid-col-start&#39;;
+
+    @if (not is-first-breakpoint($breakpoint)) {
+      $col-base: $col-base + &#39;-&#39; + $breakpoint;
+    }
 
     @if $i &lt; $grid-columns {
-      .#{$col-base}-start-#{$i} {
+      .#{$col-base}-#{$i} {
         @include grid-column-start($i, $grid-columns);
       }
     }
