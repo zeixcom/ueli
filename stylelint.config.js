@@ -1,8 +1,4 @@
 module.exports = {
-  extends: [
-    'stylelint-config-standard',
-    'stylelint-config-prettier',
-    '@zeix/stylelint-config-zeix',
-  ],
+  extends: ['@zeix/stylelint-config'],
   ignoreFiles: ['**/_normalize.scss'],
 };
