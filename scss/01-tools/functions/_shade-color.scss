@@ -2,6 +2,8 @@
 /// @group global
 ////
 
+@use 'sass:color';
+
 /// Slightly darken a color
 ///
 /// @example scss
@@ -12,5 +14,5 @@
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color} - Shaded color
 @function shade-color($color, $percentage) {
-  @return mix(#000, $color, $percentage);
+  @return color.mix(#000, $color, $percentage);
 }

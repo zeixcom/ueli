@@ -2,6 +2,10 @@
 /// @group variation
 ////
 
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+
 /// Output one or many CSS properties. Numbers with units get converted to Rem automatically.
 ///
 /// @param {String|List} $props - Any CSS property or a list of CSS properties
@@ -15,17 +19,17 @@
     $value: $value * -1;
   }
 
-  @if (type-of($value) == 'number' and not unitless($value)) {
+  @if (meta.type-of($value) == 'number' and not math.is-unitless($value)) {
     $value: to-rem($value);
   }
 
   @if $important {
-    $important: unquote('!important');
+    $important: string.unquote('!important');
   } @else {
     $important: null;
   }
 
-  @if (type-of($props) == 'list') {
+  @if (meta.type-of($props) == 'list') {
     @each $prop in $props {
       #{$prop}: $value $important;
     }

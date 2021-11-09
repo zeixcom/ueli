@@ -2,6 +2,9 @@
 /// @group token
 ////
 
+@use 'sass:map';
+@use 'sass:meta';
+
 /// Wrapper mixin for fluid-calc that gets spacings from the map `$token-spacings`
 ///
 /// @param {String} $prop - Any CSS property that supports calc as a value
@@ -10,12 +13,12 @@
 /// @param {Bool} $negative [false] - Negates the values if true
 /// @param {Bool} $important [false] - Adds important flag if true
 @mixin spacing($prop, $sizes: $token-spacings-default, $negative: false, $important: false) {
-  $spacing-sizes: map-get($token-spacings, $sizes);
+  $spacing-sizes: map.get($token-spacings, $sizes);
 
   @if $spacing-sizes {
     $sizes: $spacing-sizes;
   } @else {
-    @if (type-of($sizes) == 'string') {
+    @if (meta.type-of($sizes) == 'string') {
       @error "The spacing `#{$sizes}` wasn't found in map $token-spacings.";
     }
   }

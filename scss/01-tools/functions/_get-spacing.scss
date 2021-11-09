@@ -2,13 +2,15 @@
 /// @group token
 ////
 
+@use 'sass:map';
+
 /// Get a single spacing value from the map `$token-spacings`
 ///
 /// @param {String} $name [$token-spacings-default] - Map key of `$token-spacings`
 /// @param {String} $sizing ['min'] - Sizing type 'min' or 'max'
 /// @param {String} $breakpoint [null] - Named breakpoint key of `$mq-breakpoints`
 @function get-spacing($name: $token-spacings-default, $sizing: 'min', $breakpoint: null) {
-  $spacing: map-get($token-spacings, $name);
+  $spacing: map.get($token-spacings, $name);
 
   @if (not $spacing) {
     @error "The spacing `#{$name}` wasn't found in map $token-spacings.";
@@ -16,11 +18,11 @@
 
   @if is-breakpoint-map($spacing) {
     $breakpoint: $breakpoint or get-first-breakpoint();
-    $spacing: map-get($spacing, $breakpoint);
+    $spacing: map.get($spacing, $breakpoint);
   }
 
   @if (is-sizing-map($spacing)) {
-    $spacing: map-get($spacing, $sizing);
+    $spacing: map.get($spacing, $sizing);
 
     @if (not $spacing) {
       @error "The sizing `#{$sizing}` wasn't found for the spacing `#{$name}`.";

@@ -2,6 +2,8 @@
 /// @group token
 ////
 
+@use 'sass:map';
+
 /// Get an duration value from the `$token-durations` map
 ///
 /// @param {String} $name [$token-durations-default] - Map key of `$token-durations`
@@ -11,7 +13,7 @@
 /// }
 /// @return {Number} duration value
 @function get-duration($name: $token-durations-default) {
-  $duration: map-get($token-durations, $name);
+  $duration: map.get($token-durations, $name);
 
   @if not $duration {
     @error "The key `#{$name}` wasn't found in $token-durations.";

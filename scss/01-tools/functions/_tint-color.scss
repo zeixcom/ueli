@@ -2,6 +2,8 @@
 /// @group global
 ////
 
+@use 'sass:color';
+
 /// Slightly lighten a color
 ///
 /// @example scss
@@ -12,5 +14,5 @@
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color} - Tinted color
 @function tint-color($color, $percentage) {
-  @return mix(#fff, $color, $percentage);
+  @return color.mix(#fff, $color, $percentage);
 }

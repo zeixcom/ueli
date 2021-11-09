@@ -2,6 +2,9 @@
 /// @group token
 ////
 
+@use 'sass:list';
+@use 'sass:map';
+
 /// Get a z-index value from the `$layers` map
 ///
 /// @param {String} $name - Map key of `$layers`
@@ -11,11 +14,11 @@
 /// }
 /// @return {Number} z-index value
 @function get-index($name) {
-  @if map-has-key($layers, $name) {
-    $accumulator: nth(map-values($layers), 1);
+  @if map.has-key($layers, $name) {
+    $accumulator: list.nth(map.values($layers), 1);
 
     @each $key, $val in $layers {
-      @if $val == null {
+      @if not $val {
         $accumulator: $accumulator + 1;
         $val: $accumulator;
       } @else {

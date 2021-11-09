@@ -2,6 +2,9 @@
 /// @group global
 ////
 
+@use 'sass:color';
+@use 'sass:map';
+
 // Functional Colors
 $color-accent: get-color(blue) !default;
 $color-background: get-color(white) !default;
@@ -114,7 +117,7 @@ $grid-gutter: (
   min: 30px,
 ) !default;
 
-$container: map-get($mq-breakpoints, xl) !default;
+$container: map.get($mq-breakpoints, xl) !default;
 
 /// Grid Container Gutter
 ///
@@ -168,7 +171,7 @@ $input-color: $color-foreground !default;
 $input-border-color: $color-line !default;
 $input-box-shadow: none !default;
 $input-focus-border-color: $color-accent !default;
-$input-focus-box-shadow: 0 0 0 to-em(3px) transparentize($color-accent, 0.75%) !default;
+$input-focus-box-shadow: 0 0 0 to-em(3px) color.adjust($color-accent, $alpha: -0.75%) !default;
 $input-disabled-bg: $color-background-muted !default;
 $input-disabled-color: $color-foreground-muted !default;
 $input-disabled-border-color: $color-line !default;
@@ -228,7 +231,7 @@ $button-variations: (
       '&:focus': (
         background-color: shade-color($color-accent, 20%),
         color: $color-foreground-inverted,
-        box-shadow: 0 0 0 to-em(3px) transparentize($color-accent, 0.65),
+        box-shadow: 0 0 0 to-em(3px) color.adjust($color-accent, $alpha: -0.65),
       ),
       '&:disabled, &.disabled': (
         opacity: 0.65,
