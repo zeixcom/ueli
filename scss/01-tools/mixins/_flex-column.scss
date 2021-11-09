@@ -3,6 +3,7 @@
 ////
 
 @use 'sass:math';
+@use 'sass:meta';
 
 /// Output flex column base styles with gutter
 ///
@@ -22,14 +23,14 @@
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
 @mixin flex-column($size: 'expand', $columns: $grid-columns) {
   @if $size {
-    @if (type-of($size) == 'number') {
-      @if (unit($size) == '%') {
+    @if (meta.type-of($size) == 'number') {
+      @if (math.unit($size) == '%') {
         width: $size;
       } @else {
         @if $size < 1 {
-          width: percentage($size);
+          width: math.percentage($size);
         } @else {
-          width: percentage(math.div($size, $columns));
+          width: math.percentage(math.div($size, $columns));
         }
       }
     } @else {
@@ -53,7 +54,7 @@
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
 @mixin flex-column-push($size, $columns: $grid-columns) {
   @if $size > 0 {
-    left: percentage(math.div($size, $columns));
+    left: math.percentage(math.div($size, $columns));
   } @else {
     left: auto;
   }
@@ -65,7 +66,7 @@
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
 @mixin flex-column-pull($size, $columns: $grid-columns) {
   @if $size > 0 {
-    right: percentage(math.div($size, $columns));
+    right: math.percentage(math.div($size, $columns));
   } @else {
     right: auto;
   }
@@ -77,7 +78,7 @@
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
 @mixin flex-column-offset($size, $columns: $grid-columns) {
   @if $size < $columns {
-    margin-left: percentage(math.div($size, $columns));
+    margin-left: math.percentage(math.div($size, $columns));
   }
 }
 

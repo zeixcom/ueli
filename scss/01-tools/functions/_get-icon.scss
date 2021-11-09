@@ -2,6 +2,10 @@
 /// @group global
 ////
 
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
+
 /// Get an icon from the `$icons` map in the specified color
 ///
 /// @param {String} $icon - Map key of `$icons`
@@ -12,12 +16,12 @@
 /// }
 /// @return {String} Encoded SVG icon string
 @function get-icon($icon, $color: $color-icon) {
-  $color: inspect($color);
+  $color: meta.inspect($color);
 
-  @if (str-index($color, '#') != null) {
-    @if map-has-key($icons, $icon) {
-      $icon: 'data:image/svg+xml;charset=utf8,' + map-get($icons, $icon);
-      $icon: str-replace($icon, inspect($color-icon), $color);
+  @if (string.index($color, '#')) {
+    @if map.has-key($icons, $icon) {
+      $icon: 'data:image/svg+xml;charset=utf8,' + map.get($icons, $icon);
+      $icon: str-replace($icon, meta.inspect($color-icon), $color);
 
       @each $char, $encoded in (('<', '%3C'), ('>', '%3E'), ('#', '%23'), ('"', "'")) {
         $icon: str-replace($icon, $char, $encoded);

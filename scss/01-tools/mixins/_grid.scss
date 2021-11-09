@@ -43,7 +43,7 @@
 /// @param {Number} $span [$grid-columns] - Grid column span
 /// @param {Number} $columns [$grid-columns] - Number of grid columns
 @mixin grid-column($span: $grid-columns, $columns: $grid-columns) {
-  @if (unit($span) == '%') {
+  @if (math.unit($span) == '%') {
     $span: strip-unit(math.div($span * $columns, 100));
 
     @if (math.ceil($span) != $span) {

@@ -2,6 +2,10 @@
 /// @group sizing
 ////
 
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
 /// Generate min, max and fluid in-between values for a given CSS property
 ///
 /// @param {String|List} $prop - Any CSS property or a list of CSS properties
@@ -22,27 +26,27 @@
 ) {
   $min-size: null;
   $max-size: null;
-  $min-breakpoint: map-get($breakpoints, 'min');
-  $max-breakpoint: map-get($breakpoints, 'max');
+  $min-breakpoint: map.get($breakpoints, 'min');
+  $max-breakpoint: map.get($breakpoints, 'max');
   $min-breakpoint-value: $min-breakpoint;
   $max-breakpoint-value: $max-breakpoint;
 
-  @if (type-of($sizes) == 'map') {
-    $min-size: map-get($sizes, 'min');
-    $max-size: map-get($sizes, 'max');
-  } @else if (type-of($sizes) == 'list') {
-    $min-size: nth($sizes, 1);
-    $max-size: nth($sizes, 2);
-  } @else if (type-of($sizes) == 'number') {
+  @if (meta.type-of($sizes) == 'map') {
+    $min-size: map.get($sizes, 'min');
+    $max-size: map.get($sizes, 'max');
+  } @else if (meta.type-of($sizes) == 'list') {
+    $min-size: list.nth($sizes, 1);
+    $max-size: list.nth($sizes, 2);
+  } @else if (meta.type-of($sizes) == 'number') {
     $min-size: $sizes;
   }
 
-  @if map-has-key($mq-breakpoints, $min-breakpoint) {
-    $min-breakpoint-value: map-get($mq-breakpoints, $min-breakpoint);
+  @if map.has-key($mq-breakpoints, $min-breakpoint) {
+    $min-breakpoint-value: map.get($mq-breakpoints, $min-breakpoint);
   }
 
-  @if map-has-key($mq-breakpoints, $max-breakpoint) {
-    $max-breakpoint-value: map-get($mq-breakpoints, $max-breakpoint);
+  @if map.has-key($mq-breakpoints, $max-breakpoint) {
+    $max-breakpoint-value: map.get($mq-breakpoints, $max-breakpoint);
   }
 
   @if $min-size {
@@ -51,8 +55,8 @@
     @if (
       not
         $current-breakpoint or
-        ($current-breakpoint == nth($all-breakpoints, 1)) or
-        ($current-breakpoint == nth($all-breakpoints, length($all-breakpoints))) and not
+        ($current-breakpoint == list.nth($all-breakpoints, 1)) or
+        ($current-breakpoint == list.nth($all-breakpoints, list.length($all-breakpoints))) and not
         $max-size
     ) {
       @include output-props($prop, $min-size, $negative, $important);
@@ -89,7 +93,7 @@
       @if (
         not
           $current-breakpoint or
-          ($current-breakpoint == nth($all-breakpoints, length($all-breakpoints)))
+          ($current-breakpoint == list.nth($all-breakpoints, list.length($all-breakpoints)))
       ) {
         @include mq($max-breakpoint-value) {
           @include output-props($prop, $max-size, $negative, $important);

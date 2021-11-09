@@ -2,6 +2,10 @@
 /// @group button
 ////
 
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
 /// Remove browser default styles from `<button>`
 @mixin button-unstyled {
   padding: 0;
@@ -95,9 +99,9 @@
 ///
 /// @param {Map} $variations [$button-variations] - Map of button variations
 @mixin button-variations($variations: $button-variations) {
-  @if (type-of($variations) == 'map') {
-    $first-key: nth(map-keys($variations), 1);
-    $variations: map-remove($variations, $first-key);
+  @if (meta.type-of($variations) == 'map') {
+    $first-key: list.nth(map.keys($variations), 1);
+    $variations: map.remove($variations, $first-key);
 
     #{$button-selector} {
       @include use-variation($button-variations, $first-key);

@@ -1,4 +1,6 @@
-@if ($headings and length($headings) > 0) {
+@use 'sass:list';
+
+@if ($headings and list.length($headings) > 0) {
   @include scale-headings;
 
   #{$headings} {

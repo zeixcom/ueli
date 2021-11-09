@@ -2,6 +2,9 @@
 /// @group variation
 ////
 
+@use 'sass:map';
+@use 'sass:meta';
+
 /// Loop keys of a variation to output normal and fluid props
 ///
 /// @param {Map} $config - Map of Breakpoints, CSS properties and sizing maps
@@ -14,9 +17,9 @@
   } @else if is-breakpoint-map($config) {
     @each $breakpoint-key, $breakpoint-value in $config {
       @include skip-first-breakpoint($breakpoint-key) {
-        $all-breakpoints: map-keys($config);
+        $all-breakpoints: map.keys($config);
         $next-breakpoint: get-next-breakpoint($breakpoint-key, $config) or
-          map-get($fluid-breakpoints, 'max');
+          map.get($fluid-breakpoints, 'max');
         $breakpoint-range: (
           min: $breakpoint-key,
           max: $next-breakpoint,
@@ -33,7 +36,7 @@
             $current-breakpoint: $breakpoint-key,
             $all-breakpoints: $all-breakpoints
           );
-        } @else if (type-of($breakpoint-value) == 'map') {
+        } @else if (meta.type-of($breakpoint-value) == 'map') {
           @each $deep-key, $deep-value in $breakpoint-value {
             @if ($deep-key == 'selectors') {
               // Special selectors key for pseudo classes
@@ -60,7 +63,7 @@
         }
       }
     }
-  } @else if (type-of($config) == 'map') {
+  } @else if (meta.type-of($config) == 'map') {
     @each $key, $value in $config {
       @if ($key == 'selectors') {
         // Special selectors key for pseudo classes

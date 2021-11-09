@@ -2,6 +2,7 @@
 /// @group global
 ////
 
+@use 'sass:list';
 @use 'sass:math';
 
 /// Convert an aspect ratio to a percentage value
@@ -9,8 +10,8 @@
 /// @param {String} $ratio - Aspect ratio formatted as `x by y`
 /// @return {Number} - Percentage value
 @function ratio-to-percentage($ratio) {
-  $width: nth($ratio, 1);
-  $height: nth($ratio, 3);
+  $width: list.nth($ratio, 1);
+  $height: list.nth($ratio, 3);
 
-  @return percentage(math.div($height, $width));
+  @return math.percentage(math.div($height, $width));
 }

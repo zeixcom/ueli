@@ -2,12 +2,16 @@
 /// @group breakpoint
 ////
 
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
 /// Get the first breakpoint from the map
 ///
 /// @param {Map} $breakpoints [$mq-breakpoints] - Map of breakpoints
 /// @return {Boolean} - First breakpoint from the map
 @function get-first-breakpoint($breakpoints: $mq-breakpoints) {
-  @return nth(map-keys($breakpoints), 1);
+  @return list.nth(map.keys($breakpoints), 1);
 }
 
 /// Check if a breakpoint is the first in the map
@@ -25,7 +29,7 @@
 /// @param {Map} $breakpoints [$mq-breakpoints] - Map of breakpoints
 /// @return {Boolean} - True if the passed breakpoint is the last in the map
 @function is-last-breakpoint($name, $breakpoints: $mq-breakpoints) {
-  @return $name == nth(map-keys($breakpoints), length(map-keys($breakpoints)));
+  @return $name == list.nth(map.keys($breakpoints), list.length(map.keys($breakpoints)));
 }
 
 /// Check if a map contains valid breakpoints
@@ -36,11 +40,11 @@
 @function is-breakpoint-map($map, $breakpoints: $mq-breakpoints) {
   $is-breakpoint-map: false;
 
-  @if (type-of($map) == 'map') {
+  @if (meta.type-of($map) == 'map') {
     $is-breakpoint-map: true;
 
-    @each $key in map-keys($map) {
-      @if (not map-has-key($breakpoints, $key)) {
+    @each $key in map.keys($map) {
+      @if (not map.has-key($breakpoints, $key)) {
         $is-breakpoint-map: false;
       }
     }
@@ -55,16 +59,16 @@
 /// @param {Map} $breakpoints [$mq-breakpoints] - Map of breakpoints
 /// @return {String} - Next breakpoint name
 @function get-next-breakpoint($name, $breakpoints: $mq-breakpoints) {
-  $breakpoint-keys: map-keys($breakpoints);
-  $breakpoint-index: index($breakpoint-keys, $name);
+  $breakpoint-keys: map.keys($breakpoints);
+  $breakpoint-index: list.index($breakpoint-keys, $name);
   $next: false;
 
   @if not $breakpoint-index {
     @error "Breakpoint `#{$name}` not found in $breakpoints";
   }
 
-  @if (length($breakpoint-keys) > 1 and $breakpoint-index < length($breakpoint-keys)) {
-    $next: nth($breakpoint-keys, $breakpoint-index + 1);
+  @if (list.length($breakpoint-keys) > 1 and $breakpoint-index < list.length($breakpoint-keys)) {
+    $next: list.nth($breakpoint-keys, $breakpoint-index + 1);
   }
 
   @return $next;
@@ -77,15 +81,15 @@
 /// @param {Number} $start-index [null] - Map index from which the search should start
 /// @return {String} - Next breakpoint name
 @function get-smaller-breakpoint($name, $breakpoints, $start-index: null) {
-  $breakpoint-keys: map-keys($mq-breakpoints);
-  $index: index($breakpoint-keys, $name) or $start-index;
+  $breakpoint-keys: map.keys($mq-breakpoints);
+  $index: list.index($breakpoint-keys, $name) or $start-index;
   $index: $index - 1;
   $smaller: false;
 
   @if $index > 0 {
-    $smaller: nth($breakpoint-keys, $index);
+    $smaller: list.nth($breakpoint-keys, $index);
 
-    @if not map-has-key($breakpoints, $smaller) {
+    @if not map.has-key($breakpoints, $smaller) {
       $smaller: get-smaller-breakpoint($smaller, $breakpoints, $index);
     }
   }

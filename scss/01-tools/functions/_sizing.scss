@@ -2,6 +2,9 @@
 /// @group sizing
 ////
 
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
 @use 'sass:math';
 
 /// Validate a sizing map
@@ -9,7 +12,7 @@
 /// @param {Map} $map - Map to test
 /// @return {Boolean} - True if the parameter is a map with a `min` key
 @function is-sizing-map($map) {
-  @return (type-of($map) == 'map' and map-has-key($map, 'min') and length($map) < 3);
+  @return (meta.type-of($map) == 'map' and map.has-key($map, 'min') and list.length($map) < 3);
 }
 
 /// Complete a sizing map by adding a `max` key with the value of the `min` key.
@@ -18,9 +21,9 @@
 /// @param {Map} $map - Sizing map to complete
 /// @return {Map} - Completed sizing map
 @function complete-sizing-map($map, $value: null) {
-  $max-value: map-get($map, 'min') or $value;
+  $max-value: map.get($map, 'min') or $value;
 
-  $complete-map: map-merge(
+  $complete-map: map.merge(
     $map,
     (
       max: $max-value,
@@ -35,14 +38,14 @@
 /// @param {Number|Map} $sizing - Sizing map or number
 /// @return {Number} - Largest sizing in the map
 @function get-largest-sizing($sizing) {
-  @if (type-of($sizing) == 'map') {
-    $sizing: nth(map-values($sizing), length($sizing));
+  @if (meta.type-of($sizing) == 'map') {
+    $sizing: list.nth(map.values($sizing), list.length($sizing));
 
     @if is-sizing-map($sizing) {
-      $sizing: map-get($sizing, 'max');
+      $sizing: map.get($sizing, 'max');
 
       @if not $sizing {
-        $sizing: map-get($sizing, 'min');
+        $sizing: map.get($sizing, 'min');
       }
     }
   }
@@ -55,14 +58,14 @@
 /// @param {Number|Map} $sizing - Sizing map, breakpoint map or number
 /// @return {Number|Map} - Map with halved values or halved number
 @function get-half-sizing($sizing) {
-  @if (type-of($sizing) == 'map') {
+  @if (meta.type-of($sizing) == 'map') {
     @each $key, $value in $sizing {
-      @if (type-of($value) == 'map') {
+      @if (meta.type-of($value) == 'map') {
         $nested-map: ();
 
         @each $deep-key, $deep-value in $value {
           // Divide nested map values and add to new map
-          $nested-map: map-merge(
+          $nested-map: map.merge(
             $nested-map,
             (
               $deep-key: math.div($deep-value, 2),
@@ -71,7 +74,7 @@
         }
 
         // Merge new map into map key of the original map
-        $sizing: map-merge(
+        $sizing: map.merge(
           $sizing,
           (
             $key: $nested-map,
@@ -79,7 +82,7 @@
         );
       } @else {
         // Replace map values with divided values
-        $sizing: map-merge(
+        $sizing: map.merge(
           $sizing,
           (
             $key: math.div($value, 2),

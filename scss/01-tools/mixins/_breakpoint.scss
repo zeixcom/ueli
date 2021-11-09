@@ -2,16 +2,20 @@
 /// @group breakpoint
 ////
 
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+
 /// Loop all breakpoints and output `@content`
 ///
 /// @param {Map} $breakpoints [$mq-breakpoints] - Map of breakpoints
 /// @param {Bool} $inclusive [true] - Outputs inclusive media queries (only min-width) if true
 /// @param {Bool} $mq [true] - Outputs media queries if true
 @mixin loop-breakpoints($breakpoints: $mq-breakpoints, $inclusive: true, $mq: true) {
-  $breakpoint-keys: map-keys($breakpoints);
+  $breakpoint-keys: map.keys($breakpoints);
 
-  @for $i from 1 through length($breakpoint-keys) {
-    $breakpoint: nth($breakpoint-keys, $i) !global;
+  @for $i from 1 through list.length($breakpoint-keys) {
+    $breakpoint: list.nth($breakpoint-keys, $i) !global;
     $is-first-breakpoint: is-first-breakpoint($breakpoint);
     $is-last-breakpoint: is-last-breakpoint($breakpoint);
 
@@ -30,8 +34,8 @@
       } @else {
         // first breakpoint
         @if $is-first-breakpoint {
-          @if length($breakpoint-keys) > 1 {
-            @include mq($until: nth($breakpoint-keys, $i + 1), $breakpoints: $breakpoints) {
+          @if list.length($breakpoint-keys) > 1 {
+            @include mq($until: list.nth($breakpoint-keys, $i + 1), $breakpoints: $breakpoints) {
               @content;
             }
           } @else {
@@ -46,7 +50,7 @@
         }
         // remaining breakpoints
         @else {
-          @include mq($breakpoint, nth($breakpoint-keys, $i + 1), $breakpoints: $breakpoints) {
+          @include mq($breakpoint, list.nth($breakpoint-keys, $i + 1), $breakpoints: $breakpoints) {
             @content;
           }
         }
@@ -74,7 +78,7 @@
 ///
 /// @param {Number} $ratio [1.5] - Screen resolution ratio
 @mixin hidpi($ratio: 1.5) {
-  @media (min-resolution: round($ratio * 96dpi)), (min-resolution: $ratio * 1dppx) {
+  @media (min-resolution: math.round($ratio * 96dpi)), (min-resolution: $ratio * 1dppx) {
     @content;
   }
 }

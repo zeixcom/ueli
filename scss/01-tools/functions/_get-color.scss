@@ -2,6 +2,8 @@
 /// @group token
 ////
 
+@use 'sass:map';
+
 /// Get a color from the `$token-colors` map
 ///
 /// @example scss
@@ -11,7 +13,7 @@
 /// @param {String} $name - Map key of `$token-colors`
 /// @return {Color} color value
 @function get-color($name) {
-  $color: map-get($token-colors, $name);
+  $color: map.get($token-colors, $name);
 
   @if not $color {
     @error "The key `#{$name}` wasn't found in $token-colors.";
