@@ -1,9 +1,21 @@
 @use 'true' as *;
+@import './scss/01-tools/functions';
+@import './scss/01-tools/mixins';
 
-@import 'scss/01-tools/functions';
-@import 'scss/00-settings/tokens';
-@import 'scss/00-settings/variables';
-@import 'scss/01-tools/mixins';
+$mq-breakpoints: (
+  xs: 0px,
+  sm: 600px,
+  md: 900px,
+  lg: 1200px,
+  xl: 1500px,
+);
+
+$fluid-breakpoints: (
+  min: sm,
+  max: xl,
+);
+
+$fluid-scaling: true;
 
 // ============================================================================
 // Mixin: loop-variation
