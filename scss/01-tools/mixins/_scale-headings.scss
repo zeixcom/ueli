@@ -16,6 +16,7 @@
       @include loop-variation($scaled-config, 'font-size');
     }
 
+    // stylelint-disable-next-line
     $max-scale: $max-scale + 1;
   }
 }
