@@ -180,9 +180,8 @@ $input-transition: border-color get-duration() get-easing(), box-shadow get-dura
 // Select
 $select-icon-color: $color-foreground !default;
 
-// Checkbox & Radio
+// Selection (Checkbox & Radio)
 $selection-icon-color: $color-foreground-inverted !default;
-$selection-size: to-em(16px) !default;
 $selection-offset-top: to-em(4px) !default;
 $selection-label-indent: to-em(22px) !default;
 $selection-border-width: $input-border-width !default;
@@ -199,6 +198,14 @@ $selection-disabled-color: $input-disabled-color !default;
 $selection-disabled-border-color: $input-disabled-border-color !default;
 $selection-transition: opacity get-duration() get-easing(linear),
   transform get-duration() get-easing() !default;
+
+// Radio
+$radio-selector: '.radio' !default;
+$radio-size: to-rem(18px) !default;
+
+// Checkbox
+$checkbox-selector: '.checkbox' !default;
+$checkbox-size: to-rem(16px) !default;
 $checkbox-border-radius: $input-border-radius !default;
 
 // Placeholder

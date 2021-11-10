@@ -1,33 +1,34 @@
-.radio [type='radio'],
-.checkbox [type='checkbox'] {
-  &:not(:only-child) {
-    opacity: 0;
+#{$radio-selector},
+#{$checkbox-selector} {
+  [type='radio'],
+  [type='checkbox'] {
+    @include sr-only();
   }
 
-  ~ label {
+  label {
     position: relative;
     padding-left: $selection-label-indent;
     line-height: 1.5;
+    margin-bottom: 0;
+    font-weight: inherit;
   }
 
-  ~ label::before,
-  ~ label::after {
+  label::before,
+  label::after {
     content: '';
     position: absolute;
     top: $selection-offset-top;
     left: 0;
-    width: $selection-size;
-    height: $selection-size;
     color-adjust: exact; // Keep custom styles for print
   }
 
-  ~ label::before {
+  label::before {
     border: $selection-border-width solid $selection-border-color;
     background-color: $selection-bg;
     box-shadow: $selection-box-shadow;
   }
 
-  ~ label::after {
+  label::after {
     background-position: center center;
     background-repeat: no-repeat;
     opacity: 0;
@@ -35,48 +36,70 @@
     transform: scale(0);
   }
 
-  &:disabled ~ label::before {
-    border-color: $selection-disabled-border-color;
-    background-color: $selection-disabled-bg;
+  [type='radio']:disabled ~ label,
+  [type='checkbox']:disabled ~ label {
+    color: $selection-disabled-color;
+    cursor: not-allowed;
+
+    &::before {
+      border-color: $selection-disabled-border-color;
+      background-color: $selection-disabled-bg;
+    }
   }
 
-  &:focus ~ label::before {
+  [type='radio']:focus ~ label::before,
+  [type='checkbox']:focus ~ label::before {
     border-color: $selection-focus-border-color;
     box-shadow: $selection-focus-box-shadow;
   }
 
-  &:checked ~ label::before {
+  [type='radio']:checked ~ label::before,
+  [type='checkbox']:checked ~ label::before {
     border-color: $selection-checked-border-color;
     background-color: $selection-checked-bg;
   }
 
-  &:checked ~ label::after {
+  [type='radio']:checked ~ label::after,
+  [type='checkbox']:checked ~ label::after {
     opacity: 1;
     transform: none;
   }
 
-  &:active:not(:disabled) ~ label::before {
+  [type='radio']:active:not(:disabled) ~ label::before,
+  [type='checkbox']:active:not(:disabled) ~ label::before {
     filter: $selection-active-filter;
   }
 }
 
 // stylelint-disable no-descending-specificity
-.radio [type='radio'] {
-  ~ label::before {
+#{$radio-selector} {
+  label::before,
+  label::after {
+    width: $radio-size;
+    height: $radio-size;
+  }
+
+  label::before {
     border-radius: 50%;
   }
 
-  &:checked ~ label::after {
+  [type='radio']:checked ~ label::after {
     background-image: url("#{get-icon('radio', $selection-icon-color)}");
   }
 }
 
-.checkbox [type='checkbox'] {
-  ~ label::before {
+#{$checkbox-selector} {
+  label::before,
+  label::after {
+    width: $checkbox-size;
+    height: $checkbox-size;
+  }
+
+  label::before {
     border-radius: $checkbox-border-radius;
   }
 
-  &:checked ~ label::after {
+  [type='checkbox']:checked ~ label::after {
     background-image: url("#{get-icon('checkbox', $selection-icon-color)}");
   }
 }
