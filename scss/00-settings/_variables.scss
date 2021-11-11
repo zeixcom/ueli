@@ -201,7 +201,7 @@ $selection-transition: opacity get-duration() get-easing(linear),
 // Radio
 $radio-selector: '.radio' !default;
 $radio-size: to-rem(18px) !default;
-$radio-offset-top: to-em(4px) !default;
+$radio-offset-top: to-em(3px) !default;
 
 // Checkbox
 $checkbox-selector: '.checkbox' !default;
