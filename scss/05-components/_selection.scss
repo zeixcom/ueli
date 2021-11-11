@@ -1,33 +1,32 @@
-.radio [type='radio'],
-.checkbox [type='checkbox'] {
-  &:not(:only-child) {
-    opacity: 0;
+#{$radio-selector},
+#{$checkbox-selector} {
+  input:not(:only-child) {
+    @include sr-only();
   }
 
-  ~ label {
+  label {
     position: relative;
+    margin-bottom: 0;
     padding-left: $selection-label-indent;
+    font-weight: inherit;
     line-height: 1.5;
   }
 
-  ~ label::before,
-  ~ label::after {
+  label::before,
+  label::after {
     content: '';
     position: absolute;
-    top: $selection-offset-top;
     left: 0;
-    width: $selection-size;
-    height: $selection-size;
     color-adjust: exact; // Keep custom styles for print
   }
 
-  ~ label::before {
+  label::before {
     border: $selection-border-width solid $selection-border-color;
     background-color: $selection-bg;
     box-shadow: $selection-box-shadow;
   }
 
-  ~ label::after {
+  label::after {
     background-position: center center;
     background-repeat: no-repeat;
     opacity: 0;
@@ -35,49 +34,66 @@
     transform: scale(0);
   }
 
-  &:disabled ~ label::before {
-    border-color: $selection-disabled-border-color;
-    background-color: $selection-disabled-bg;
+  input:disabled ~ label {
+    color: $selection-disabled-color;
+    cursor: not-allowed;
+
+    &::before {
+      border-color: $selection-disabled-border-color;
+      background-color: $selection-disabled-bg;
+    }
   }
 
-  &:focus ~ label::before {
+  input:focus ~ label::before {
     border-color: $selection-focus-border-color;
     box-shadow: $selection-focus-box-shadow;
   }
 
-  &:checked ~ label::before {
+  input:checked ~ label::before {
     border-color: $selection-checked-border-color;
     background-color: $selection-checked-bg;
   }
 
-  &:checked ~ label::after {
+  input:checked ~ label::after {
     opacity: 1;
     transform: none;
   }
 
-  &:active:not(:disabled) ~ label::before {
+  input:active:not(:disabled) ~ label::before {
     filter: $selection-active-filter;
   }
 }
 
-// stylelint-disable no-descending-specificity
-.radio [type='radio'] {
-  ~ label::before {
+#{$radio-selector} {
+  label::before,
+  label::after {
+    top: $radio-offset-top;
+    width: $radio-size;
+    height: $radio-size;
+  }
+
+  label::before {
     border-radius: 50%;
   }
 
-  &:checked ~ label::after {
+  [type='radio']:checked ~ label::after {
     background-image: url("#{get-icon('radio', $selection-icon-color)}");
   }
 }
 
-.checkbox [type='checkbox'] {
-  ~ label::before {
+#{$checkbox-selector} {
+  label::before,
+  label::after {
+    top: $checkbox-offset-top;
+    width: $checkbox-size;
+    height: $checkbox-size;
+  }
+
+  label::before {
     border-radius: $checkbox-border-radius;
   }
 
-  &:checked ~ label::after {
+  [type='checkbox']:checked ~ label::after {
     background-image: url("#{get-icon('checkbox', $selection-icon-color)}");
   }
 }
-// stylelint-enable no-descending-specificity
