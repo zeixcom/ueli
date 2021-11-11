@@ -1379,7 +1379,7 @@ h3 {
 
 .radio label::before,
 .radio label::after {
-  top: 0.25em;
+  top: 0.1875em;
   width: 1.125rem;
   height: 1.125rem;
 }
