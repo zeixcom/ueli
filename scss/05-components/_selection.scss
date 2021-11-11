@@ -84,7 +84,7 @@
 #{$checkbox-selector} {
   label::before,
   label::after {
-    top: $radio-offset-top;
+    top: $checkbox-offset-top;
     width: $checkbox-size;
     height: $checkbox-size;
   }
