@@ -19,7 +19,7 @@
     $value: $value * -1;
   }
 
-  @if (meta.type-of($value) == 'number' and not math.is-unitless($value)) {
+  @if (meta.type-of($value) == 'number' and unit($value) == 'px') {
     $value: to-rem($value);
   }
 
