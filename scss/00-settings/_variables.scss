@@ -117,8 +117,6 @@ $grid-gutter: (
   min: 30px,
 ) !default;
 
-$container: map.get($mq-breakpoints, xl) !default;
-
 /// Grid Container Gutter
 ///
 /// @example scss
@@ -141,6 +139,7 @@ $container: map.get($mq-breakpoints, xl) !default;
 ///
 /// @type {Number|Map}
 $container-gutter: $grid-gutter !default;
+$container: map.get($mq-breakpoints, xl) !default;
 
 // Link
 $link-color: $color-accent !default;
