@@ -1292,7 +1292,7 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
     $value: $value * -1;
   }
 
-  @if (meta.type-of($value) == &#39;number&#39; and unit($value) == &#39;px&#39;) {
+  @if (meta.type-of($value) == &#39;number&#39; and math.unit($value) == &#39;px&#39;) {
     $value: to-rem($value);
   }
 

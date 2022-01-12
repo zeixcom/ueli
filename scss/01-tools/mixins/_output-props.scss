@@ -19,7 +19,7 @@
     $value: $value * -1;
   }
 
-  @if (meta.type-of($value) == 'number' and unit($value) == 'px') {
+  @if (meta.type-of($value) == 'number' and math.unit($value) == 'px') {
     $value: to-rem($value);
   }
 
