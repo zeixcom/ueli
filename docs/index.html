@@ -512,7 +512,7 @@
   @include gutter($gutter, &#39;gap&#39;);
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(Min(100%, var(--min, #{$min-size})), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(Min(100%, var(--min, #{$min-size})), minmax(0, 1fr)));
  }" data-collapsed="@mixin grid-row-auto($gutter: $grid-gutter, $min-size) { ... }"><code>@mixin grid-row-auto($gutter: $grid-gutter, $min-size) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Output a css grid row with auto fit sizing and gutters</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$gutter</code></th><td data-label="desc"><p>The amount of gutter as number, breakpoint map <code>(xs: 30px, md: 60px)</code> or sizing map (min: 30px, max: 60px)</p></td><td data-label="type"><code>Number</code> or <code>Map</code></td><td data-label="default"><code>$grid-gutter</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$min-size</code></th><td data-label="desc"><p>Minimum size of the grid columns</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.grid-row-auto {
   @include grid-row-auto(320px);
 }</code></pre></div></section><section class="main__item container item" id="grid-mixin-grid-row"><h3 class="item__heading"><a class="item__name" href="#mixin-grid-row">grid-row</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin grid-row($gutter: $grid-gutter) { 
@@ -520,7 +520,7 @@
 
   display: grid;
   grid-template-rows: repeat(var(--rows, 1), 1fr);
-  grid-template-columns: repeat(var(--columns, #{$grid-columns}), 1fr);
+  grid-template-columns: repeat(var(--columns, #{$grid-columns}), minmax(0, 1fr));
  }" data-collapsed="@mixin grid-row($gutter: $grid-gutter) { ... }"><code>@mixin grid-row($gutter: $grid-gutter) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Output a css grid row with gutters</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$gutter</code></th><td data-label="desc"><p>The amount of gutter as number, breakpoint map <code>(xs: 30px, md: 60px)</code> or sizing map (min: 30px, max: 60px)</p></td><td data-label="type"><code>Number</code> or <code>Map</code></td><td data-label="default"><code>$grid-gutter</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.grid-row {
   @include grid-row();
 }</code></pre></div></section><section class="main__item container item" id="grid-mixin-grid-column"><h3 class="item__heading"><a class="item__name" href="#mixin-grid-column">grid-column</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin grid-column($span: $grid-columns, $columns: $grid-columns) { 
@@ -1292,7 +1292,7 @@ p { font-size: mq-px2em(16px); }</code></pre></div><h3 class="item__sub-heading"
     $value: $value * -1;
   }
 
-  @if (meta.type-of($value) == &#39;number&#39; and unit($value) == &#39;px&#39;) {
+  @if (meta.type-of($value) == &#39;number&#39; and math.unit($value) == &#39;px&#39;) {
     $value: to-rem($value);
   }
 
