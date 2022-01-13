@@ -1,4 +1,5 @@
-@import 'mq';
+@use 'mq' as * with ($breakpoints: $mq-breakpoints);
+
 @import 'breakpoint';
 
 @import 'output-selectors';

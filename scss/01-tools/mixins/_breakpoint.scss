@@ -5,6 +5,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:math';
+@use 'mq' as *;
 
 /// Loop all breakpoints and output `@content`
 ///
