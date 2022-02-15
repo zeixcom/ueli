@@ -164,11 +164,11 @@ $input-selector: '.form-control' !default;
 $input-height: to-em(38px) !default;
 $input-padding-vertical: to-em(6px) !default;
 $input-padding-horizontal: to-em(12px) !default;
-$input-border-width: 1px !default;
+$input-border-color: $color-line !default;
 $input-border-radius: to-em(2px) !default;
+$input-border-width: 1px !default;
 $input-bg: $color-background !default;
 $input-color: $color-foreground !default;
-$input-border-color: $color-line !default;
 $input-box-shadow: none !default;
 $input-focus-border-color: $color-accent !default;
 $input-focus-box-shadow: 0 0 0 to-em(3px) color.adjust($color-accent, $alpha: -0.75%) !default;
@@ -178,7 +178,25 @@ $input-disabled-border-color: $color-line !default;
 $input-transition: border-color get-duration() get-easing(), box-shadow get-duration() get-easing() !default;
 
 // Select
+$select-selector: '.select' !default;
+$select-height: $input-height !default;
+$select-padding-vertical: $input-padding-vertical !default;
+$select-padding-horizontal: $input-padding-horizontal !default;
+$select-border-color: $input-border-color !default;
+$select-border-radius: $input-border-radius !default;
+$select-border-width: $input-border-width !default;
+$select-bg: $input-bg !default;
+$select-color: $input-color !default;
+$select-box-shadow: $input-box-shadow !default;
 $select-icon-color: $color-foreground !default;
+$select-icon-offset: 2em !default;
+$select-focus-border-color: $input-focus-border-color !default;
+$select-focus-box-shadow: $input-focus-box-shadow !default;
+$select-disabled-bg: $input-disabled-bg !default;
+$select-disabled-color: $input-disabled-color !default;
+$select-disabled-border-color: $input-disabled-border-color !default;
+$select-transition: $input-transition !default;
+
 
 // Selection (Checkbox & Radio)
 $selection-icon-color: $color-foreground-inverted !default;

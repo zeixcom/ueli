@@ -1,0 +1,42 @@
+#{$select-selector} {
+  display: block;
+  width: 100%;
+  height: $select-height;
+  padding: $select-padding-vertical $select-padding-horizontal;
+  border: $select-border-width solid $select-border-color;
+  border-radius: $select-border-radius;
+  background: $select-bg;
+  background-clip: padding-box; // remove shadow in iOS
+  color: $select-color;
+  box-shadow: $select-box-shadow;
+  transition: $select-transition;
+  color-adjust: exact; // Keep custom styles for print
+
+  &:focus {
+    border-color: $select-focus-border-color;
+    box-shadow: $select-focus-box-shadow;
+    outline: 0;
+  }
+
+  &:disabled {
+    border-color: $select-disabled-border-color;
+    background: $select-disabled-bg;
+    color: $select-disabled-color;
+    cursor: not-allowed;
+  }
+
+  @supports (appearance: none) {
+    padding-right: $select-icon-offset;
+    background-image: url("#{get-icon('select', $select-icon-color)}");
+    background-position: right $select-padding-horizontal center;
+    background-repeat: no-repeat;
+    appearance: none;
+  }
+
+  &[multiple] {
+    padding-right: $select-padding-horizontal;
+    background: $select-bg;
+    background-position: unset;
+   }
+}
+

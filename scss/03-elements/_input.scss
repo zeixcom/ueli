@@ -1,13 +1,3 @@
-@supports (appearance: none) {
-  select:not([multiple]) {
-    padding-right: 2em;
-    background-image: url("#{get-icon('select', $select-icon-color)}");
-    background-position: right $input-padding-horizontal center;
-    background-repeat: no-repeat;
-    appearance: none;
-  }
-}
-
 select {
   &[multiple],
   &[size] {
