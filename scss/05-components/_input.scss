@@ -5,7 +5,7 @@
   padding: $input-padding-vertical $input-padding-horizontal;
   border: $input-border-width solid $input-border-color;
   border-radius: $input-border-radius;
-  background: $input-bg;
+  background-color: $input-bg;
   background-clip: padding-box; // remove shadow in iOS
   color: $input-color;
   box-shadow: $input-box-shadow;
@@ -20,7 +20,7 @@
 
   &:disabled {
     border-color: $input-disabled-border-color;
-    background: $input-disabled-bg;
+    background-color: $input-disabled-bg;
     color: $input-disabled-color;
     cursor: not-allowed;
   }

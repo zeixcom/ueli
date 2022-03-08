@@ -5,7 +5,7 @@
   padding: $select-padding-vertical $select-padding-horizontal;
   border: $select-border-width solid $select-border-color;
   border-radius: $select-border-radius;
-  background: $select-bg;
+  background-color: $select-bg;
   background-clip: padding-box; // remove shadow in iOS
   color: $select-color;
   box-shadow: $select-box-shadow;
@@ -20,7 +20,7 @@
 
   &:disabled {
     border-color: $select-disabled-border-color;
-    background: $select-disabled-bg;
+    background-color: $select-disabled-bg;
     color: $select-disabled-color;
     cursor: not-allowed;
   }
@@ -35,7 +35,7 @@
 
   &[multiple] {
     padding-right: $select-padding-horizontal;
-    background: $select-bg;
+    background-color: $select-bg;
     background-position: unset;
    }
 }
