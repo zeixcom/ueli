@@ -36,7 +36,7 @@
     "sass-loader": "^12.3.0",
     "sass-true": "^6.0.1",
     "sassdoc": "^2.7.3",
-    "stylelint": "^14.0.1",
+    "stylelint": "^14.5.3",
     "webpack": "^5.60.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0",
