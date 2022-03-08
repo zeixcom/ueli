@@ -560,10 +560,6 @@ label {
   margin-bottom: 0.5rem;
 }
 
-select[multiple], select[size] {
-  height: auto;
-}
-
 textarea[rows] {
   height: auto;
 }
@@ -1275,7 +1271,7 @@ h3 {
   padding: 0.375em 0.75em;
   border: 1px solid #cccccc;
   border-radius: 0.125em;
-  background: #fff;
+  background-color: #fff;
   background-clip: padding-box;
   color: #333333;
   box-shadow: none;
@@ -1290,7 +1286,7 @@ h3 {
 }
 .form-control:disabled {
   border-color: #cccccc;
-  background: #e6e6e6;
+  background-color: #e6e6e6;
   color: gray;
   cursor: not-allowed;
 }
@@ -1302,7 +1298,7 @@ h3 {
   padding: 0.375em 0.75em;
   border: 1px solid #cccccc;
   border-radius: 0.125em;
-  background: #fff;
+  background-color: #fff;
   background-clip: padding-box;
   color: #333333;
   box-shadow: none;
@@ -1317,7 +1313,7 @@ h3 {
 }
 .select:disabled {
   border-color: #cccccc;
-  background: #e6e6e6;
+  background-color: #e6e6e6;
   color: gray;
   cursor: not-allowed;
 }
@@ -1333,8 +1329,10 @@ h3 {
   }
 }
 .select[multiple] {
+  height: auto;
   padding-right: 0.75em;
-  background: #fff;
+  background-color: #fff;
+  background-image: none;
   background-position: unset;
 }
 
