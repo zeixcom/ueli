@@ -1306,17 +1306,6 @@ h3 {
   -webkit-print-color-adjust: exact;
           color-adjust: exact;
 }
-.select:focus {
-  border-color: #0275d8;
-  box-shadow: 0 0 0 0.1875em rgba(2, 117, 216, 0.25);
-  outline: 0;
-}
-.select:disabled {
-  border-color: #cccccc;
-  background-color: #e6e6e6;
-  color: gray;
-  cursor: not-allowed;
-}
 @supports ((-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none)) {
   .select {
     padding-right: 2em;
@@ -1327,6 +1316,17 @@ h3 {
        -moz-appearance: none;
             appearance: none;
   }
+}
+.select:focus {
+  border-color: #0275d8;
+  box-shadow: 0 0 0 0.1875em rgba(2, 117, 216, 0.25);
+  outline: 0;
+}
+.select:disabled {
+  border-color: #cccccc;
+  background-color: #e6e6e6;
+  color: gray;
+  cursor: not-allowed;
 }
 .select[multiple] {
   height: auto;
