@@ -12,6 +12,14 @@
   transition: $select-transition;
   color-adjust: exact; // Keep custom styles for print
 
+  @supports (appearance: none) {
+    padding-right: $select-icon-offset;
+    background-image: url("#{get-icon('select', $select-icon-color)}");
+    background-position: right $select-padding-horizontal center;
+    background-repeat: no-repeat;
+    appearance: none;
+  }
+
   &:focus {
     border-color: $select-focus-border-color;
     box-shadow: $select-focus-box-shadow;
@@ -23,14 +31,6 @@
     background-color: $select-disabled-bg;
     color: $select-disabled-color;
     cursor: not-allowed;
-  }
-
-  @supports (appearance: none) {
-    padding-right: $select-icon-offset;
-    background-image: url("#{get-icon('select', $select-icon-color)}");
-    background-position: right $select-padding-horizontal center;
-    background-repeat: no-repeat;
-    appearance: none;
   }
 
   &[multiple] {
