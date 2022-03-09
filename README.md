@@ -224,7 +224,7 @@ Related variables: See section "Button Base" and "Button Variations" in [\_varia
 ```
 
 ```html
-<select class="form-control">
+<select class="select">
   <option>Option One</option>
   <option>Option Two</option>
   <option>Option Three</option>

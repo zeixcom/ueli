@@ -560,21 +560,6 @@ label {
   margin-bottom: 0.5rem;
 }
 
-@supports ((-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none)) {
-  select:not([multiple]) {
-    padding-right: 2em;
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27%3E%3Cpath fill=%27%23333333%27 d=%27m1.41 0 4.59 4.58 4.59-4.58 1.41 1.41l-6 6-6-6z%27/%3E%3C/svg%3E");
-    background-position: right 0.75em center;
-    background-repeat: no-repeat;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-  }
-}
-select[multiple], select[size] {
-  height: auto;
-}
-
 textarea[rows] {
   height: auto;
 }
@@ -1304,6 +1289,50 @@ h3 {
   background-color: #e6e6e6;
   color: gray;
   cursor: not-allowed;
+}
+
+.select {
+  display: block;
+  width: 100%;
+  height: 2.375em;
+  padding: 0.375em 0.75em;
+  border: 1px solid #cccccc;
+  border-radius: 0.125em;
+  background-color: #fff;
+  background-clip: padding-box;
+  color: #333333;
+  box-shadow: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  -webkit-print-color-adjust: exact;
+          color-adjust: exact;
+}
+@supports ((-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none)) {
+  .select {
+    padding-right: 2em;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27%3E%3Cpath fill=%27%23333333%27 d=%27m1.41 0 4.59 4.58 4.59-4.58 1.41 1.41l-6 6-6-6z%27/%3E%3C/svg%3E");
+    background-position: right 0.75em center;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+  }
+}
+.select:focus {
+  border-color: #0275d8;
+  box-shadow: 0 0 0 0.1875em rgba(2, 117, 216, 0.25);
+  outline: 0;
+}
+.select:disabled {
+  border-color: #cccccc;
+  background-color: #e6e6e6;
+  color: gray;
+  cursor: not-allowed;
+}
+.select[multiple] {
+  height: auto;
+  padding-right: 0.75em;
+  background-image: none;
+  background-position: unset;
 }
 
 .radio input:not(:only-child),
