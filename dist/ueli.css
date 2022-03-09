@@ -1331,7 +1331,6 @@ h3 {
 .select[multiple] {
   height: auto;
   padding-right: 0.75em;
-  background-color: #fff;
   background-image: none;
   background-position: unset;
 }
