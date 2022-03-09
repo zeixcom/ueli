@@ -428,7 +428,7 @@ textarea {
 
 select:focus::-ms-value {
   background: transparent;
-  color: currentColor;
+  color: currentcolor;
 }
 select:disabled {
   opacity: 1;
