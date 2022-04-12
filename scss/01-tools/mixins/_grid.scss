@@ -16,8 +16,11 @@
   @include gutter($gutter, 'gap');
 
   display: grid;
+  // stylelint-disable scss/no-global-function-names
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min, #{$min-size})), 1fr));
+  // stylelint-enable scss/no-global-function-names
 }
+
 
 /// Output a css grid row with gutters
 ///
