@@ -1,7 +1,7 @@
 #{$radio-selector},
 #{$checkbox-selector} {
   input:not(:only-child) {
-    @include sr-only();
+    @include sr-only;
   }
 
   label {

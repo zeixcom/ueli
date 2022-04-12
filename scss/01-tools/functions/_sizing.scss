@@ -22,7 +22,6 @@
 /// @return {Map} - Completed sizing map
 @function complete-sizing-map($map, $value: null) {
   $max-value: map.get($map, 'min') or $value;
-
   $complete-map: map.merge(
     $map,
     (

@@ -23,6 +23,7 @@
   }
 
   @include container-gutter($gutter);
+
   width: 100%;
   max-width: $width;
   margin-right: auto;

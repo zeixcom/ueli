@@ -223,15 +223,19 @@ Related variables: See section "Button Base" and "Button Variations" in [\_varia
 <textarea class="form-control"></textarea>
 ```
 
+Related variables: See section "Input" in [\_variables.scss](https://github.com/zeixcom/ueli/tree/develop/scss/00-settings/_variables.scss)
+
+### Select
+
 ```html
-<select class="form-control">
+<select class="select">
   <option>Option One</option>
   <option>Option Two</option>
   <option>Option Three</option>
 </select>
 ```
 
-Related variables: See section "Input" in [\_variables.scss](https://github.com/zeixcom/ueli/tree/develop/scss/00-settings/_variables.scss)
+Related variables: See section "Select" in [\_variables.scss](https://github.com/zeixcom/ueli/tree/develop/scss/00-settings/_variables.scss)
 
 ### Selection
 

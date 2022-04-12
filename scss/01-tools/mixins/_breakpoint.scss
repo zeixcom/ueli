@@ -27,6 +27,7 @@
         @if $is-first-breakpoint {
           @content;
         }
+
         // remaining breakpoints
         @else {
           @include mq($breakpoint, $breakpoints: $breakpoints) {
@@ -44,12 +45,14 @@
             @content;
           }
         }
+
         // last breakpoint
         @else if $is-last-breakpoint {
           @include mq($breakpoint, $breakpoints: $breakpoints) {
             @content;
           }
         }
+
         // remaining breakpoints
         @else {
           @include mq($breakpoint, list.nth($breakpoint-keys, $i + 1), $breakpoints: $breakpoints) {

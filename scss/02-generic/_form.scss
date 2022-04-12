@@ -26,7 +26,7 @@ textarea {
 select {
   &:focus::-ms-value {
     background: transparent;
-    color: currentColor;
+    color: currentcolor;
   }
 
   // Undo opacity in Chrome

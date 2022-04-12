@@ -4,7 +4,7 @@
 
 /// Generate headings using modular scale
 ///
-/// @param {Number} $scale [$headings-scale-base]
+/// @param {Number|Map} $scale [$headings-scale-base]
 /// @param {List} $headings [$headings]
 @mixin scale-headings($scale: $headings-scale-base, $headings: $headings) {
   $max-scale: 0;
