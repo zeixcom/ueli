@@ -117,6 +117,11 @@ $grid-gutter: (
   min: 30px,
 ) !default;
 
+/// Space between grid rows using the `row-gap` property (only for `$grid-mode: grid`).
+/// Same values as for `$grid-gutter` are possible.
+/// @type {Number|Map}
+$grid-row-gutter: $grid-gutter !default;
+
 /// Grid Container Gutter
 ///
 /// @example scss

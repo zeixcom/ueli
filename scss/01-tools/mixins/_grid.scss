@@ -10,17 +10,22 @@
 /// .grid-row-auto {
 ///   @include grid-row-auto(320px);
 /// }
-/// @param {Number|Map} $gutter [$grid-gutter] - The amount of gutter as number, breakpoint map `(xs: 30px, md: 60px)` or sizing map (min: 30px, max: 60px)
 /// @param {Number} $min-size - Minimum size of the grid columns
-@mixin grid-row-auto($min-size, $gutter: $grid-gutter) {
-  @include gutter($gutter, 'gap');
+/// @param {Number|Map} $gutter [$grid-gutter] - The amount of gutter as number, breakpoint map `(xs: 30px, md: 60px)` or sizing map (min: 30px, max: 60px)
+/// @param {Number|Map} $row-gutter [$grid-row-gutter] - The row gutter as number, breakpoint map `(xs: 30px, md: 60px)` or sizing map (min: 30px, max: 60px)
+@mixin grid-row-auto($min-size, $gutter: $grid-gutter, $row-gutter: $grid-row-gutter) {
+  @if $gutter == $row-gutter {
+    @include gutter($gutter, 'gap');
+  } @else {
+    @include gutter($row-gutter, 'row-gap');
+    @include gutter($gutter, 'column-gap');
+  }
 
   display: grid;
   // stylelint-disable scss/no-global-function-names
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min, #{$min-size})), 1fr));
   // stylelint-enable scss/no-global-function-names
 }
-
 
 /// Output a css grid row with gutters
 ///
@@ -29,8 +34,14 @@
 ///   @include grid-row();
 /// }
 /// @param {Number|Map} $gutter [$grid-gutter] - The amount of gutter as number, breakpoint map `(xs: 30px, md: 60px)` or sizing map (min: 30px, max: 60px)
-@mixin grid-row($gutter: $grid-gutter) {
-  @include gutter($gutter, 'gap');
+/// @param {Number|Map} $row-gutter [$grid-row-gutter] - The row gutter as number, breakpoint map `(xs: 30px, md: 60px)` or sizing map (min: 30px, max: 60px)
+@mixin grid-row($gutter: $grid-gutter, $row-gutter: $grid-row-gutter) {
+  @if $gutter == $row-gutter {
+    @include gutter($gutter, 'gap');
+  } @else {
+    @include gutter($row-gutter, 'row-gap');
+    @include gutter($gutter, 'column-gap');
+  }
 
   display: grid;
   grid-template-rows: repeat(var(--rows, 1), 1fr);
