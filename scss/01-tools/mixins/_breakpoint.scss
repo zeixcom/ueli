@@ -7,7 +7,6 @@
 @use 'sass:math';
 @use '~sass-mq' as * with ($breakpoints: $mq-breakpoints);
 
-
 /// Loop all breakpoints and output `@content`
 ///
 /// @param {Map} $breakpoints [$mq-breakpoints] - Map of breakpoints

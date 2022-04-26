@@ -9,15 +9,15 @@
 @mixin gutter($gutter: $grid-gutter, $prop: 'gap') {
   $negative: false;
 
-  @if ($prop == 'margin') {
-    $negative: true;
-  }
-
-  @if ($prop != 'gap') {
+  @if ($prop == 'gap' or $prop == 'row-gap' or $prop == 'column-gap') {
+    @include loop-variation($gutter, $prop, $negative: $negative);
+  } @else {
     $gutter: get-half-sizing($gutter);
 
+    @if ($prop == 'margin') {
+      $negative: true;
+    }
+
     @include loop-variation($gutter, (#{$prop}-left, #{$prop}-right), $negative: $negative);
-  } @else {
-    @include loop-variation($gutter, $prop, $negative: $negative);
   }
 }
