@@ -10,6 +10,7 @@
   "license": "MIT",
   "author": "Sergio Lavanga <sergio.lavanga@zeix.com>",
   "scripts": {
+    "start": "npm run serve",
     "build": "webpack --config webpack/webpack.dev.config.js --mode=development",
     "watch": "webpack --config webpack/webpack.dev.config.js --mode=development --watch",
     "serve": "webpack serve --config webpack/webpack.dev.config.js --mode=development",
