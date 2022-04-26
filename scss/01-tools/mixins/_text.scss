@@ -24,3 +24,20 @@
   overflow-wrap: break-word;
   hyphens: auto;
 }
+
+/// Clamp text to the maximum number of lines before truncating the content. An ellipsis (…) is displayed at the end of the last line.
+/// When passing 1 for the `$lines` parameter the text-trucate mixin (with broader browser support) will be called.
+///
+/// @param {Number} $lines - Number of lines
+@mixin text-line-clamp($lines: 1) {
+  @if $lines == 1 {
+    @include text-truncate;
+  } @else {
+    display: -webkit-box; // stylelint-disable-line
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
