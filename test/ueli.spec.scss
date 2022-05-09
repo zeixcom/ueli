@@ -1,7 +1,6 @@
 @use 'true' as *;
-@import './scss/01-tools/functions';
-@import './scss/01-tools/mixins';
 
+// stylelint-disable length-zero-no-unit
 $mq-breakpoints: (
   xs: 0px,
   sm: 600px,
@@ -9,13 +8,18 @@ $mq-breakpoints: (
   lg: 1200px,
   xl: 1500px,
 );
+// stylelint-enable length-zero-no-unit
 
 $fluid-breakpoints: (
   min: sm,
   max: xl,
 );
 
+// Enable fluid scaling
 $fluid-scaling: true;
+
+@import './scss/01-tools/functions';
+@import './scss/01-tools/mixins';
 
 // ============================================================================
 // Mixin: loop-variation
