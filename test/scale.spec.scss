@@ -43,5 +43,9 @@ $fluid-scaling: true;
     }
   }
 
-  // Missing: Breakpoint maps
+  @include describe('Given a fluid base, exponent and fluid size') {
+    @include it('Should output a sizing map') {
+      @include assert-equal (modular-scale-config(2,("xs": 5px, "sm": 8px, "md": 18px),("min": 1.2, "max": 1.5)),("min": 7.2px, "max": 112.5px))
+    }
+  }
 }
