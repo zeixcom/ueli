@@ -30,4 +30,18 @@ $fluid-scaling: true;
       @include assert-equal (modular-scale-config(2,3,1.2),4.32)
     }
   }
+
+  @include describe('Given a fixed base, exponent and fluid size') {
+    @include it('Should output a sizing map') {
+      @include assert-equal (modular-scale-config(2,("min": 5px, "max": 50px),1.2),("min": 7.2px, "max": 72px))
+    }
+  }
+
+  @include describe('Given a fluid base, exponent and fluid size') {
+    @include it('Should output a sizing map') {
+      @include assert-equal (modular-scale-config(2,("min": 5px, "max": 50px),("min": 1.2, "max": 1.5)),("min": 7.2px, "max": 112.5px))
+    }
+  }
+
+  // Missing: Breakpoint maps
 }
