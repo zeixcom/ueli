@@ -1,0 +1,33 @@
+@use 'true' as *;
+
+// stylelint-disable length-zero-no-unit
+$mq-breakpoints: (
+  xs: 0px,
+  sm: 600px,
+  md: 900px,
+  lg: 1200px,
+  xl: 1500px,
+);
+// stylelint-enable length-zero-no-unit
+
+$fluid-breakpoints: (
+  min: sm,
+  max: xl,
+);
+
+// Enable fluid scaling
+$fluid-scaling: true;
+
+@import './scss/01-tools/functions';
+@import './scss/01-tools/mixins';
+
+// ============================================================================
+// Function: modular-scale-config
+// ============================================================================
+@include describe('[function] modular-scale-config') {
+  @include describe('Given a base, exponent and size') {
+    @include it('Should output the scaled value') {
+      @include assert-equal (modular-scale-config(2,3,1.2),4.32)
+    }
+  }
+}
