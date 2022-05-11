@@ -10,20 +10,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+    - name: Read .nvmrc
+      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+      id: nvm
+    - name: Use Node with nvm
       uses: actions/setup-node@v3
       with:
-        node-version: '14.17.5'
+        node-version: '${{ steps.nvm.outputs.NVMRC }}'
     - run: npm install
     - run: npm run test
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+    - name: Read .nvmrc
+      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+      id: nvm
+    - name: Use Node with nvm
       uses: actions/setup-node@v3
       with:
-        node-version: '14.17.5'
+        node-version: '${{ steps.nvm.outputs.NVMRC }}'
     - run: npm install
     - run: npm run lint
     - run: npm run prettier
