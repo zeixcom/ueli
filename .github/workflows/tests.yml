@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: '${{ github.ref }}'
     - name: Read .nvmrc
       run: echo ::set-output name=NVMRC::$(cat .nvmrc)
       id: nvm
@@ -23,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: '${{ github.ref }}'
     - name: Read .nvmrc
       run: echo ::set-output name=NVMRC::$(cat .nvmrc)
       id: nvm
