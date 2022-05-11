@@ -1,6 +1,6 @@
 # This workflow will run the tests.
 
-name: Run Tests
+name: Run Tests & build
 
 on: [pull_request, workflow_dispatch]
 
@@ -16,3 +16,18 @@ jobs:
         node-version: '14.17.5'
     - run: npm install
     - run: npm run test
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14.17.5'
+    - run: npm install
+    - run: npm run lint
+    - run: npm run prettier
+    - run: npm run sassdoc
+    - run: npm run build
+    - name: Add & Commit
+      uses: EndBug/add-and-commit@v9.0.0
