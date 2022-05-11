@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        ref: '${{ github.ref }}'
+        ref: ${{ github.event.pull_request.head.ref }}
     - name: Read .nvmrc
       run: echo ::set-output name=NVMRC::$(cat .nvmrc)
       id: nvm
@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        ref: '${{ github.ref }}'
+        ref: ${{ github.event.pull_request.head.ref }}
     - name: Read .nvmrc
       run: echo ::set-output name=NVMRC::$(cat .nvmrc)
       id: nvm
