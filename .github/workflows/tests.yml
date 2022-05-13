@@ -5,7 +5,7 @@ name: Run Tests & build
 on: [pull_request, workflow_dispatch]
 
 jobs:
-  build & test:
+  build_test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
