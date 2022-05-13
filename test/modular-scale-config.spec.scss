@@ -25,7 +25,7 @@ $fluid-scaling: true;
 // Function: modular-scale-config
 // ============================================================================
 @include describe('[function] modular-scale-config') {
-  @include describe('Given a fixed base, exponent and size') {
+  @include describe('Given an exponent, a fixed size and a fixed base') {
     @include it('Should output the scaled value') {
       @include assert-equal(modular-scale-config(2, 3, 1.2), 4.32);
     }
@@ -159,7 +159,7 @@ $fluid-scaling: true;
   }
 
   @include describe(
-    'Given a exponent, a breakpoint map with a fluid value size and a fluid value base'
+    'Given an exponent, a breakpoint map with a fluid value size and a fluid value base'
   ) {
     @include it('Should output a breakpoint map with a sizing map as value') {
       @include assert-equal(
@@ -194,7 +194,7 @@ $fluid-scaling: true;
     }
   }
 
-  @include describe('Given a exponent, a breakpoint map with a fluid value size and a fixed base') {
+  @include describe('Given an exponent, a breakpoint map with a fluid value size and a fixed base') {
     @include it('Should output a breakpoint map with a sizing map as value') {
       @include assert-equal(
         modular-scale-config(
@@ -221,7 +221,7 @@ $fluid-scaling: true;
     }
   }
 
-  @include describe('Given a exponent, a fixed size and a fluid value base') {
+  @include describe('Given an exponent, a fixed size and a fluid value base') {
     @include it('Should output a breakpoint map with a sizing map as value') {
       @include assert-equal(
         modular-scale-config(
