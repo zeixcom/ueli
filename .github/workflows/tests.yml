@@ -5,21 +5,7 @@ name: Run Tests & build
 on: [pull_request, workflow_dispatch]
 
 jobs:
-  test:
-
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        ref: ${{ github.event.pull_request.head.ref }}
-    - name: Use Node with nvm
-      uses: actions/setup-node@v3
-      with:
-        node-version-file: '.nvmrc'
-        cache: 'npm'
-    - run: npm install
-    - run: npm run test
-  build:
+  build & test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -35,5 +21,6 @@ jobs:
     - run: npm run prettier
     - run: npm run sassdoc
     - run: npm run build
+    - run: npm run test
     - name: Add & Commit
       uses: EndBug/add-and-commit@v9.0.0
