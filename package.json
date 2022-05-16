@@ -1,6 +1,6 @@
 {
   "name": "@zeix/ueli",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "keywords": [
     "css",
     "sass",
@@ -18,7 +18,8 @@
     "lint": "stylelint --fix scss/**/*",
     "prettier": "prettier --write scss/**/*",
     "sassdoc": "sassdoc scss/**/* -d docs",
-    "test": "jest"
+    "test": "jest",
+    "release": "npm i && npm run build && npm run sassdoc"
   },
   "devDependencies": {
     "@zeix/stylelint-config": "^1.0.0-beta.7",
