@@ -5,39 +5,23 @@ name: Run Tests & build
 on: [pull_request, workflow_dispatch]
 
 jobs:
-  test:
-
+  build_test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
       with:
         ref: ${{ github.event.pull_request.head.ref }}
-    - name: Read .nvmrc
-      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-      id: nvm
     - name: Use Node with nvm
       uses: actions/setup-node@v3
       with:
-        node-version: '${{ steps.nvm.outputs.NVMRC }}'
-    - run: npm install
-    - run: npm run test
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        ref: ${{ github.event.pull_request.head.ref }}
-    - name: Read .nvmrc
-      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-      id: nvm
-    - name: Use Node with nvm
-      uses: actions/setup-node@v3
-      with:
-        node-version: '${{ steps.nvm.outputs.NVMRC }}'
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+    - run: npm i npm -g
     - run: npm install
     - run: npm run lint
     - run: npm run prettier
     - run: npm run sassdoc
     - run: npm run build
+    - run: npm run test
     - name: Add & Commit
       uses: EndBug/add-and-commit@v9.0.0
