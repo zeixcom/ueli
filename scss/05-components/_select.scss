@@ -10,7 +10,7 @@
   color: $select-color;
   box-shadow: $select-box-shadow;
   transition: $select-transition;
-  color-adjust: exact; // Keep custom styles for print
+  print-color-adjust: exact; // Keep custom styles for print
 
   &:focus {
     border-color: $select-focus-border-color;

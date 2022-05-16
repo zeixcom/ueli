@@ -10,7 +10,7 @@
   color: $input-color;
   box-shadow: $input-box-shadow;
   transition: $input-transition;
-  color-adjust: exact; // Keep custom styles for print
+  print-color-adjust: exact; // Keep custom styles for print
 
   &:focus {
     border-color: $input-focus-border-color;
