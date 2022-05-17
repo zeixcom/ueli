@@ -17,7 +17,7 @@
     "prod": "webpack --config webpack/webpack.prod.config.js --mode=production",
     "lint": "stylelint --fix scss/**/*",
     "prettier": "prettier --write scss/**/*",
-    "sassdoc": "sassdoc scss/**/* -d docs",
+    "sassdoc": "sassdoc scss/**/* -d docs/sassdoc",
     "test": "jest",
     "release": "npm i && npm run build && npm run sassdoc"
   },

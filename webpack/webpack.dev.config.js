@@ -16,8 +16,8 @@ module.exports = merge(webpackConfiguration, {
     compress: true,
     hot: false,
     static: {
-      publicPath: webpackEnvironment.paths.output,
       watch: true,
+      directory: webpackEnvironment.paths.docs,
     },
     devMiddleware: {
       publicPath: '/',

@@ -1,0 +1,38 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #404c57;
+}
+
+a:not([class]),
+a:not([class]):hover,
+a:not([class]):focus {
+  color: #166e9d;
+}
+
+a:not([class]) {
+  text-underline-offset: 0.1em;
+  text-decoration: underline;
+}
+
+a:not([class]):hover {
+  text-decoration: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.lead {
+  font-size: 1.2rem;
+}

@@ -21,7 +21,7 @@ const htmlPluginEntries = templateFiles.map(
 
 module.exports = {
   entry: {
-    'ueli': path.resolve(webpackEnvironment.paths.source, 'index.js'),
+    ueli: path.resolve(webpackEnvironment.paths.source, 'index.js'),
   },
   output: {
     filename: '[name].js',
