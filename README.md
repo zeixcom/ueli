@@ -35,16 +35,17 @@ Import ueli’s source files in your `main.scss`.
 
 ## NPM Scripts
 
-| Command            | Description                               |
-| :----------------- | :---------------------------------------- |
-| `npm run build`    | Build project in development mode         |
-| `npm run watch`    | Watch files and build in development mode |
-| `npm run serve`    | Serve project in development mode         |
-| `npm run prod`     | Build project in production mode          |
-| `npm run lint`     | Run stylelint and fix errors              |
-| `npm run prettier` | Reformat files with prettier              |
-| `npm run sassdoc ` | Generate sassdoc files                    |
-| `npm run test `    | Run sass-true tests via jest              |
+| Command            | Description                                |
+| :----------------- | :----------------------------------------- |
+| `npm run build`    | Build project in development mode          |
+| `npm run watch`    | Watch files and build in development mode  |
+| `npm run serve`    | Serve project in development mode          |
+| `npm run prod`     | Build project in production mode           |
+| `npm run lint`     | Run stylelint and fix errors               |
+| `npm run prettier` | Reformat files with prettier               |
+| `npm run sassdoc ` | Generate sassdoc files                     |
+| `npm run test `    | Run sass-true tests via jest               |
+| `npm run release`  | Run commands required for a release commit |
 
 ## Folder Structure
 
