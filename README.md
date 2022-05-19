@@ -33,6 +33,28 @@ Import ueli’s source files in your `main.scss`.
 // 5. Add your custom styles here
 ```
 
+## Media Queries
+
+Media Queries are handled by [Sass MQ](https://github.com/sass-mq/sass-mq).
+
+### Usage
+
+```scss
+// Load the sass module
+@use 'sass-mq/mq' as *;
+
+// Include the media query mixin and pass a breakpoint key
+@include mq(md) {
+}
+```
+
+The snippet above compiles to the following CSS:
+
+```css
+@media (min-width: 56.52em) {
+}
+```
+
 ## NPM Scripts
 
 | Command            | Description                                |
