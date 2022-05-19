@@ -67,7 +67,7 @@ Settings are split into [tokens](https://github.com/zeixcom/ueli/tree/develop/sc
 
 ## Tools
 
-Functions and mixins are annotated using sassdoc syntax. Please refer to the [sassdoc page](https://zeixcom.github.io/ueli/) for their documentation.
+Functions and mixins are annotated using sassdoc syntax. Please refer to the [sassdoc page](https://zeixcom.github.io/ueli/sassdoc) for their documentation.
 
 ## Objects
 
@@ -81,11 +81,11 @@ Related variables: `$container`, `$container-gutter`
 
 ### Grid
 
-Grid classes are generated depending on the [`$grid-mode`](https://zeixcom.github.io/ueli/#global-variable-grid-mode).
+Grid classes are generated depending on the [`$grid-mode`](https://zeixcom.github.io/ueli/sassdoc#global-variable-grid-mode).
 
 #### CSS Grid (grid-mode: grid)
 
-Related mixins: [`grid-row`](https://zeixcom.github.io/ueli/#grid-mixin-grid-row), [`grid-column`](https://zeixcom.github.io/ueli/#grid-mixin-grid-column), [`grid-column-start`](https://zeixcom.github.io/ueli/#grid-mixin-grid-column-start)
+Related mixins: [`grid-row`](https://zeixcom.github.io/ueli/sassdoc#grid-mixin-grid-row), [`grid-column`](https://zeixcom.github.io/ueli/sassdoc#grid-mixin-grid-column), [`grid-column-start`](https://zeixcom.github.io/ueli/sassdoc#grid-mixin-grid-column-start)
 
 ##### Basic
 
@@ -128,7 +128,7 @@ Related mixins: [`grid-row`](https://zeixcom.github.io/ueli/#grid-mixin-grid-row
 
 #### Flex Grid (grid-mode: flex)
 
-Related mixins: [`flex-row`](https://zeixcom.github.io/ueli/#grid-mixin-flex-row), [`flex-column`](https://zeixcom.github.io/ueli/#grid-mixin-flex-column), [`flex-column-base`](https://zeixcom.github.io/ueli/#grid-mixin-flex-column-base), [`flex-column-push`](https://zeixcom.github.io/ueli/#grid-mixin-flex-column-push), [`flex-column-pull`](https://zeixcom.github.io/ueli/#grid-mixin-flex-column-pull), [`flex-column-offset`](https://zeixcom.github.io/ueli/#grid-mixin-flex-column-offset)
+Related mixins: [`flex-row`](https://zeixcom.github.io/ueli/sassdoc#grid-mixin-flex-row), [`flex-column`](https://zeixcom.github.io/ueli/sassdoc#grid-mixin-flex-column), [`flex-column-base`](https://zeixcom.github.io/ueli/sassdoc#grid-mixin-flex-column-base), [`flex-column-push`](https://zeixcom.github.io/ueli/sassdoc#grid-mixin-flex-column-push), [`flex-column-pull`](https://zeixcom.github.io/ueli/sassdoc#grid-mixin-flex-column-pull), [`flex-column-offset`](https://zeixcom.github.io/ueli/sassdoc#grid-mixin-flex-column-offset)
 
 ##### Basic
 
