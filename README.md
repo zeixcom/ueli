@@ -77,7 +77,7 @@ Functions and mixins are annotated using sassdoc syntax. Please refer to the [sa
 <div class="container"></div>
 ```
 
-Related variables: `$container`, `$container-gutter`
+Related variables: `$container`, [`$container-gutter`](https://zeixcom.github.io/ueli/sassdoc#global-variable-container-gutter)
 
 ### Grid
 
@@ -178,7 +178,7 @@ Related mixins: [`flex-row`](https://zeixcom.github.io/ueli/sassdoc#grid-mixin-f
 </div>
 ```
 
-Related variables: `$grid-mode`, `$grid-columns`, `$grid-gutter`
+Related variables: [`$grid-mode`](https://zeixcom.github.io/ueli/sassdoc#global-variable-grid-mode), `$grid-columns`, [`$grid-gutter`](https://zeixcom.github.io/ueli/sassdoc#global-variable-grid-gutter)
 
 ### Embed
 
