@@ -1208,10 +1208,6 @@ h3 {
 .formatted-text:last-child {
   margin-bottom: 0;
 }
-.formatted-text br:nth-of-type(n + 3),
-.formatted-text br:nth-of-type(n + 3) ~ br {
-  display: none;
-}
 .formatted-text p:empty {
   display: none;
 }
