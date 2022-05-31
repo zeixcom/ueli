@@ -1,10 +1,11 @@
 const path = require('path');
+const fs = require('fs');
 const sassTrue = require('sass-true');
 const glob = require('glob');
 
 function importer(url) {
-  if (url[0] === '~') {
-    url = path.resolve('node_modules', url.substr(1));
+  if (!fs.existsSync(url)) {
+    url = path.resolve('node_modules', url);
   }
 
   return { file: url };
