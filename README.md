@@ -41,7 +41,7 @@ Media Queries are handled by [Sass MQ](https://github.com/sass-mq/sass-mq).
 
 ```scss
 // Load the sass module
-@use 'sass-mq/mq' as *;
+@use 'sass-mq' as *;
 
 // Include the media query mixin and pass a breakpoint key
 @include mq(md) {

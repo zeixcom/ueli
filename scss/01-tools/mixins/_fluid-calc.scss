@@ -5,7 +5,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
-@use 'sass-mq/mq' as *;
+@use 'sass-mq' as *;
 
 /// Generate min, max and fluid in-between values for a given CSS property
 ///
