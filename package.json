@@ -8,6 +8,10 @@
     "framework"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeixcom/ueli.git"
+  },
   "author": "Sergio Lavanga <sergio.lavanga@zeix.com>",
   "scripts": {
     "start": "npm run serve",
