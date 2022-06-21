@@ -5,7 +5,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:math';
-@use 'sass-mq' as * with (
+@use 'sass-mq/mq' as * with (
   $breakpoints: $mq-breakpoints
 );
 
