@@ -13,9 +13,13 @@ input[type='color'] {
   padding: $input-padding-vertical;
 }
 
-// Fix date input height in Safari
-input[type='date'] {
-  display: flex;
+// Fix date input heights
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='week'] {
+  display: inline-flex;
 }
 
 // Fix appearance for date inputs in Safari

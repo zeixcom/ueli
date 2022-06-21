@@ -572,8 +572,12 @@ input[type=color] {
   padding: 0.375em;
 }
 
-input[type=date] {
-  display: flex;
+input[type=date],
+input[type=time],
+input[type=datetime-local],
+input[type=month],
+input[type=week] {
+  display: inline-flex;
 }
 
 input[type=date],
