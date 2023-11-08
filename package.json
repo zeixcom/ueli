@@ -26,7 +26,7 @@
     "release": "npm i && npm run build && npm run sassdoc"
   },
   "devDependencies": {
-    "@zeix/stylelint-config": "^1.0.0-beta.8",
+    "@zeix/stylelint-config": "github:zeixcom/stylelint-config#feature/update-dep-2023",
     "autoprefixer": "^10.4.16",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
