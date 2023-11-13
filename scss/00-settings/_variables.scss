@@ -175,7 +175,7 @@ $input-bg: $color-background !default;
 $input-color: $color-foreground !default;
 $input-box-shadow: none !default;
 $input-focus-border-color: $color-accent !default;
-$input-focus-box-shadow: 0 0 0 to-em(3px) color.adjust($color-accent, $alpha: -0.75%) !default;
+$input-focus-box-shadow: 0 0 0 to-em(3px) color.adjust($color-accent, $alpha: -0.75) !default;
 $input-disabled-bg: $color-background-muted !default;
 $input-disabled-color: $color-foreground-muted !default;
 $input-disabled-border-color: $color-line !default;
